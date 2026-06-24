@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karthick Balakrishnan — UX Design Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --surface: #f8f8f6;
+    --border: rgba(0,0,0,0.10);
+    --border-strong: rgba(0,0,0,0.18);
+    --text: #1a1a18;
+    --text-muted: #6b6b67;
+    --text-faint: #9e9e9a;
+    --accent: #185FA5;
+    --accent-bg: #E6F1FB;
+    --accent-text: #0C447C;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a18;
+      --surface: #232321;
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.18);
+      --text: #f0f0ee;
+      --text-muted: #9e9e9a;
+      --text-faint: #6b6b67;
+      --accent: #5B9BD5;
+      --accent-bg: #0c2d4a;
+      --accent-text: #85B7EB;
+    }
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg); border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 2rem; height: 52px;
+  }
+  .nav-name { font-size: 14px; font-weight: 500; margin-right: auto; }
+  nav a { font-size: 13px; color: var(--text-muted); text-decoration: none; letter-spacing: .04em; }
+  nav a:hover { color: var(--text); }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 150px 1fr; gap: 3rem; align-items: start; margin-bottom: 4rem; }
+  .photo-col { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .photo { width: 136px; height: 136px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-strong); display: block; }
+  .icon-links { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+  .icon-link { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-muted); text-decoration: none; padding: 5px 2px; border-radius: 6px; }
+  .icon-link i { font-size: 15px; color: var(--text-faint); }
+  .icon-link:hover { color: var(--text); }
+  .hero-tag { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .5rem; }
+  .hero-name { font-family: 'DM Serif Display', serif; font-size: 38px; line-height: 1.1; margin-bottom: .75rem; }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .affils { display: flex; flex-direction: column; gap: 5px; margin-bottom: 1.25rem; }
+  .affil-row { font-size: 14px; color: var(--text-muted); }
+  .affil-row strong { color: var(--text); font-weight: 500; }
+  .bio { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .bio + .bio { margin-top: .65rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1.1rem; }
+  .badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--border-strong); color: var(--text-muted); }
+
+  /* Sections */
+  section { margin-bottom: 3.5rem; }
+  .sec-label {
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-faint); margin-bottom: 1.25rem;
+    padding-bottom: .5rem; border-bottom: 0.5px solid var(--border);
+  }
+
+  /* Papers */
+  .paper { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); border-radius: var(--radius-lg); margin-bottom: .75rem; background: var(--bg); transition: border-color .15s; }
+  .paper:hover { border-color: var(--border-strong); }
+  .venue-badge { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .04em; padding: 3px 10px; border-radius: 12px; background: var(--accent-bg); color: var(--accent-text); margin-bottom: .6rem; }
+  .paper-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: .4rem; line-height: 1.45; }
+  .paper-authors { font-size: 13px; color: var(--text-faint); margin-bottom: .5rem; }
+  .paper-abstract { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* Projects */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .75rem; }
+  .proj-card { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); border-radius: var(--radius-lg); background: var(--bg); transition: border-color .15s; }
+  .proj-card:hover { border-color: var(--border-strong); }
+  .proj-head { display: flex; align-items: center; gap: 8px; margin-bottom: .4rem; }
+  .proj-head i { font-size: 17px; color: var(--accent); }
+  .proj-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .proj-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  .client-chip { display: inline-block; font-size: 11px; color: var(--text-faint); border: 0.5px solid var(--border); border-radius: 10px; padding: 2px 8px; margin-top: .65rem; }
+
+  /* Experience */
+  .exp-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .exp-year { font-size: 12px; color: var(--text-faint); padding-top: 2px; line-height: 1.5; }
+  .exp-role { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: .2rem; }
+  .exp-where { font-size: 13px; color: var(--accent); margin-bottom: .35rem; }
+  .exp-detail { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* Education */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
+  .edu-card { padding: 1.1rem 1.4rem; border: 0.5px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+  .edu-degree { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: .3rem; }
+  .edu-school { font-size: 13px; color: var(--text-muted); }
+
+  /* Contact */
+  .contact-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .contact-link { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--text-muted); text-decoration: none; padding: 8px 16px; border: 0.5px solid var(--border); border-radius: var(--radius-md); transition: border-color .15s, color .15s; }
+  .contact-link:hover { border-color: var(--border-strong); color: var(--text); }
+  .contact-link i { font-size: 17px; }
+
+  footer { font-size: 12px; color: var(--text-faint); text-align: center; padding-top: 2.5rem; border-top: 0.5px solid var(--border); margin-top: 1rem; }
+
+  @media (max-width: 620px) {
+    nav { gap: 1.25rem; padding: 0 1rem; }
+    nav a:nth-child(n+4) { display: none; }
+    .wrap { padding: 2rem 1.1rem 3rem; }
+    .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+    .photo-col { flex-direction: row; align-items: center; gap: 1.25rem; }
+    .icon-links { flex-direction: row; flex-wrap: wrap; }
+    .hero-name { font-size: 28px; }
+    .exp-item { grid-template-columns: 1fr; gap: .4rem; }
+    .exp-year { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Karthick Balakrishnan</span>
+  <a href="#research">Research</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="photo-col">
+      <img class="photo" src="karthick.jpg" alt="Karthick Balakrishnan" />
+      <div class="icon-links">
+        <a class="icon-link" href="mailto:b.karthick@live.com"><i class="ti ti-mail" aria-hidden="true"></i>b.karthick@live.com</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn</a>
+        <a class="icon-link" href="#"><i class="ti ti-briefcase" aria-hidden="true"></i>Portfolio</a>
+        <a class="icon-link" href="#"><i class="ti ti-file-cv" aria-hidden="true"></i>Download CV</a>
+      </div>
+    </div>
+    <div>
+      <p class="hero-tag">UX Design Technical Lead &middot; HCI Researcher</p>
+      <h1 class="hero-name">Karthick <em>Balakrishnan</em></h1>
+      <div class="affils">
+        <p class="affil-row"><strong>HCL Technologies</strong> &mdash; Technical Lead, UX/Product Design &middot; Chennai, India</p>
+        <p class="affil-row">MCA + MSc Psychology &middot; University of Madras</p>
+      </div>
+      <p class="bio">I design enterprise systems where cognitive load is the enemy. Over 15 years I have worked at the intersection of HCI, cognitive psychology, and AI-powered interfaces &mdash; helping teams at Lam Research, Microsoft, PenFed, and Cadent Gas turn complexity into clarity.</p>
+      <p class="bio">My research formalises what practitioners know intuitively: that reducing friction in high-stakes interfaces is both a design problem and a cognitive science problem. I am building toward a researcher-practitioner role and a PhD in HCI.</p>
+      <div class="badges">
+        <span class="badge">Cognitive Load Theory</span>
+        <span class="badge">AI-Augmented UX</span>
+        <span class="badge">Enterprise IA</span>
+        <span class="badge">Human-in-the-Loop Systems</span>
+        <span class="badge">Dual-Process Theory</span>
+        <span class="badge">NASA-TLX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <p class="sec-label">Research &amp; Publications</p>
+
+    <div class="paper">
+      <span class="venue-badge">IEEE &middot; In Preparation</span>
+      <p class="paper-title">Cognitive Load Reduction in Enterprise Knowledge Discovery: The AI-AVS Framework</p>
+      <p class="paper-authors">Karthick Balakrishnan</p>
+      <p class="paper-abstract">Proposes the AI-Augmented Validation and Search (AI-AVS) framework with an Accuracy Validation Score composite scoring mechanism, validated through a Smart Search Portal built on Azure AI Search. Demonstrates a 35% reduction in digital asset search time and 40% improvement in result relevance in a semiconductor manufacturing enterprise context.</p>
+    </div>
+
+    <div class="paper">
+      <span class="venue-badge">ACM India HCI 2026 &middot; Practitioner Track</span>
+      <p class="paper-title">Dignity-First: Reducing Cognitive Load in High-Stakes Financial UX</p>
+      <p class="paper-authors">Karthick Balakrishnan</p>
+      <p class="paper-abstract">Formalises the &ldquo;Dignity-First&rdquo; framework through a 33-step mortgage application redesign. Applies Cognitive Load Theory and dual-process theory, achieving a 25% reduction in completion time and significant NASA-TLX improvement. Submitted to IIT Hyderabad (ACM India HCI 2026).</p>
+    </div>
+
+    <div class="paper">
+      <span class="venue-badge">IEEE &middot; Conference Paper</span>
+      <p class="paper-title">XR-CART: An AR-Integrated Smart Cart for Retail Navigation and Sustainable Engagement</p>
+      <p class="paper-authors">Karthick Balakrishnan</p>
+      <p class="paper-abstract">Proposes an XR retail navigation system integrating AR indoor wayfinding, self-checkout, gamification, and kinetic energy-harvesting. Grounded in Cognitive Load Theory, Self-Determination Theory, and Fogg&rsquo;s Behaviour Model for the Indian retail context.</p>
+    </div>
+
+    <div class="paper">
+      <span class="venue-badge">ACM &middot; Conference Paper</span>
+      <p class="paper-title">Stress-First Design: Interaction Architecture for Emergency Response CRM</p>
+      <p class="paper-authors">Karthick Balakrishnan</p>
+      <p class="paper-abstract">Introduces the Stress-First Design Model through a real-time gas emergency dashboard redesign. Reorganises 17 emergency types into four priority clusters with conditional question trees, achieving a 79% user satisfaction rate under high operational stress conditions.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="sec-label">Selected Projects</p>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-search" aria-hidden="true"></i><p class="proj-name">Enterprise Smart Search Portal</p></div>
+        <p class="proj-desc">Azure AI Search SPA with 16-column accordion filtering, RBAC via Azure AD, AI Verified Badge trust indicators, de-duplication architecture, and React optimistic UI patterns.</p>
+        <span class="client-chip">Lam Research &middot; HCL Technologies</span>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-robot" aria-hidden="true"></i><p class="proj-name">Multi-Agent UX Orchestration</p></div>
+        <p class="proj-desc">React application using the Claude API to coordinate multiple AI design agents with human-in-the-loop oversight. Explores agentic workflows for enterprise UX design teams.</p>
+        <span class="client-chip">Personal Research Project</span>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-alert-triangle" aria-hidden="true"></i><p class="proj-name">Gas Emergency Response CRM</p></div>
+        <p class="proj-desc">Real-time operational safety dashboard for emergency response agents. Behavioural psychology frameworks applied to reduce mental workload; 79% user satisfaction under stress.</p>
+        <span class="client-chip">Cadent Gas &middot; HCL Technologies</span>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-leaf" aria-hidden="true"></i><p class="proj-name">Aranya — Nature &amp; Heritage AR App</p></div>
+        <p class="proj-desc">Mobile AR and gamification platform reconnecting Indian youth with nature and cultural heritage. Full UX case study and interactive React prototype, grounded in Self-Determination Theory.</p>
+        <span class="client-chip">Personal Research Project</span>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-file-dollar" aria-hidden="true"></i><p class="proj-name">PenFed Mortgage Redesign</p></div>
+        <p class="proj-desc">End-to-end redesign of a 33-step mortgage application flow. 25% reduction in completion time, significant NASA-TLX improvements, and co-applicant flow optimisation.</p>
+        <span class="client-chip">PenFed Credit Union &middot; HCL America</span>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><i class="ti ti-chart-dots" aria-hidden="true"></i><p class="proj-name">DCS-BSH Data Center Dashboard</p></div>
+        <p class="proj-desc">High-density live monitoring interface for data center operations. Synthesised complex server tracking metrics into a cognitive-friendly, desktop-first UI for tech managers.</p>
+        <span class="client-chip">Microsoft &middot; HCL Technologies</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="sec-label">Experience</p>
+
+    <div class="exp-item">
+      <p class="exp-year">Jun 2024 &ndash; Present</p>
+      <div>
+        <p class="exp-role">Technical Lead, UX/Product Design</p>
+        <p class="exp-where">HCL Technologies, Chennai</p>
+        <p class="exp-detail">Leading UX for AI-augmented enterprise systems at Lam Research (semantic search platform), Cadent Gas (emergency response CRM), and Microsoft (data centre operations monitoring).</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-year">May 2023 &ndash; Mar 2024</p>
+      <div>
+        <p class="exp-role">Technical Lead, UX/Product Design</p>
+        <p class="exp-where">HCL America</p>
+        <p class="exp-detail">Redesigned mortgage application funnel for PenFed Credit Union. Authored Salesforce design system component libraries; maintained 100% design-to-production consistency across high-volume sales funnels.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-year">Jan 2021 &ndash; May 2023</p>
+      <div>
+        <p class="exp-role">Technical Lead, UX/Product Design</p>
+        <p class="exp-where">HCL Technologies, Chennai</p>
+        <p class="exp-detail">Enterprise calendar UX for Synchrony Bank, IDA system design for the World Bank, and heavy machinery telemetry dashboard for Caterpillar Inc.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-year">Dec 2018 &ndash; Dec 2020</p>
+      <div>
+        <p class="exp-role">Lead Engineer, UX/Product Design</p>
+        <p class="exp-where">Prodapt Solutions, Chennai</p>
+        <p class="exp-detail">UX design and prototyping for CenturyLink (US telecom). High-fidelity prototyping, design system contribution, and cross-functional collaboration with US client teams.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-year">Nov 2017 &ndash; Dec 2018</p>
+      <div>
+        <p class="exp-role">Sr. UI/UX Developer</p>
+        <p class="exp-where">Emerio Technologies, Chennai</p>
+        <p class="exp-detail">Information architecture, user research (personas, journey mapping, usability studies), and high-fidelity prototyping for enterprise web applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="sec-label">Education</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <p class="edu-degree">Master of Computer Applications (MCA)</p>
+        <p class="edu-school">University of Madras, Chennai</p>
+      </div>
+      <div class="edu-card">
+        <p class="edu-degree">MSc Psychology</p>
+        <p class="edu-school">University of Madras, Chennai</p>
+      </div>
+      <div class="edu-card">
+        <p class="edu-degree">XR Workshop &mdash; AR/VR/MR Design</p>
+        <p class="edu-school">IIT Madras</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="sec-label">Contact</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:b.karthick@live.com"><i class="ti ti-mail" aria-hidden="true"></i>b.karthick@live.com</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn</a>
+      <a class="contact-link" href="#"><i class="ti ti-briefcase" aria-hidden="true"></i>Portfolio</a>
+      <a class="contact-link" href="#"><i class="ti ti-file-cv" aria-hidden="true"></i>CV (PDF)</a>
+    </div>
+  </section>
+
+  <footer>Karthick Balakrishnan &middot; Chennai, India &middot; Made with care</footer>
+
+</div>
+</body>
+</html>
