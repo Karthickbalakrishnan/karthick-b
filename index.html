@@ -5,506 +5,728 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Karthick Balakrishnan — HCI Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#16140f;
-  --ink-2:#4a4640;
-  --ink-3:#857e76;
-  --ink-4:#b8b0a6;
-  --paper:#faf8f3;
-  --paper-2:#f2ede3;
-  --paper-3:#e8e0d0;
-  --blue:#1a4f8a;
-  --blue-light:#dce8f5;
-  --rust:#b54a1a;
-  --rust-light:#f9ece4;
-  --green:#2a6644;
-  --green-light:#e0f0e8;
-  --rule:rgba(22,20,15,0.12);
-  --rule-2:rgba(22,20,15,0.22);
+  --bg:#080b12;
+  --bg2:#0d1220;
+  --bg3:#111827;
+  --surface:#161d2e;
+  --surface2:#1e2740;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --text:#e8eaf0;
+  --text2:#8b95aa;
+  --text3:#525e74;
+  --blue:#4f8ef7;
+  --blue2:#2563eb;
+  --blue-g:linear-gradient(135deg,#4f8ef7,#818cf8);
+  --teal:#2dd4bf;
+  --purple:#a78bfa;
+  --orange:#f97316;
+  --green:#34d399;
+  --pink:#f472b6;
+  --glow-blue:rgba(79,142,247,0.25);
+  --glow-teal:rgba(45,212,191,0.2);
 }
-
 html{scroll-behavior:smooth}
-
 body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
   line-height:1.65;
-  /* very subtle graph paper */
-  background-image:
-    linear-gradient(var(--rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-  background-size:32px 32px;
-  background-position:center center;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* ─── NAV ─── */
-nav{
-  position:sticky;top:0;z-index:200;
-  background:rgba(250,248,243,0.96);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--rule-2);
-  display:flex;align-items:center;gap:0;
-  height:56px;padding:0;
-}
-.nav-inner{
-  max-width:1000px;width:100%;margin:0 auto;
-  padding:0 2rem;display:flex;align-items:center;gap:2rem;
-}
-.nav-brand{
-  font-family:'Caveat',cursive;font-size:20px;font-weight:700;
-  color:var(--blue);margin-right:auto;letter-spacing:.01em;
-}
-.nav-links{display:flex;gap:1.75rem}
-.nav-links a{
-  font-size:13px;color:var(--ink-2);text-decoration:none;
-  letter-spacing:.04em;font-weight:400;
-}
-.nav-links a:hover{color:var(--blue)}
-
-/* ─── LAYOUT ─── */
-.page{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem}
-
-/* ─── HERO / ABOVE FOLD ─── */
-.hero{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:3.5rem;
-  align-items:start;
-  margin-bottom:5rem;
-  padding-bottom:4rem;
-  border-bottom:1px dashed var(--rule-2);
-}
-
-/* Photo with hand-drawn SVG frame */
-.photo-wrap{position:relative;width:148px;flex-shrink:0}
-.photo-frame-svg{
-  position:absolute;top:-6px;left:-6px;
-  width:160px;height:160px;
-  pointer-events:none;z-index:2;
-}
-.photo{
-  width:148px;height:148px;
-  border-radius:50%;
-  object-fit:cover;object-position:center top;
-  display:block;
-  filter:saturate(.82) contrast(1.04);
-  position:relative;z-index:1;
-}
-.photo-initials{
-  width:148px;height:148px;border-radius:50%;
-  background:var(--paper-2);border:1.5px solid var(--rule-2);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Instrument Serif',serif;font-size:52px;
-  color:var(--blue);font-style:italic;
-}
-
-.hero-right{}
-.hero-eyebrow{
-  font-family:'Caveat',cursive;font-size:15px;
-  color:var(--ink-3);letter-spacing:.06em;
-  margin-bottom:.6rem;
-  display:flex;align-items:center;gap:.6rem;
-}
-.hero-eyebrow::before{
-  content:'';display:inline-block;
-  width:28px;height:1.5px;background:var(--blue);opacity:.5;
-}
-h1{
-  font-family:'Instrument Serif',serif;
-  font-size:52px;line-height:1.02;
-  font-weight:400;color:var(--ink);
-  margin-bottom:.6rem;
-  letter-spacing:-.01em;
-}
-h1 em{color:var(--blue);font-style:italic}
-
-.hero-affil{
-  font-family:'Caveat',cursive;font-size:16px;
-  color:var(--ink-2);margin-bottom:1.5rem;line-height:1.8;
-}
-.hero-affil strong{color:var(--ink);font-weight:600}
-
-/* The research statement — the most important thing professors read */
-.research-statement{
-  font-size:16px;line-height:1.85;color:var(--ink);
-  margin-bottom:1.5rem;
-  padding:1.25rem 1.5rem;
-  background:var(--blue-light);
-  border-left:3px solid var(--blue);
-  border-radius:0 4px 4px 0;
-  position:relative;
-}
-.research-statement::before{
-  content:'"';
-  font-family:'Instrument Serif',serif;
-  font-size:64px;color:var(--blue);opacity:.2;
-  position:absolute;top:-8px;left:8px;line-height:1;
-}
-
-.hero-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
-.hero-link{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:'Caveat',cursive;font-size:15px;
-  color:var(--ink-2);text-decoration:none;
-  padding:4px 12px;
-  border:1.5px solid var(--rule-2);border-radius:2px;
-  background:var(--paper-2);
-  transition:border-color .15s,color .15s;
-}
-.hero-link:hover{border-color:var(--blue);color:var(--blue)}
-.hero-link svg{width:14px;height:14px;flex-shrink:0}
-
-.interest-chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{
-  font-family:'Caveat',cursive;font-size:13px;
-  padding:3px 10px;
-  border:1px solid var(--rule-2);border-radius:2px;
-  background:var(--paper);color:var(--ink-2);
-  display:inline-block;
-}
-/* slightly rotate chips for sketch feel */
-.chip:nth-child(3n+1){transform:rotate(-.5deg)}
-.chip:nth-child(3n+2){transform:rotate(.4deg)}
-.chip:nth-child(3n){transform:rotate(-.2deg)}
-
-/* ─── SECTION SYSTEM ─── */
-.section{margin-bottom:5rem}
-.section-head{
-  display:grid;
-  grid-template-columns:48px 1fr;
-  gap:1rem;align-items:baseline;
-  margin-bottom:2rem;
-}
-.section-num{
-  font-family:'Instrument Serif',serif;
-  font-size:38px;font-style:italic;
-  color:var(--paper-3);
-  -webkit-text-stroke:1px var(--ink-3);
-  text-stroke:1px var(--ink-3);
-  line-height:1;
-  user-select:none;
-}
-.section-title-wrap{}
-.section-title{
-  font-family:'Instrument Serif',serif;
-  font-size:26px;font-weight:400;
-  color:var(--ink);letter-spacing:-.01em;margin-bottom:.15rem;
-}
-/* hand-drawn underline SVG */
-.squiggle{display:block;width:100%;overflow:visible;height:6px;margin-top:.2rem}
-
-/* ─── PUBLICATIONS ─── */
-/* Academic paper list — clean like actual CV */
-.pub-list{display:flex;flex-direction:column;gap:1.5rem}
-.pub{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:1rem 2rem;
-  padding:1.4rem 1.6rem;
-  border:1px solid var(--rule);
-  border-radius:2px;
-  background:var(--paper);
-  position:relative;
-  /* folded corner */
-  clip-path:polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
-  transition:border-color .15s,box-shadow .15s;
-}
-.pub::after{
+/* ══ NOISE OVERLAY ══ */
+body::before{
   content:'';
-  position:absolute;top:0;right:0;
-  width:22px;height:22px;
-  background:var(--paper-2);
-  border-left:1px solid var(--rule-2);
-  border-bottom:1px solid var(--rule-2);
-}
-.pub:hover{border-color:var(--blue);box-shadow:3px 4px 0 rgba(26,79,138,.08)}
-.pub-main{}
-.pub-venue{
-  font-family:'Caveat',cursive;font-size:13px;font-weight:700;
-  letter-spacing:.04em;color:var(--blue);
-  margin-bottom:.45rem;display:flex;align-items:center;gap:.5rem;
-}
-.pub-venue-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--blue);flex-shrink:0;
-}
-.pub-title{
-  font-family:'Instrument Serif',serif;
-  font-size:17px;font-weight:400;color:var(--ink);
-  margin-bottom:.35rem;line-height:1.4;
-}
-.pub-authors{font-family:'Caveat',cursive;font-size:14px;color:var(--ink-3);margin-bottom:.55rem}
-.pub-abstract{font-size:13px;color:var(--ink-2);line-height:1.75}
-.pub-meta{
-  display:flex;flex-direction:column;gap:.4rem;
-  align-items:flex-end;
-  min-width:100px;
-}
-.pub-status{
-  font-family:'Caveat',cursive;font-size:12px;
-  padding:3px 9px;border-radius:2px;
-  border:1px dashed var(--blue);color:var(--blue);
-  white-space:nowrap;text-align:center;
-}
-.pub-status.submitted{border-color:var(--rust);color:var(--rust)}
-.pub-status.accepted{border-color:var(--green);color:var(--green);border-style:solid}
-
-/* annotation bubble — like a sticky note in a margin */
-.margin-note{
-  font-family:'Caveat',cursive;font-size:13px;
-  color:var(--rust);
-  background:var(--rust-light);
-  border:1px solid rgba(181,74,26,.2);
-  border-radius:4px;
-  padding:5px 10px;
-  display:inline-block;
-  transform:rotate(-.8deg);
-  white-space:nowrap;
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:1000;
 }
 
-/* ─── PROJECTS ─── */
-.proj-list{display:flex;flex-direction:column;gap:1.25rem}
-
-.proj{
-  border:1px solid var(--rule);
+/* ══ LOADER ══ */
+#loader{
+  position:fixed;inset:0;background:var(--bg);z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2rem;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loader.out{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  font-family:'Fraunces',serif;font-size:56px;font-style:italic;
+  background:var(--blue-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  opacity:0;transform:translateY(20px);
+  animation:rise .9s .2s cubic-bezier(.22,1,.36,1) forwards;
+}
+.loader-track{
+  width:180px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;
+  opacity:0;animation:rise .6s .6s ease forwards;
+}
+.loader-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
   border-radius:2px;
-  background:var(--paper);
-  overflow:hidden;
-  transition:border-color .15s,box-shadow .15s;
-  cursor:default;
+  animation:fillBar 1.4s .7s cubic-bezier(.4,0,.2,1) forwards;
 }
-.proj:hover{border-color:var(--rule-2);box-shadow:3px 4px 0 rgba(22,20,15,.06)}
+@keyframes fillBar{to{width:100%}}
+@keyframes rise{to{opacity:1;transform:none}}
 
-/* colored tab on left */
-.proj-body{
-  display:grid;
-  grid-template-columns:4px 1fr;
+/* ══ CURSOR ══ */
+#cursor{
+  position:fixed;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--blue);
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform .08s,width .3s,height .3s,border-color .3s,background .3s;
+  mix-blend-mode:normal;
 }
-.proj-stripe{background:var(--blue);border-radius:0}
-.proj-stripe.rust{background:var(--rust)}
-.proj-stripe.green{background:var(--green)}
-.proj-stripe.warm{background:#7a5c2a}
+#cursor.hovering{
+  width:44px;height:44px;
+  background:rgba(79,142,247,.1);
+  border-color:var(--teal);
+}
+#cursor-dot{
+  position:fixed;width:4px;height:4px;border-radius:50%;
+  background:var(--blue);pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform .02s;
+}
 
-.proj-inner{padding:1.4rem 1.6rem}
+/* ══ AURORA BACKGROUND ══ */
+#aurora{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.aurora-blob{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;
+  animation:drift 20s infinite alternate ease-in-out;
+}
+.a1{width:600px;height:600px;top:-200px;left:-100px;background:var(--blue2);animation-duration:22s}
+.a2{width:500px;height:500px;top:30%;right:-150px;background:var(--purple);animation-duration:18s;animation-delay:-6s}
+.a3{width:400px;height:400px;bottom:-100px;left:30%;background:var(--teal);opacity:.12;animation-duration:25s;animation-delay:-12s}
+@keyframes drift{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(60px,-40px) scale(1.1)}
+  66%{transform:translate(-40px,60px) scale(.95)}
+  100%{transform:translate(30px,20px) scale(1.05)}
+}
 
-.proj-header{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:1rem;margin-bottom:.7rem;
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:0 2.5rem;height:64px;
+  display:flex;align-items:center;
+  transition:background .4s,border-color .4s,backdrop-filter .4s;
+  border-bottom:1px solid transparent;
 }
-.proj-header-left{}
-.proj-tag{
-  font-family:'Caveat',cursive;font-size:12px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:.3rem;
+nav.scrolled{
+  background:rgba(8,11,18,.85);
+  border-bottom-color:var(--border);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
 }
-.proj-name{
-  font-family:'Instrument Serif',serif;
-  font-size:19px;color:var(--ink);line-height:1.25;
+.nav-inner{max-width:1100px;width:100%;margin:0 auto;display:flex;align-items:center}
+.nav-brand{
+  font-family:'Fraunces',serif;font-size:20px;font-style:italic;
+  background:var(--blue-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;margin-right:auto;
+  opacity:0;animation:rise .6s 2s ease forwards;
 }
-.proj-client-row{
-  font-family:'Caveat',cursive;font-size:13px;color:var(--ink-3);
-  margin-top:.2rem;
+.nav-links{display:flex;gap:2rem}
+.nav-links a{
+  font-size:13px;color:var(--text2);text-decoration:none;
+  font-weight:500;letter-spacing:.04em;
+  position:relative;transition:color .2s;
+  opacity:0;animation:rise .6s ease forwards;
 }
-.proj-client-row span{
-  display:inline-block;border:1px dashed var(--rule-2);
-  border-radius:2px;padding:1px 7px;margin-right:4px;
+.nav-links a:nth-child(1){animation-delay:2.1s}
+.nav-links a:nth-child(2){animation-delay:2.2s}
+.nav-links a:nth-child(3){animation-delay:2.3s}
+.nav-links a:nth-child(4){animation-delay:2.4s}
+.nav-links a:nth-child(5){animation-delay:2.5s}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--blue-g);transition:width .25s;background:var(--blue);
 }
-.proj-outcomes-row{
-  display:flex;flex-wrap:wrap;gap:.5rem;
-  margin-bottom:.85rem;
-}
-.outcome-pill{
-  font-family:'Caveat',cursive;
-  background:var(--paper-2);
-  border:1px solid var(--rule-2);border-radius:20px;
-  padding:4px 12px;
-  display:inline-flex;align-items:baseline;gap:4px;
-}
-.outcome-n{font-size:18px;font-weight:700;color:var(--blue);line-height:1}
-.outcome-n.rust{color:var(--rust)}
-.outcome-n.green{color:var(--green)}
-.outcome-n.warm{color:#7a5c2a}
-.outcome-l{font-size:12px;color:var(--ink-3)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--blue)}
 
-.proj-summary{font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:1rem}
+/* ══ LAYOUT ══ */
+.page{
+  max-width:1100px;margin:0 auto;
+  padding:0 2.5rem 8rem;
+  position:relative;z-index:2;
+}
 
-/* toggle details */
-.proj-details{display:none}
-.proj-details.open{display:block}
-.proj-toggle{
-  font-family:'Caveat',cursive;font-size:14px;color:var(--blue);
-  cursor:pointer;background:none;border:none;padding:0;
-  display:inline-flex;align-items:center;gap:5px;
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:80px;
+  position:relative;
+}
+
+/* Animated grid dots behind hero */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(79,142,247,.15) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);
+  pointer-events:none;
+  animation:gridShift 8s infinite alternate ease-in-out;
+}
+@keyframes gridShift{to{background-position:20px 20px}}
+
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--teal);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;
+  opacity:0;animation:rise .7s 2.1s ease forwards;
+}
+.hero-eyebrow::before{content:'//';color:var(--text3)}
+
+/* BIG NAME */
+.hero-name{
+  font-family:'Fraunces',serif;
+  font-size:clamp(52px,8vw,100px);
+  line-height:1.0;font-weight:600;
+  letter-spacing:-.03em;color:var(--text);
+  margin-bottom:1rem;
+  opacity:0;animation:rise .8s 2.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-name em{
+  font-style:italic;font-weight:300;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* Typewriter role */
+.hero-role{
+  font-size:18px;color:var(--text2);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:.75rem;
+  opacity:0;animation:rise .7s 2.4s ease forwards;
+}
+.role-text{color:var(--blue);font-weight:500}
+.role-sep{color:var(--text3)}
+
+/* Research statement — glassy card */
+.rs-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border2);
+  border-radius:16px;
+  padding:1.75rem 2rem;
+  margin-bottom:2.5rem;
+  position:relative;overflow:hidden;
+  opacity:0;animation:rise .7s 2.5s ease forwards;
+  max-width:780px;
+}
+.rs-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),var(--teal),transparent);
+}
+.rs-card::after{
+  content:'"';font-family:'Fraunces',serif;font-size:120px;font-style:italic;
+  color:var(--blue);opacity:.06;
+  position:absolute;top:-20px;right:20px;line-height:1;pointer-events:none;
+}
+.rs-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--teal);letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:.75rem;
 }
-.proj-toggle:hover{opacity:.75}
-.proj-toggle-icon{
-  display:inline-block;transition:transform .2s;font-style:normal;
+.rs-text{font-size:15px;line-height:1.85;color:var(--text2)}
+.rs-text strong{color:var(--text);font-weight:500}
+.rs-text em{color:var(--blue);font-style:italic}
+
+/* Hero links */
+.hero-links{
+  display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2.5rem;
+  opacity:0;animation:rise .7s 2.6s ease forwards;
 }
-.proj-toggle.open .proj-toggle-icon{transform:rotate(90deg)}
+.hl{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:13px;font-weight:500;color:var(--text2);
+  text-decoration:none;padding:8px 16px;
+  border:1px solid var(--border2);border-radius:8px;
+  background:rgba(255,255,255,.03);
+  transition:all .2s;
+}
+.hl:hover{
+  background:rgba(79,142,247,.1);
+  border-color:rgba(79,142,247,.4);
+  color:var(--blue);transform:translateY(-1px);
+}
+.hl.primary{
+  background:var(--blue2);border-color:var(--blue2);color:#fff;
+}
+.hl.primary:hover{background:#1d4ed8;border-color:#1d4ed8;transform:translateY(-1px)}
+.hl svg{width:14px;height:14px;flex-shrink:0}
 
-/* sketch divider */
-.sketch-rule{display:block;width:100%;height:10px;overflow:visible;margin:.85rem 0}
+/* Chips */
+.chips{
+  display:flex;flex-wrap:wrap;gap:6px;
+  opacity:0;animation:rise .7s 2.7s ease forwards;
+}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  padding:4px 10px;border-radius:6px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  color:var(--text3);letter-spacing:.03em;
+  transition:all .2s;cursor:default;
+}
+.chip:hover{background:rgba(79,142,247,.1);border-color:rgba(79,142,247,.3);color:var(--blue)}
 
+/* Photo — floating right */
+.hero-photo-wrap{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  opacity:0;animation:rise .9s 2.0s ease forwards;
+}
+.photo-ring{
+  position:relative;width:220px;height:220px;
+  display:flex;align-items:center;justify-content:center;
+}
+.photo-ring-svg{
+  position:absolute;inset:0;width:100%;height:100%;
+  animation:spinSlow 30s linear infinite;
+}
+.photo{
+  width:190px;height:190px;border-radius:50%;
+  object-fit:cover;object-position:center top;
+  border:2px solid var(--border2);
+  filter:saturate(.9);
+  position:relative;z-index:2;
+  transition:filter .3s;
+}
+.photo:hover{filter:saturate(1)}
+.photo-glow{
+  position:absolute;inset:10px;border-radius:50%;
+  background:radial-gradient(circle,rgba(79,142,247,.2),transparent 70%);
+  z-index:1;
+}
+.photo-initials{
+  width:190px;height:190px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:64px;font-style:italic;
+  color:var(--blue);position:relative;z-index:2;
+}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+
+/* Availability */
+.avail{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--green);
+  background:rgba(52,211,153,.08);
+  border:1px solid rgba(52,211,153,.2);
+  border-radius:20px;padding:4px 12px;
+  margin-top:.85rem;
+}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(.7)}}
+
+/* ══ STATS ══ */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;margin-bottom:8rem;
+  background:rgba(255,255,255,.02);
+}
+.stat{
+  padding:2rem 1.5rem;text-align:center;
+  border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
+  transition:background .3s;cursor:default;
+}
+.stat:last-child{border-right:none}
+.stat::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--blue-g);transform:scaleX(0);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+}
+.stat:hover{background:rgba(79,142,247,.05)}
+.stat:hover::before{transform:scaleX(1)}
+.stat-n{
+  font-family:'Fraunces',serif;font-size:52px;font-style:italic;
+  background:var(--blue-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;background:linear-gradient(135deg,var(--blue),var(--teal));
+  -webkit-background-clip:text;
+  display:block;line-height:1;margin-bottom:.4rem;
+}
+.stat-l{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:.04em}
+
+/* ══ SECTION SYSTEM ══ */
+.section{margin-bottom:8rem;position:relative}
+
+.sec-head{
+  display:flex;align-items:baseline;gap:1rem;margin-bottom:3rem;
+}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--teal);letter-spacing:.1em;
+}
+.sec-title{
+  font-family:'Fraunces',serif;font-size:38px;font-style:italic;
+  color:var(--text);letter-spacing:-.02em;
+}
+.sec-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,var(--border2),transparent);
+  margin-left:1rem;
+}
+
+/* ══ PUBLICATION CARDS ══ */
+.pub-list{display:flex;flex-direction:column;gap:1px;overflow:hidden;border-radius:12px;border:1px solid var(--border)}
+.pub{
+  background:var(--bg2);padding:1.75rem 2rem;
+  display:grid;grid-template-columns:1fr 120px;gap:1.5rem;
+  transition:background .2s;
+  position:relative;overflow:hidden;cursor:default;
+}
+.pub::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--blue),var(--teal));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+}
+.pub:hover{background:rgba(79,142,247,.04)}
+.pub:hover::before{transform:scaleY(1)}
+.pub-venue{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;
+}
+.pub-venue.rust{color:var(--orange)}
+.pub-title{
+  font-family:'Fraunces',serif;font-size:19px;font-style:italic;
+  color:var(--text);margin-bottom:.4rem;line-height:1.4;
+  font-weight:300;
+}
+.pub-authors{font-size:12px;color:var(--text3);margin-bottom:.6rem;font-family:'JetBrains Mono',monospace}
+.pub-abstract{font-size:13px;color:var(--text2);line-height:1.78}
+.pub-meta{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;padding-top:.2rem}
+.pub-badge{
+  font-size:11px;font-weight:500;letter-spacing:.04em;
+  padding:3px 10px;border-radius:6px;white-space:nowrap;
+  border:1px solid;
+}
+.pub-badge.prep{color:var(--blue);border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.08)}
+.pub-badge.sub{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.pub-badge.acc{color:var(--green);border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.08)}
+.pub-note{
+  font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;
+  text-align:right;line-height:1.5;
+}
+
+/* ══ PROJECT CARDS ══ */
+.proj-grid{display:flex;flex-direction:column;gap:16px}
+
+.proj{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  transition:border-color .3s,box-shadow .3s,transform .3s;
+}
+.proj:hover{
+  border-color:var(--border2);
+  box-shadow:0 0 0 1px rgba(79,142,247,.2),0 24px 48px rgba(0,0,0,.3);
+  transform:translateY(-2px);
+}
+
+/* Top accent bar */
+.proj-accent{height:3px;width:100%}
+.proj-accent.blue{background:linear-gradient(90deg,var(--blue),var(--teal))}
+.proj-accent.orange{background:linear-gradient(90deg,var(--orange),var(--pink))}
+.proj-accent.teal{background:linear-gradient(90deg,var(--teal),var(--green))}
+.proj-accent.purple{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.proj-accent.warm{background:linear-gradient(90deg,#f59e0b,var(--orange))}
+
+.proj-body{padding:1.75rem 2rem}
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.proj-type{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;
+}
+.proj-name{
+  font-family:'Fraunces',serif;font-size:22px;font-style:italic;
+  color:var(--text);line-height:1.3;font-weight:300;
+}
+.proj-clients{
+  font-size:12px;color:var(--text3);margin-top:.3rem;
+  font-family:'JetBrains Mono',monospace;
+}
+.proj-clients span{
+  display:inline-block;padding:2px 8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:4px;margin-right:4px;margin-bottom:3px;
+}
+
+/* Metric pills */
+.metrics{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.metric{
+  display:inline-flex;align-items:baseline;gap:4px;
+  padding:5px 14px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  transition:all .2s;
+}
+.metric:hover{border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.07)}
+.mn{font-family:'Fraunces',serif;font-size:20px;font-style:italic;font-weight:600;line-height:1}
+.mn.b{color:var(--blue)}
+.mn.o{color:var(--orange)}
+.mn.g{color:var(--green)}
+.mn.t{color:var(--teal)}
+.mn.p{color:var(--purple)}
+.ml{font-size:12px;color:var(--text3)}
+
+.proj-summary{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:1.1rem}
+
+/* Expand toggle */
+.proj-toggle{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--blue);
+  background:none;border:none;cursor:pointer;padding:0;
+  transition:opacity .2s;
+}
+.proj-toggle:hover{opacity:.7}
+.toggle-icon{transition:transform .3s cubic-bezier(.4,0,.2,1);display:inline-block}
+.proj-toggle[aria-expanded="true"] .toggle-icon{transform:rotate(180deg)}
+
+/* Details expand */
+.proj-details{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1);
+}
+.proj-details.open{grid-template-rows:1fr}
+.proj-details-inner{overflow:hidden}
+.proj-details-pad{
+  padding-top:1.25rem;border-top:1px solid var(--border);margin-top:1.1rem;
+}
 .detail-label{
-  font-family:'Caveat',cursive;font-size:13px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:.5rem;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:.65rem;
 }
-.detail-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.detail-list{list-style:none;display:flex;flex-direction:column;gap:.45rem}
 .detail-list li{
-  font-size:13px;color:var(--ink-2);line-height:1.7;
-  padding-left:1.3rem;position:relative;
+  font-size:13px;color:var(--text2);line-height:1.7;
+  padding-left:1.25rem;position:relative;
 }
 .detail-list li::before{
-  content:'→';position:absolute;left:0;
-  font-family:'Caveat',cursive;color:var(--blue);font-size:14px;
+  content:'→';position:absolute;left:0;color:var(--blue);font-size:12px;top:1px;
 }
-.proj-tags-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:.85rem}
-.proj-tag-chip{
-  font-family:'Caveat',cursive;font-size:12px;
-  background:var(--paper-2);color:var(--ink-3);
-  border:1px solid var(--rule);border-radius:2px;
-  padding:2px 8px;
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  padding:3px 9px;border-radius:5px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text3);transition:all .2s;
 }
+.tag:hover{background:rgba(79,142,247,.1);border-color:rgba(79,142,247,.3);color:var(--blue)}
 
-/* ─── EXPERIENCE ─── */
-.exp-timeline{position:relative;padding-left:2rem}
-.exp-timeline::before{
-  content:'';position:absolute;left:0;top:8px;bottom:0;width:1.5px;
-  background:repeating-linear-gradient(180deg,var(--rule-2) 0,var(--rule-2) 6px,transparent 6px,transparent 12px);
+/* ══ EXPERIENCE ══ */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--blue),transparent);
 }
-.exp-item{
-  position:relative;margin-bottom:2.25rem;
-}
-/* dot on timeline */
-.exp-item::before{
-  content:'';position:absolute;left:-2.35rem;top:.45rem;
+.exp{position:relative;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.exp:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.exp::before{
+  content:'';position:absolute;left:-2.45rem;top:.55rem;
   width:10px;height:10px;border-radius:50%;
-  border:2px solid var(--blue);background:var(--paper);
+  border:2px solid var(--blue);background:var(--bg);
+  transition:background .2s,transform .2s,box-shadow .2s;
 }
-.exp-dates{
-  font-family:'Caveat',cursive;font-size:13px;color:var(--ink-3);
-  margin-bottom:.2rem;
+.exp:hover::before{
+  background:var(--blue);
+  box-shadow:0 0 12px rgba(79,142,247,.5);
+  transform:scale(1.3);
 }
-.exp-role{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.1rem}
-.exp-where{
-  font-family:'Caveat',cursive;font-size:15px;color:var(--blue);
-  margin-bottom:.35rem;
+.exp-date{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--text3);margin-bottom:.3rem;letter-spacing:.04em;
 }
-.exp-desc{font-size:13px;color:var(--ink-2);line-height:1.7}
-.exp-clients{display:flex;flex-wrap:wrap;gap:5px;margin-top:.45rem}
-.exp-client{
-  font-family:'Caveat',cursive;font-size:12px;color:var(--ink-3);
-  border:1px dashed var(--rule-2);border-radius:2px;padding:2px 8px;
-}
-
-/* ─── SKILLS ─── */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.85rem}
-.skill-card{
-  background:var(--paper-2);
-  border:1px solid var(--rule);border-radius:2px;
-  padding:1rem 1.1rem;
-  box-shadow:2px 3px 0 rgba(22,20,15,.04);
-}
-.skill-card-label{
-  font-family:'Caveat',cursive;font-size:14px;font-weight:700;
-  color:var(--ink);margin-bottom:.45rem;
-  padding-bottom:.35rem;border-bottom:1px dashed var(--rule-2);
-}
-.skill-card-content{
-  font-family:'Caveat',cursive;font-size:14px;
-  color:var(--ink-2);line-height:1.85;
+.exp-role{font-size:15px;font-weight:600;color:var(--text);margin-bottom:.15rem}
+.exp-where{font-size:13px;color:var(--blue);margin-bottom:.5rem;font-weight:500}
+.exp-desc{font-size:13px;color:var(--text2);line-height:1.75}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.6rem}
+.exp-tag{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);
+  border:1px solid var(--border);border-radius:5px;padding:2px 9px;
+  background:rgba(255,255,255,.02);
 }
 
-/* ─── EDUCATION ─── */
-.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.75rem;margin-bottom:1.5rem}
-.edu-card{
-  border:1px solid var(--rule);border-radius:2px;
-  background:var(--paper-2);
-  padding:1rem 1.2rem;
-  box-shadow:2px 3px 0 rgba(22,20,15,.04);
+/* ══ SKILLS ══ */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sk{
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem 1.4rem;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
 }
-.edu-degree{
-  font-family:'Instrument Serif',serif;
-  font-size:15px;color:var(--ink);margin-bottom:.3rem;
+.sk:hover{
+  border-color:var(--border2);transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
 }
-.edu-school{font-family:'Caveat',cursive;font-size:14px;color:var(--ink-2)}
+.sk-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;
+  padding-bottom:.5rem;border-bottom:1px solid var(--border);
+}
+.sk-content{font-size:13px;color:var(--text2);line-height:1.85}
 
-.cert-list{display:flex;flex-direction:column;gap:.5rem}
-.cert-item{
-  display:flex;align-items:flex-start;gap:.6rem;
-  font-family:'Caveat',cursive;font-size:15px;color:var(--ink-2);line-height:1.6;
+/* ══ EDU ══ */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.edu{
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem 1.4rem;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;
 }
-.cert-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--rust);flex-shrink:0;margin-top:.45rem;
+.edu:hover{border-color:var(--border2);transform:translateY(-2px)}
+.edu::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
 }
+.edu-deg{font-size:14px;font-weight:600;color:var(--text);margin-bottom:.35rem;line-height:1.4}
+.edu-school{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace}
 
-/* ─── CONTACT ─── */
-.contact-grid{display:flex;flex-wrap:wrap;gap:.75rem}
-.contact-btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:'Caveat',cursive;font-size:16px;
-  color:var(--ink-2);text-decoration:none;
-  padding:8px 18px;
-  border:1.5px solid var(--rule-2);border-radius:2px;
-  background:var(--paper-2);
-  box-shadow:2px 3px 0 rgba(22,20,15,.06);
-  transition:box-shadow .15s,transform .15s,border-color .15s;
+.cert-list{display:flex;flex-direction:column;gap:.6rem}
+.cert{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:14px;color:var(--text2);
+  padding:.7rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+  transition:border-color .2s,background .2s;
 }
-.contact-btn:hover{
-  box-shadow:4px 5px 0 rgba(22,20,15,.10);
-  transform:translate(-1px,-1px);
-  border-color:var(--blue);color:var(--blue);
-}
-.contact-btn svg{width:16px;height:16px;flex-shrink:0}
-
-/* ─── HAND-DRAWN DECORATIONS ─── */
-/* asterisk annotation near section numbers */
-.annot{
-  font-family:'Caveat',cursive;font-size:12px;
-  color:var(--rust);
-  display:inline-block;transform:rotate(-1deg);
-  white-space:nowrap;
+.cert:hover{border-color:var(--border2);background:rgba(79,142,247,.04)}
+.cert-icon{
+  width:28px;height:28px;border-radius:6px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
 }
 
+/* ══ CONTACT ══ */
+.contact-cards{display:flex;flex-wrap:wrap;gap:.75rem}
+.cc{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-size:14px;font-weight:500;color:var(--text2);
+  text-decoration:none;padding:10px 20px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+  transition:all .25s;
+}
+.cc svg{width:16px;height:16px;flex-shrink:0}
+.cc:hover{
+  background:rgba(79,142,247,.1);border-color:rgba(79,142,247,.3);
+  color:var(--blue);transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(79,142,247,.15);
+}
+.cc.primary{
+  background:var(--blue2);border-color:var(--blue2);color:#fff;
+}
+.cc.primary:hover{background:#1d4ed8;border-color:#1d4ed8}
+
+/* ══ SCROLL REVEAL ══ */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1);
+}
+.reveal.on{opacity:1;transform:none}
+.stagger>*{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);
+}
+.stagger.on>*:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+.stagger.on>*:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
+.stagger.on>*:nth-child(3){opacity:1;transform:none;transition-delay:.16s}
+.stagger.on>*:nth-child(4){opacity:1;transform:none;transition-delay:.22s}
+.stagger.on>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.stagger.on>*:nth-child(6){opacity:1;transform:none;transition-delay:.34s}
+.stagger.on>*:nth-child(7){opacity:1;transform:none;transition-delay:.40s}
+.stagger.on>*:nth-child(8){opacity:1;transform:none;transition-delay:.46s}
+
+/* ══ FOOTER ══ */
 footer{
-  font-family:'Caveat',cursive;font-size:14px;color:var(--ink-3);
-  text-align:center;
-  padding-top:2.5rem;border-top:1px dashed var(--rule-2);margin-top:1rem;
-  line-height:2;
+  text-align:center;padding:3rem 0;
+  border-top:1px solid var(--border);
+  font-size:13px;color:var(--text3);line-height:2;
+  position:relative;z-index:2;
+}
+footer span{color:var(--text2)}
+.phd-targets{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;
+}
+.phd-target{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--text3);border:1px solid var(--border);
+  border-radius:5px;padding:3px 10px;
+  transition:all .2s;
+}
+.phd-target:hover{color:var(--blue);border-color:rgba(79,142,247,.3)}
+
+/* ══ FLOATING PARTICLES ══ */
+#particles{
+  position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;
+}
+.particle{
+  position:absolute;border-radius:50%;
+  animation:float linear infinite;
+  pointer-events:none;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.3}
+  100%{transform:translateY(-10vh) translateX(var(--dx)) scale(1);opacity:0}
 }
 
-@media(max-width:680px){
-  .nav-links a:nth-child(n+3){display:none}
-  .page{padding:2.5rem 1.1rem 4rem}
-  .hero{grid-template-columns:1fr;gap:1.75rem}
-  .photo-wrap{margin:0 auto}
-  h1{font-size:36px}
-  .research-statement{font-size:15px;padding:1rem 1.1rem}
-  .pub{grid-template-columns:1fr;clip-path:none}
-  .pub::after{display:none}
-  .pub-meta{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
-  .exp-timeline{padding-left:1.5rem}
-  .section-num{font-size:28px}
-  .section-title{font-size:22px}
+/* ══ MOBILE ══ */
+@media(max-width:720px){
+  .page{padding:0 1.25rem 5rem}
+  .hero-photo-wrap{display:none}
+  .hero-name{font-size:44px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .skills-grid,.edu-grid{grid-template-columns:1fr}
+  .pub{grid-template-columns:1fr}
+  .pub-meta{flex-direction:row;align-items:center}
+  nav{padding:0 1.25rem}
 }
-
-/* hand-drawn circle SVG for photo */
+@media(max-width:460px){
+  .hero-name{font-size:36px}
+  .sec-title{font-size:28px}
+}
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Karthick Balakrishnan</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+</div>
+
+<!-- AURORA -->
+<div id="aurora" aria-hidden="true">
+  <div class="aurora-blob a1"></div>
+  <div class="aurora-blob a2"></div>
+  <div class="aurora-blob a3"></div>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles" aria-hidden="true"></div>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- NAV -->
+<nav id="nav">
   <div class="nav-inner">
-    <span class="nav-brand">Karthick Balakrishnan</span>
+    <span class="nav-brand">KB</span>
     <div class="nav-links">
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
@@ -517,67 +739,60 @@ footer{
 
 <div class="page">
 
-<!-- ═══════════════════════════════════════════
-     HERO
-════════════════════════════════════════════ -->
+<!-- ══════════ HERO ══════════ -->
 <div class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
 
-  <div class="photo-wrap">
-    <img class="photo" src="karthick.jpg" alt="Karthick Balakrishnan"
-      onerror="this.outerHTML='<div class=\'photo-initials\'>KB</div>'"/>
-    <!-- Hand-drawn sketch circle frame -->
-    <svg class="photo-frame-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M80 8 C114 7 154 40 154 80 C154 120 121 154 81 153 C41 152 6 120 7 80 C8 40 46 9 80 8 Z"
-        stroke="#1a4f8a" stroke-width="1.5" fill="none" stroke-dasharray="6 4" opacity=".45"/>
-      <path d="M80 3 C116 2 158 37 158 80 C158 123 123 158 80 157 C37 156 2 122 3 80 C4 38 44 4 80 3 Z"
-        stroke="#1a4f8a" stroke-width=".75" fill="none" opacity=".18"/>
-      <!-- tiny asterisk annotation -->
-      <text x="138" y="28" font-family="Georgia,serif" font-size="18" fill="#b54a1a" opacity=".6" transform="rotate(15,138,28)">✦</text>
-    </svg>
-  </div>
-
-  <div class="hero-right">
+  <div style="max-width:720px">
     <p class="hero-eyebrow">HCI Researcher &nbsp;·&nbsp; UX Design Technical Lead &nbsp;·&nbsp; 15+ Years</p>
-    <h1>Karthick <em>Balakrishnan</em></h1>
-    <div class="hero-affil">
-      <strong>HCL Technologies</strong> — Technical Lead, UX/Product Design · Chennai, India<br/>
-      MCA + MSc Psychology · University of Madras<br/>
-      Adobe Certified UX Designer &nbsp;·&nbsp; IBM Enterprise Design Thinking Co-Creator
+
+    <h1 class="hero-name">
+      Karthick<br/><em>Balakrishnan</em>
+    </h1>
+
+    <div class="hero-role">
+      <span id="typewriter" class="role-text"></span>
+      <span class="role-sep">·</span>
+      <span style="color:var(--text3);font-size:14px">Chennai, India</span>
     </div>
 
-    <!-- THE RESEARCH STATEMENT — most important for professors -->
-    <div class="research-statement">
-      I study how cognitive science can make high-stakes enterprise interfaces less dangerous to use. My research formalises practitioner knowledge into testable frameworks — the <em>AI-AVS</em> framework for enterprise search, the <em>Dignity-First</em> model for financial UX, and the <em>Stress-First Design</em> model for emergency-response HCI — grounded in cognitive load theory, dual-process theory, and 15 years of deployment-scale evidence from global clients including Lam Research, Microsoft, PenFed, and Cadent Gas.
+    <div class="rs-card">
+      <div class="rs-label">// Research Statement</div>
+      <p class="rs-text">
+        I study how cognitive science can make high-stakes enterprise interfaces <strong>less dangerous to use</strong>.
+        My research formalises practitioner knowledge into testable frameworks —
+        the <em>AI-AVS</em> framework for enterprise knowledge discovery,
+        the <em>Dignity-First</em> model for financial UX under cognitive load,
+        and the <em>Stress-First Design</em> model for emergency-response HCI —
+        grounded in Cognitive Load Theory, dual-process theory, and 15 years of
+        deployment-scale evidence from <strong>Lam Research, Microsoft, PenFed,</strong> and <strong>Cadent Gas</strong>.
+      </p>
     </div>
 
     <div class="hero-links">
-      <a class="hero-link" href="mailto:b.karthick@live.com">
+      <a class="hl primary" href="mailto:b.karthick@live.com">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 5l7 5 7-5"/></svg>
-        b.karthick@live.com
+        Get in Touch
       </a>
-      <a class="hero-link" href="tel:+918695860005">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h3l1.5 3.5-1.75 1A9 9 0 0 0 10.5 10.25l1-1.75L15 10v3a1 1 0 0 1-1 1A13 13 0 0 1 2 3a1 1 0 0 1 1-1Z"/></svg>
-        +91 86958 60005
+      <a class="hl" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"/><path d="M6 5h4M6 8h4M6 11h2"/></svg>
+        Download CV
       </a>
-      <a class="hero-link" href="https://www.linkedin.com/in/karthick-balakrishnan-49972140/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      <a class="hl" href="https://linkedin.com/in/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
         LinkedIn
       </a>
-      <a class="hero-link" href="https://www.behance.net/karthickbafa48">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="1"/><path d="M5 8h6M8 5v6"/></svg>
+      <a class="hl" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M5 8h6M8 5v6"/></svg>
         Portfolio
-      </a>
-      <a class="hero-link" href="./Karthick-UX Designer_HCL_2026.pdf">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M6 6h4M6 9h4M6 12h2"/></svg>
-        Download CV
       </a>
     </div>
 
-    <div class="interest-chips">
+    <div class="chips">
       <span class="chip">Cognitive Load Theory</span>
       <span class="chip">AI-Augmented UX</span>
       <span class="chip">Enterprise IA</span>
-      <span class="chip">Human-in-the-Loop Systems</span>
+      <span class="chip">Human-in-the-Loop</span>
       <span class="chip">Dual-Process Theory</span>
       <span class="chip">NASA-TLX</span>
       <span class="chip">High-Stakes HCI</span>
@@ -585,615 +800,600 @@ footer{
       <span class="chip">WCAG Accessibility</span>
     </div>
   </div>
-</div>
 
-
-<!-- ═══════════════════════════════════════════
-     01 — RESEARCH & PUBLICATIONS
-════════════════════════════════════════════ -->
-<div class="section" id="research">
-  <div class="section-head">
-    <span class="section-num">01</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Research &amp; Publications</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
+  <!-- Photo floats right -->
+  <div class="hero-photo-wrap">
+    <div class="photo-ring">
+      <!-- Spinning dashed ring SVG -->
+      <svg class="photo-ring-svg" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+        <circle cx="110" cy="110" r="105" stroke="url(#ringGrad)" stroke-width="1"
+          stroke-dasharray="12 6" opacity=".5"/>
+        <circle cx="110" cy="110" r="96" stroke="rgba(79,142,247,.15)" stroke-width="1"/>
+        <!-- Small dots around ring -->
+        <circle cx="110" cy="4" r="3" fill="var(--teal)" opacity=".6"/>
+        <circle cx="216" cy="110" r="3" fill="var(--blue)" opacity=".6"/>
+        <circle cx="110" cy="216" r="2" fill="var(--purple)" opacity=".5"/>
+        <circle cx="4" cy="110" r="2" fill="var(--orange)" opacity=".4"/>
+        <defs>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="220" y2="220">
+            <stop offset="0%" stop-color="#4f8ef7"/>
+            <stop offset="100%" stop-color="#2dd4bf"/>
+          </linearGradient>
+        </defs>
       </svg>
+      <div class="photo-glow"></div>
+      <img class="photo" src="karthick.jpg" alt="Karthick Balakrishnan"
+        onerror="this.outerHTML='<div class=\'photo-initials\'>KB</div>'"/>
+    </div>
+    <div style="text-align:center">
+      <div class="avail"><span class="avail-dot"></span>Open to PhD 2025–26</div>
     </div>
   </div>
+</div>
 
-  <div class="pub-list">
+<!-- STATS -->
+<div class="stats reveal stagger" style="margin-bottom:8rem">
+  <div class="stat">
+    <span class="stat-n" data-count="15">0</span>
+    <span class="stat-l">Years Enterprise UX</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n" data-count="4">0</span>
+    <span class="stat-l">Research Papers</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n" data-count="8">0</span>
+    <span class="stat-l">Global Clients</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n" data-count="3">0</span>
+    <span class="stat-l">Named HCI Frameworks</span>
+  </div>
+</div>
 
+<!-- ══════════ RESEARCH ══════════ -->
+<div class="section" id="research">
+  <div class="sec-head reveal">
+    <span class="sec-num">// 01</span>
+    <h2 class="sec-title">Research &amp; Publications</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="pub-list stagger">
     <div class="pub">
-      <div class="pub-main">
-        <div class="pub-venue">
-          <span class="pub-venue-dot"></span>
-          IEEE — International Conference on Human-Computer Interaction
-        </div>
+      <div>
+        <div class="pub-venue">IEEE — International Conference on Human-Computer Interaction</div>
         <div class="pub-title">Cognitive Load Reduction in Enterprise Knowledge Discovery: The AI-AVS Framework</div>
         <div class="pub-authors">Karthick Balakrishnan · 2025</div>
-        <div class="pub-abstract">Proposes the AI-Augmented Validation and Search (AI-AVS) framework with an Accuracy Validation Score composite metric. Validated through a Smart Search Portal on Azure AI Search for a Fortune 500 semiconductor manufacturer. Demonstrates 35% reduction in asset search time, 60% increase in adoption, and 40% improvement in result relevance. Framework is theoretically grounded in cognitive load theory and is designed to be cloud-agnostic.</div>
+        <div class="pub-abstract">Proposes the AI-Augmented Validation and Search (AI-AVS) framework with an Accuracy Validation Score composite metric. Validated on Azure AI Search for Lam Research: 35% ↓ search time, 60% ↑ adoption, 40% ↑ result relevance. Cloud-agnostic, generalisable to enterprise knowledge discovery contexts.</div>
       </div>
       <div class="pub-meta">
-        <span class="pub-status">In Preparation</span>
-        <span class="margin-note">Lam Research context</span>
+        <span class="pub-badge prep">In Preparation</span>
+        <span class="pub-note">Lam Research<br/>context</span>
       </div>
     </div>
-
     <div class="pub">
-      <div class="pub-main">
-        <div class="pub-venue">
-          <span class="pub-venue-dot" style="background:#b54a1a"></span>
-          ACM India HCI 2026 — Practitioner Track, IIT Hyderabad
-        </div>
+      <div>
+        <div class="pub-venue rust">ACM India HCI 2026 · Practitioner Track · IIT Hyderabad</div>
         <div class="pub-title">Dignity-First: Reducing Cognitive Load in High-Stakes Financial UX</div>
         <div class="pub-authors">Karthick Balakrishnan · 2026</div>
-        <div class="pub-abstract">Formalises the "Dignity-First" design framework through a 33-step mortgage application redesign. Applies Cognitive Load Theory and dual-process theory (System 1/System 2) to a high-stakes borrower journey with significant drop-off risk. Achieves 25% reduction in completion time and measurable NASA-TLX improvements, with implications for fintech and public-service interface design at scale.</div>
+        <div class="pub-abstract">Formalises the "Dignity-First" framework through a 33-step mortgage application redesign. Applies CLT and dual-process theory — 25% ↓ completion time, measurable NASA-TLX improvements. Implications for fintech and public-service interface design at scale.</div>
       </div>
       <div class="pub-meta">
-        <span class="pub-status submitted">Submitted</span>
-        <span class="margin-note">PenFed context</span>
+        <span class="pub-badge sub">Submitted</span>
+        <span class="pub-note">PenFed CU<br/>context</span>
       </div>
     </div>
-
     <div class="pub">
-      <div class="pub-main">
-        <div class="pub-venue">
-          <span class="pub-venue-dot"></span>
-          ACM CHI / IEEE — Conference Paper
-        </div>
+      <div>
+        <div class="pub-venue">ACM CHI / IEEE — Conference Paper</div>
         <div class="pub-title">Stress-First Design: Interaction Architecture for Emergency-Response CRM Under Operational Pressure</div>
         <div class="pub-authors">Karthick Balakrishnan · 2025</div>
-        <div class="pub-abstract">Introduces "Stress-First Design" as a named theoretical contribution to high-stakes HCI. Developed through a real-time gas emergency dashboard redesign, reorganising 17 emergency types into four priority clusters with full conditional decision trees. Achieves 79% user satisfaction under high-stress operational conditions and accelerates human-in-the-loop decision-making speed. Proposes a replicable stress-calibrated interaction hierarchy method.</div>
+        <div class="pub-abstract">Introduces "Stress-First Design" as a named theoretical HCI contribution. 17 emergency types → 4 priority clusters with conditional decision trees. 79% satisfaction under high-stress conditions. Accelerates HITL decision-making speeds.</div>
       </div>
       <div class="pub-meta">
-        <span class="pub-status">In Preparation</span>
-        <span class="margin-note">Cadent Gas context</span>
+        <span class="pub-badge prep">In Preparation</span>
+        <span class="pub-note">Cadent Gas<br/>context</span>
       </div>
     </div>
-
     <div class="pub">
-      <div class="pub-main">
-        <div class="pub-venue">
-          <span class="pub-venue-dot"></span>
-          IEEE — Conference Paper
-        </div>
+      <div>
+        <div class="pub-venue">IEEE — Conference Paper</div>
         <div class="pub-title">XR-CART: An AR-Integrated Smart Cart for Retail Navigation and Sustainable Engagement</div>
         <div class="pub-authors">Karthick Balakrishnan · 2025</div>
-        <div class="pub-abstract">Proposes an XR retail navigation system integrating AR indoor wayfinding, self-checkout, gamification, and kinetic energy-harvesting hardware. Grounded in Cognitive Load Theory, Self-Determination Theory, and Fogg's Behaviour Model. Designed for the Indian retail context with emphasis on behaviour-change UX, sustainability, and spatially-aware interaction design.</div>
+        <div class="pub-abstract">XR retail navigation system with AR indoor wayfinding, gamification, and kinetic energy-harvesting. Grounded in CLT, Self-Determination Theory, and Fogg's Behaviour Model for the Indian retail context.</div>
       </div>
       <div class="pub-meta">
-        <span class="pub-status">In Preparation</span>
+        <span class="pub-badge prep">In Preparation</span>
       </div>
     </div>
-
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     02 — SELECTED PROJECTS
-════════════════════════════════════════════ -->
+<!-- ══════════ PROJECTS ══════════ -->
 <div class="section" id="projects">
-  <div class="section-head">
-    <span class="section-num">02</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Selected Projects</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
-      </svg>
-    </div>
+  <div class="sec-head reveal">
+    <span class="sec-num">// 02</span>
+    <h2 class="sec-title">Selected Projects</h2>
+    <div class="sec-line"></div>
   </div>
+  <div class="proj-grid stagger">
 
-  <div class="proj-list">
-
-    <!-- 1. Lam Research -->
     <div class="proj">
+      <div class="proj-accent blue"></div>
       <div class="proj-body">
-        <div class="proj-stripe"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Enterprise AI · Semiconductor · Azure AI Search</div>
-              <div class="proj-name">LLM-Driven Smart Search Portal — Lam Research</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>Lam Research, United States</span><span>Jun 2024–Present</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n">35%</span><span class="outcome-l">↓ search time</span></span>
-            <span class="outcome-pill"><span class="outcome-n">60%</span><span class="outcome-l">↑ user adoption</span></span>
-            <span class="outcome-pill"><span class="outcome-n">40%</span><span class="outcome-l">↑ result relevance</span></span>
-            <span class="outcome-pill"><span class="outcome-n">14+</span><span class="outcome-l">resource types</span></span>
-          </div>
-          <div class="proj-summary">Directed user research and partnered with engineering to build an LLM-driven Smart Search platform mapping semantic intent across 14+ enterprise resource types. Migrated users from fragmented SharePoint to a unified Azure AI Search SPA, dramatically reducing discovery time for semiconductor engineers. Connected to my AI-AVS framework research.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <svg class="sketch-rule" viewBox="0 0 600 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M0,5 C60,1 120,9 180,5 C240,1 300,9 360,5 C420,1 480,9 540,5 C570,1 590,9 600,5"
-                stroke="rgba(22,20,15,0.12)" stroke-width="1.5" fill="none"/>
-            </svg>
-            <p class="detail-label">Design contributions</p>
-            <ul class="detail-list">
-              <li>9-element result card anatomy balancing information density with scannability for expert users</li>
-              <li>16 cascading accordion filters with progressive disclosure to eliminate choice paralysis</li>
-              <li>AI Verified Badge trust indicators surfacing source credibility within search results</li>
-              <li>De-duplication logic in the UI to prevent redundant result fatigue</li>
-              <li>RBAC-aware UI patterns integrated with Azure Active Directory for enterprise security compliance</li>
-              <li>React optimistic UI patterns for perceived performance under high-latency enterprise conditions</li>
-              <li>Scalable AI-powered predictive search and multi-variant metadata enrichment frameworks</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Azure AI Search</span><span class="proj-tag-chip">LLM UX</span><span class="proj-tag-chip">React</span><span class="proj-tag-chip">RBAC</span><span class="proj-tag-chip">Cognitive Load Theory</span><span class="proj-tag-chip">Progressive Disclosure</span><span class="proj-tag-chip">Enterprise Design System</span>
-            </div>
+        <div class="proj-header">
+          <div>
+            <div class="proj-type">Enterprise AI · Semiconductor · Azure AI Search</div>
+            <div class="proj-name">LLM-Driven Smart Search Portal — Lam Research</div>
+            <div class="proj-clients"><span>HCL Technologies</span><span>Lam Research, USA</span><span>Jun 2024–Present</span></div>
           </div>
         </div>
+        <div class="metrics">
+          <span class="metric"><span class="mn b">35%</span><span class="ml">↓ search time</span></span>
+          <span class="metric"><span class="mn b">60%</span><span class="ml">↑ user adoption</span></span>
+          <span class="metric"><span class="mn b">40%</span><span class="ml">↑ result relevance</span></span>
+          <span class="metric"><span class="mn b">14+</span><span class="ml">resource types</span></span>
+        </div>
+        <div class="proj-summary">LLM-driven Smart Search platform mapping semantic intent across 14+ enterprise resource types. Migrated from fragmented SharePoint to unified Azure AI Search SPA. Connected to the AI-AVS research framework. Demonstrates cognitive load theory applied at production scale.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <p class="detail-label">Design Contributions</p>
+          <ul class="detail-list">
+            <li>9-element result card anatomy balancing information density with expert scannability</li>
+            <li>16 cascading accordion filters with progressive disclosure to eliminate choice paralysis</li>
+            <li>AI Verified Badge trust indicators surfacing source credibility within search results</li>
+            <li>De-duplication logic in UI to prevent redundant result fatigue</li>
+            <li>RBAC-aware patterns integrated with Azure Active Directory for enterprise compliance</li>
+            <li>React optimistic UI for perceived performance under high-latency conditions</li>
+            <li>Scalable predictive search + multi-variant metadata enrichment framework</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Azure AI Search</span><span class="tag">LLM UX</span><span class="tag">React</span><span class="tag">RBAC</span><span class="tag">CLT</span><span class="tag">Progressive Disclosure</span><span class="tag">Enterprise DS</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 2. Cadent Gas -->
     <div class="proj">
+      <div class="proj-accent orange"></div>
       <div class="proj-body">
-        <div class="proj-stripe rust"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">High-Stakes HCI · Emergency Response · Energy</div>
-              <div class="proj-name">Gas Emergency CRM &amp; DPLA Dashboard — Cadent Gas</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>Cadent Gas Ltd, UK</span><span>Jun 2024–Present</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n rust">79%</span><span class="outcome-l">user satisfaction (stress ops)</span></span>
-            <span class="outcome-pill"><span class="outcome-n rust">20%</span><span class="outcome-l">↑ leak detection rate</span></span>
-            <span class="outcome-pill"><span class="outcome-n rust">17→4</span><span class="outcome-l">emergency clusters</span></span>
-          </div>
-          <div class="proj-summary">Revamped a real-time gas emergency CRM using behavioural psychology frameworks to lower mental workload of emergency response agents. Also designed the Digital Platform for Leakage Analytics (DPLA), transforming predictive ML outputs into high-trust operator visualisations. Origin of the Stress-First Design paper.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <svg class="sketch-rule" viewBox="0 0 600 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M0,5 C60,1 120,9 180,5 C240,1 300,9 360,5 C420,1 480,9 540,5 C570,1 590,9 600,5"
-                stroke="rgba(22,20,15,0.12)" stroke-width="1.5" fill="none"/>
-            </svg>
-            <p class="detail-label">Design contributions</p>
-            <ul class="detail-list">
-              <li>Applied the Stress-First Design Model — reorganising 17 emergency types into four priority clusters with conditional question trees</li>
-              <li>Structured interaction hierarchies translating complex sensor data streams into actionable emergency reporting workflows</li>
-              <li>Designed high-trust ML visualisations for DPLA, making predictive leakage analytics comprehensible under operational pressure</li>
-              <li>Reduced operational emissions as a direct measurable outcome of improved detection UI</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Stress-First Design</span><span class="proj-tag-chip">Behavioural Psychology</span><span class="proj-tag-chip">Real-time Dashboard</span><span class="proj-tag-chip">ML Visualisation</span><span class="proj-tag-chip">NASA-TLX</span><span class="proj-tag-chip">Emergency CRM</span>
-            </div>
-          </div>
+        <div class="proj-type">High-Stakes HCI · Emergency Response · Energy</div>
+        <div class="proj-name">Gas Emergency CRM &amp; DPLA Dashboard — Cadent Gas</div>
+        <div class="proj-clients"><span>HCL Technologies</span><span>Cadent Gas Ltd, UK</span><span>Jun 2024–Present</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn o">79%</span><span class="ml">satisfaction (stress ops)</span></span>
+          <span class="metric"><span class="mn o">20%</span><span class="ml">↑ leak detection</span></span>
+          <span class="metric"><span class="mn o">17→4</span><span class="ml">priority clusters</span></span>
         </div>
+        <div class="proj-summary">Real-time gas emergency CRM redesigned with behavioural psychology frameworks to reduce mental workload. Origin of the Stress-First Design paper. DPLA platform transforms predictive ML outputs into high-trust operator visualisations.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <p class="detail-label">Design Contributions</p>
+          <ul class="detail-list">
+            <li>Applied Stress-First Design Model: 17 emergency types → 4 priority clusters with conditional question trees</li>
+            <li>Interaction hierarchies translating complex sensor data into actionable emergency workflows</li>
+            <li>High-trust ML visualisations for DPLA — leakage analytics made operator-comprehensible</li>
+            <li>Reduced operational emissions as measurable outcome of improved detection UI</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Stress-First Design</span><span class="tag">Behavioural Psychology</span><span class="tag">Real-time Dashboard</span><span class="tag">ML Visualisation</span><span class="tag">NASA-TLX</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 3. Microsoft -->
     <div class="proj">
+      <div class="proj-accent warm"></div>
       <div class="proj-body">
-        <div class="proj-stripe" style="background:#4a3f35"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Operations Monitoring · Data Centre · Cloud</div>
-              <div class="proj-name">DCS-BSH Data Centre Operations Dashboard — Microsoft</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>Microsoft, United States</span><span>Jun 2024–Present</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n warm">30%</span><span class="outcome-l">↑ tech manager satisfaction</span></span>
-          </div>
-          <div class="proj-summary">Key individual contributor to redesign of the DCS-BSH Public Dashboard — a high-density live monitoring interface for tech managers during complex data centre operations. Synthesised server tracking metrics and rebound technology workflows into a cognitive-friendly desktop-first UI.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <svg class="sketch-rule" viewBox="0 0 600 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M0,5 C60,1 120,9 180,5 C240,1 300,9 360,5 C420,1 480,9 540,5 C570,1 590,9 600,5"
-                stroke="rgba(22,20,15,0.12)" stroke-width="1.5" fill="none"/>
-            </svg>
-            <p class="detail-label">Design contributions</p>
-            <ul class="detail-list">
-              <li>Reduced task completion friction for server management and rebound technology workflows</li>
-              <li>Applied cognitive load principles to high-density information displays for expert operators</li>
-              <li>Designed desktop-first UI components adhering to Microsoft's strict enterprise design system standards</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">High-Density Dashboard</span><span class="proj-tag-chip">Desktop-First UI</span><span class="proj-tag-chip">Live Monitoring</span><span class="proj-tag-chip">Cognitive Load</span>
-            </div>
-          </div>
+        <div class="proj-type">Operations Monitoring · Data Centre · Cloud</div>
+        <div class="proj-name">DCS-BSH Data Centre Dashboard — Microsoft</div>
+        <div class="proj-clients"><span>HCL Technologies</span><span>Microsoft, USA</span><span>Jun 2024–Present</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn t">30%</span><span class="ml">↑ tech manager satisfaction</span></span>
         </div>
+        <div class="proj-summary">High-density live monitoring interface for data centre tech managers. Synthesised server tracking metrics and rebound workflows into a cognitive-friendly desktop-first UI meeting Microsoft enterprise standards.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>Reduced task completion friction for server management and rebound workflows</li>
+            <li>CLT applied to high-density expert operator displays</li>
+            <li>Desktop-first UI meeting strict Microsoft enterprise design system standards</li>
+          </ul>
+          <div class="tag-row"><span class="tag">High-Density UI</span><span class="tag">Desktop-First</span><span class="tag">Cognitive Load</span><span class="tag">Live Monitoring</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 4. PenFed -->
     <div class="proj">
+      <div class="proj-accent teal"></div>
       <div class="proj-body">
-        <div class="proj-stripe green"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Fintech UX · Mortgage · Dignity-First Framework</div>
-              <div class="proj-name">Mortgage Application Redesign — PenFed Credit Union</div>
-              <div class="proj-client-row"><span>HCL America</span><span>PenFed Credit Union, United States</span><span>May 2023–Mar 2024</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n green">25%</span><span class="outcome-l">↓ completion time</span></span>
-            <span class="outcome-pill"><span class="outcome-n green">100%</span><span class="outcome-l">design-to-prod consistency</span></span>
-          </div>
-          <div class="proj-summary">End-to-end redesign of a 33-step mortgage application flow, applying Cognitive Load Theory and dual-process theory to reduce borrower friction. Formalised as the Dignity-First framework, submitted to ACM India HCI 2026. Authored Salesforce design system component libraries.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <svg class="sketch-rule" viewBox="0 0 600 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M0,5 C60,1 120,9 180,5 C240,1 300,9 360,5 C420,1 480,9 540,5 C570,1 590,9 600,5"
-                stroke="rgba(22,20,15,0.12)" stroke-width="1.5" fill="none"/>
-            </svg>
-            <p class="detail-label">Design contributions</p>
-            <ul class="detail-list">
-              <li>Mapped borrower pain points across 33 form steps using Cognitive Load Theory and dual-process frameworks</li>
-              <li>Redesigned co-applicant flow to reduce drop-off and confusion at joint-application stages</li>
-              <li>Authored interactive component libraries and CMS design support tailored to Salesforce Design System</li>
-              <li>Maintained 100% design-to-production consistency across high-volume mortgage sales funnels</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Dignity-First Framework</span><span class="proj-tag-chip">Salesforce Design System</span><span class="proj-tag-chip">Cognitive Load Theory</span><span class="proj-tag-chip">Dual-Process Theory</span><span class="proj-tag-chip">NASA-TLX</span>
-            </div>
-          </div>
+        <div class="proj-type">Fintech UX · Mortgage · Dignity-First Framework</div>
+        <div class="proj-name">Mortgage Application Redesign — PenFed Credit Union</div>
+        <div class="proj-clients"><span>HCL America</span><span>PenFed CU, USA</span><span>May 2023–Mar 2024</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn g">25%</span><span class="ml">↓ completion time</span></span>
+          <span class="metric"><span class="mn g">100%</span><span class="ml">design-to-prod</span></span>
         </div>
+        <div class="proj-summary">33-step mortgage application redesign applying CLT and dual-process theory. Formalised as the Dignity-First framework — submitted ACM India HCI 2026. Authored Salesforce design system component libraries.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>Mapped borrower pain points across 33 steps using CLT and dual-process frameworks</li>
+            <li>Redesigned co-applicant flow to reduce joint-application drop-off</li>
+            <li>Interactive component libraries tailored to Salesforce Design System</li>
+            <li>100% design-to-production consistency across high-volume mortgage funnels</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Dignity-First</span><span class="tag">Salesforce DS</span><span class="tag">CLT</span><span class="tag">Dual-Process</span><span class="tag">NASA-TLX</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 5. Synchrony -->
     <div class="proj">
+      <div class="proj-accent blue"></div>
       <div class="proj-body">
-        <div class="proj-stripe"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Enterprise SaaS · Calendar UX · Banking</div>
-              <div class="proj-name">Intelligent Meeting Scheduling UX — Synchrony Bank</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>Synchrony Inc, United States</span><span>Jan 2021–May 2023</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n">30%</span><span class="outcome-l">↑ scheduling consistency</span></span>
-            <span class="outcome-pill"><span class="outcome-n">25%</span><span class="outcome-l">↑ digital engagement</span></span>
-          </div>
-          <div class="proj-summary">Designed an intelligent predictive meeting rescheduling interface harmonising complex availability data streams. Published consolidated UI guidelines establishing uniform calendar design heuristics across developer and product management teams.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <ul class="detail-list" style="margin-top:.6rem">
-              <li>Consolidated UI usage guidelines aligning developer and PM mental models across scheduling systems</li>
-              <li>Predictive availability interface minimising cognitive friction in complex scheduling scenarios</li>
-              <li>Reduced visual clutter in calendar components through progressive disclosure and information hierarchy</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Calendar UX</span><span class="proj-tag-chip">Predictive Interface</span><span class="proj-tag-chip">Design Guidelines</span><span class="proj-tag-chip">Enterprise SaaS</span>
-            </div>
-          </div>
+        <div class="proj-type">Enterprise SaaS · Calendar UX · Banking</div>
+        <div class="proj-name">Intelligent Meeting Scheduling — Synchrony Bank</div>
+        <div class="proj-clients"><span>HCL Technologies</span><span>Synchrony Inc, USA</span><span>Jan 2021–May 2023</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn b">30%</span><span class="ml">↑ scheduling consistency</span></span>
+          <span class="metric"><span class="mn b">25%</span><span class="ml">↑ digital engagement</span></span>
         </div>
+        <div class="proj-summary">Intelligent predictive meeting rescheduling interface harmonising complex availability data. Published consolidated UI guidelines establishing uniform calendar heuristics across dev and PM teams.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>Consolidated UI guidelines aligning developer and PM mental models</li>
+            <li>Predictive availability interface reducing cognitive friction in scheduling</li>
+            <li>Visual clutter reduction through progressive disclosure</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Calendar UX</span><span class="tag">Predictive Interface</span><span class="tag">Design Guidelines</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 6. World Bank -->
     <div class="proj">
+      <div class="proj-accent teal"></div>
       <div class="proj-body">
-        <div class="proj-stripe green"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Public Sector · IDA · Content Architecture</div>
-              <div class="proj-name">IDA Platform Design — World Bank</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>World Bank, United States</span><span>Jan 2021–May 2023</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n green">20%</span><span class="outcome-l">↑ project efficiency</span></span>
-            <span class="outcome-pill"><span class="outcome-n green">15%</span><span class="outcome-l">↑ system performance</span></span>
-          </div>
-          <div class="proj-summary">Led stakeholder workshops, requirements gathering, and business-logic definition for the International Development Association platform. Designed content models, security models, workflows, and templates for global public sector operations.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <ul class="detail-list" style="margin-top:.6rem">
-              <li>Led cross-functional brainstorming sessions bridging UX, business logic, and technical constraints</li>
-              <li>Designed content models, security models, workflows, and templates for IDA global platform</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Public Sector UX</span><span class="proj-tag-chip">Content Modelling</span><span class="proj-tag-chip">Stakeholder Facilitation</span><span class="proj-tag-chip">IA</span>
-            </div>
-          </div>
+        <div class="proj-type">Public Sector · IDA · Content Architecture</div>
+        <div class="proj-name">IDA Platform Design — World Bank</div>
+        <div class="proj-clients"><span>HCL Technologies</span><span>World Bank, USA</span><span>Jan 2021–May 2023</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn g">20%</span><span class="ml">↑ project efficiency</span></span>
+          <span class="metric"><span class="mn g">15%</span><span class="ml">↑ system performance</span></span>
         </div>
+        <div class="proj-summary">Stakeholder workshops, requirements gathering, and system design for the International Development Association platform. Content models, security models, workflows, and templates for global public sector operations.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>Led cross-functional workshops bridging UX, business logic, and technical constraints</li>
+            <li>Designed content models, security models, workflows, and templates for IDA global platform</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Public Sector UX</span><span class="tag">Content Modelling</span><span class="tag">IA</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 7. Caterpillar -->
     <div class="proj">
+      <div class="proj-accent warm"></div>
       <div class="proj-body">
-        <div class="proj-stripe" style="background:#7a5c2a"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">IoT · Fleet Telemetry · Manufacturing</div>
-              <div class="proj-name">Fleet Telemetry Monitoring Dashboard — Caterpillar Inc</div>
-              <div class="proj-client-row"><span>HCL Technologies</span><span>Caterpillar Inc, United States</span><span>Jan 2021–May 2023</span></div>
-            </div>
-          </div>
-          <div class="proj-outcomes-row">
-            <span class="outcome-pill"><span class="outcome-n warm">20%</span><span class="outcome-l">↑ tracking efficiency &amp; satisfaction</span></span>
-          </div>
-          <div class="proj-summary">Overhauled interaction architecture for a real-time live telemetry dashboard tracking vehicle positions and payload metrics during critical load/release cycles. Applied behavioural psychology to organise high-density data streams across multiple truck types, fuel consumption, and predictive analytics.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show design details
-          </button>
-          <div class="proj-details">
-            <ul class="detail-list" style="margin-top:.6rem">
-              <li>Redesigned interaction architecture for real-time telemetry: vehicle positions, payload metrics, fuel consumption</li>
-              <li>Applied behavioural psychology to minimise operator cognitive load across diverse fleet deployments</li>
-              <li>Designed predictive live monitoring analytics displays for operational decision-making</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">IoT Telemetry</span><span class="proj-tag-chip">Behavioural Psychology</span><span class="proj-tag-chip">High-Density UI</span><span class="proj-tag-chip">Manufacturing</span>
-            </div>
-          </div>
+        <div class="proj-type">IoT · Fleet Telemetry · Manufacturing</div>
+        <div class="proj-name">Fleet Telemetry Monitoring Dashboard — Caterpillar Inc</div>
+        <div class="proj-clients"><span>HCL Technologies</span><span>Caterpillar Inc, USA</span><span>Jan 2021–May 2023</span></div>
+        <div class="metrics">
+          <span class="metric"><span class="mn t">20%</span><span class="ml">↑ tracking efficiency</span></span>
         </div>
+        <div class="proj-summary">Real-time telemetry dashboard tracking vehicle positions, payload metrics, and fuel consumption during critical load/release cycles. Behavioural psychology applied to organise high-density data streams across diverse heavy machinery fleets.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show design details
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>Redesigned IA for real-time telemetry: positions, payloads, fuel consumption</li>
+            <li>Behavioural psychology to minimise operator cognitive load across diverse fleets</li>
+            <li>Predictive monitoring analytics displays for operational decision-making</li>
+          </ul>
+          <div class="tag-row"><span class="tag">IoT Telemetry</span><span class="tag">Behavioural Psychology</span><span class="tag">High-Density UI</span><span class="tag">Manufacturing</span></div>
+        </div></div></div>
       </div>
     </div>
 
-    <!-- 8. Multi-Agent AI -->
     <div class="proj">
+      <div class="proj-accent purple"></div>
       <div class="proj-body">
-        <div class="proj-stripe" style="background:#5a3f8a"></div>
-        <div class="proj-inner">
-          <div class="proj-header">
-            <div class="proj-header-left">
-              <div class="proj-tag">Personal Research · Agentic AI · HCI</div>
-              <div class="proj-name">Multi-Agent UX Orchestration System</div>
-              <div class="proj-client-row"><span>Personal Research Project</span></div>
-            </div>
-          </div>
-          <div class="proj-summary">React application using the Claude API to coordinate multiple AI design agents with human-in-the-loop oversight. Explores agentic workflows for enterprise UX teams — investigating trust, control, and transparency in AI-assisted design. Informs my broader research interest in human-AI collaboration.</div>
-          <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
-            <span class="proj-toggle-icon">▶</span> Show research focus
-          </button>
-          <div class="proj-details">
-            <ul class="detail-list" style="margin-top:.6rem">
-              <li>Human-in-the-loop orchestration patterns for multi-agent AI systems in design contexts</li>
-              <li>Trust, control, and transparency in AI-assisted UX design workflows</li>
-              <li>React-based agentic tooling using Claude API with structured agent handoffs</li>
-            </ul>
-            <div class="proj-tags-row">
-              <span class="proj-tag-chip">Multi-Agent AI</span><span class="proj-tag-chip">Human-in-the-Loop</span><span class="proj-tag-chip">React</span><span class="proj-tag-chip">Claude API</span><span class="proj-tag-chip">Agentic UX</span>
-            </div>
-          </div>
-        </div>
+        <div class="proj-type">Personal Research · Agentic AI · HCI</div>
+        <div class="proj-name">Multi-Agent UX Orchestration System</div>
+        <div class="proj-clients"><span>Personal Research Project</span></div>
+        <div class="proj-summary">React application using the Claude API to coordinate multiple AI design agents with human-in-the-loop oversight. Investigates trust, control, and transparency in AI-assisted enterprise UX workflows.</div>
+        <button class="proj-toggle" onclick="toggleProj(this)" aria-expanded="false">
+          <svg class="toggle-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show research focus
+        </button>
+        <div class="proj-details"><div class="proj-details-inner"><div class="proj-details-pad">
+          <ul class="detail-list">
+            <li>HITL orchestration patterns for multi-agent AI systems in design contexts</li>
+            <li>Trust, control, and transparency in AI-assisted UX workflows</li>
+            <li>React agentic tooling using Claude API with structured agent handoffs</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Multi-Agent AI</span><span class="tag">HITL</span><span class="tag">React</span><span class="tag">Claude API</span><span class="tag">Agentic UX</span></div>
+        </div></div></div>
       </div>
     </div>
 
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     03 — EXPERIENCE
-════════════════════════════════════════════ -->
+<!-- ══════════ EXPERIENCE ══════════ -->
 <div class="section" id="experience">
-  <div class="section-head">
-    <span class="section-num">03</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Experience</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
-      </svg>
-    </div>
+  <div class="sec-head reveal">
+    <span class="sec-num">// 03</span>
+    <h2 class="sec-title">Experience</h2>
+    <div class="sec-line"></div>
   </div>
-
-  <div class="exp-timeline">
-    <div class="exp-item">
-      <div class="exp-dates">Jun 2024 – Present</div>
+  <div class="timeline stagger">
+    <div class="exp">
+      <div class="exp-date">Jun 2024 — Present</div>
       <div class="exp-role">Technical Lead, UX/Product Design</div>
       <div class="exp-where">HCL Technologies, Chennai</div>
       <div class="exp-desc">Leading UX for AI-augmented enterprise systems. End-to-end ownership across discovery, IA, interaction design, research, prototyping, and delivery for global Fortune 500 clients.</div>
-      <div class="exp-clients"><span class="exp-client">Lam Research</span><span class="exp-client">Cadent Gas</span><span class="exp-client">Microsoft</span></div>
+      <div class="exp-tags"><span class="exp-tag">Lam Research</span><span class="exp-tag">Cadent Gas</span><span class="exp-tag">Microsoft</span></div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">May 2023 – Mar 2024</div>
+    <div class="exp">
+      <div class="exp-date">May 2023 — Mar 2024</div>
       <div class="exp-role">Technical Lead, UX/Product Design</div>
       <div class="exp-where">HCL America</div>
-      <div class="exp-desc">Redesigned mortgage application funnel achieving 25% reduction in completion time. Authored Salesforce design system component libraries; maintained 100% design-to-production consistency.</div>
-      <div class="exp-clients"><span class="exp-client">PenFed Credit Union</span></div>
+      <div class="exp-desc">Mortgage application funnel redesign; 25% ↓ completion time. Salesforce design system libraries; 100% design-to-production consistency.</div>
+      <div class="exp-tags"><span class="exp-tag">PenFed Credit Union</span></div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">Jan 2021 – May 2023</div>
+    <div class="exp">
+      <div class="exp-date">Jan 2021 — May 2023</div>
       <div class="exp-role">Technical Lead, UX/Product Design</div>
       <div class="exp-where">HCL Technologies, Chennai</div>
-      <div class="exp-desc">Enterprise calendar UX, IDA public sector system design, and heavy machinery telemetry dashboards across three simultaneous global client engagements.</div>
-      <div class="exp-clients"><span class="exp-client">Synchrony Bank</span><span class="exp-client">World Bank</span><span class="exp-client">Caterpillar Inc</span></div>
+      <div class="exp-desc">Enterprise calendar UX, IDA system design, and heavy machinery telemetry dashboards across three simultaneous global engagements.</div>
+      <div class="exp-tags"><span class="exp-tag">Synchrony Bank</span><span class="exp-tag">World Bank</span><span class="exp-tag">Caterpillar Inc</span></div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">Dec 2018 – Dec 2020</div>
+    <div class="exp">
+      <div class="exp-date">Dec 2018 — Dec 2020</div>
       <div class="exp-role">Lead Engineer, UX/Product Design</div>
       <div class="exp-where">Prodapt Solutions, Chennai</div>
-      <div class="exp-desc">UX design, high-fidelity prototyping, and design system contribution for US telecom infrastructure. Storyboards, mockups, and prototypes for complex enterprise interaction flows.</div>
-      <div class="exp-clients"><span class="exp-client">CenturyLink, United States</span></div>
+      <div class="exp-desc">UX design, high-fidelity prototyping, and design system contribution for US telecom infrastructure.</div>
+      <div class="exp-tags"><span class="exp-tag">CenturyLink, USA</span></div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">Nov 2017 – Dec 2018</div>
+    <div class="exp">
+      <div class="exp-date">Nov 2017 — Dec 2018</div>
       <div class="exp-role">Sr. UI/UX Developer</div>
       <div class="exp-where">Emerio Technologies, Chennai</div>
-      <div class="exp-desc">Information architecture, user research (personas, journey mapping, competitor analysis, usability studies), rapid prototyping, and high-fidelity interface design.</div>
+      <div class="exp-desc">IA, user research, rapid prototyping, and high-fidelity interface design for enterprise web applications.</div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">Apr 2016 – Oct 2017</div>
+    <div class="exp">
+      <div class="exp-date">Apr 2016 — Oct 2017</div>
       <div class="exp-role">Sr. Graphic &amp; Web Designer</div>
       <div class="exp-where">Quadra Point Brand Services, Chennai</div>
       <div class="exp-desc">Web layout design, wireframing, and full brand identity across digital and physical touchpoints.</div>
     </div>
-    <div class="exp-item">
-      <div class="exp-dates">Sep 2011 – Dec 2014</div>
-      <div class="exp-role">Graphic Designer &amp; Desktop Engineer</div>
-      <div class="exp-where">Sri Devar Pictures, Chennai</div>
-      <div class="exp-desc">Corporate branding, identity, and print/package design across multiple industry formats.</div>
-    </div>
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     04 — SKILLS
-════════════════════════════════════════════ -->
+<!-- ══════════ SKILLS ══════════ -->
 <div class="section" id="skills">
-  <div class="section-head">
-    <span class="section-num">04</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Skills</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
-      </svg>
-    </div>
+  <div class="sec-head reveal">
+    <span class="sec-num">// 04</span>
+    <h2 class="sec-title">Skills</h2>
+    <div class="sec-line"></div>
   </div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-card-label">Experience Design</div>
-      <div class="skill-card-content">Information architecture · Journey mapping · Task flows · Interaction models · WCAG Accessibility · High/low-fi prototypes · Design systems</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Research Methods</div>
-      <div class="skill-card-content">User interviews · Surveys · Competitor analysis · Heuristic evaluation · Usability studies · Participatory design · Ethnography · NASA-TLX · PURE analysis · Wizard of Oz · Thematic analysis</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Design &amp; Prototyping</div>
-      <div class="skill-card-content">Figma · Sketch · Adobe XD · Photoshop · Illustrator · InVision · Marvel</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Development</div>
-      <div class="skill-card-content">HTML5 · CSS3 · Bootstrap · JavaScript · ReactJS · NodeJS (beginner)</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">AI &amp; Cloud</div>
-      <div class="skill-card-content">Azure AI Search · LLM-enhanced workflows · Multi-agent systems · Claude API · ML-driven UX optimisation</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Project &amp; Research Tools</div>
-      <div class="skill-card-content">JIRA · Notion · SurveyMonkey · UserTesting.com</div>
-    </div>
+  <div class="skills-grid stagger">
+    <div class="sk"><div class="sk-label">Experience Design</div><div class="sk-content">Information architecture · Journey mapping · Task flows · Interaction models · WCAG · High/low-fi prototypes · Design systems</div></div>
+    <div class="sk"><div class="sk-label">Research Methods</div><div class="sk-content">User interviews · Surveys · Heuristic evaluation · Usability studies · Participatory design · Ethnography · NASA-TLX · PURE · Thematic analysis</div></div>
+    <div class="sk"><div class="sk-label">Design &amp; Prototyping</div><div class="sk-content">Figma · Sketch · Adobe XD · Photoshop · Illustrator · InVision · Marvel</div></div>
+    <div class="sk"><div class="sk-label">Development</div><div class="sk-content">HTML5 · CSS3 · Bootstrap · JavaScript · ReactJS · NodeJS (beginner)</div></div>
+    <div class="sk"><div class="sk-label">AI &amp; Cloud</div><div class="sk-content">Azure AI Search · LLM-enhanced workflows · Multi-agent systems · Claude API · ML-driven UX optimisation</div></div>
+    <div class="sk"><div class="sk-label">Project &amp; Research Tools</div><div class="sk-content">JIRA · Notion · SurveyMonkey · UserTesting.com</div></div>
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     05 — EDUCATION & CERTIFICATIONS
-════════════════════════════════════════════ -->
+<!-- ══════════ EDUCATION ══════════ -->
 <div class="section" id="education">
-  <div class="section-head">
-    <span class="section-num">05</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Education &amp; Certifications</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
-      </svg>
-    </div>
+  <div class="sec-head reveal">
+    <span class="sec-num">// 05</span>
+    <h2 class="sec-title">Education &amp; Certifications</h2>
+    <div class="sec-line"></div>
   </div>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-degree">Master of Computer Applications (MCA)</div>
-      <div class="edu-school">University of Madras, Chennai</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">MSc Psychology</div>
-      <div class="edu-school">University of Madras, Chennai</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">XR Workshop — AR/VR/MR Spatial UX</div>
-      <div class="edu-school">IIT Madras</div>
-    </div>
+  <div class="edu-grid stagger">
+    <div class="edu"><div class="edu-deg">Master of Computer Applications (MCA)</div><div class="edu-school">University of Madras, Chennai</div></div>
+    <div class="edu"><div class="edu-deg">MSc Psychology</div><div class="edu-school">University of Madras, Chennai</div></div>
+    <div class="edu"><div class="edu-deg">XR Workshop — AR/VR/MR Spatial UX</div><div class="edu-school">IIT Madras</div></div>
   </div>
-  <div style="margin-top:1.25rem">
-    <div class="cert-list">
-      <div class="cert-item"><span class="cert-dot"></span>Adobe Certified UX Designer</div>
-      <div class="cert-item"><span class="cert-dot"></span>AEM Developer Certified</div>
-      <div class="cert-item"><span class="cert-dot"></span>Government of India Certified Design Thinking Practitioner</div>
-      <div class="cert-item"><span class="cert-dot"></span>IBM Creative/Critical Thinking &amp; IBM Enterprise Design Thinking Co-Creator Badge</div>
-      <div class="cert-item"><span class="cert-dot"></span>Google Creative Certification</div>
-    </div>
+  <div class="cert-list stagger">
+    <div class="cert"><div class="cert-icon">✦</div>Adobe Certified UX Designer</div>
+    <div class="cert"><div class="cert-icon">✦</div>AEM Developer Certified</div>
+    <div class="cert"><div class="cert-icon">✦</div>Government of India Certified Design Thinking Practitioner</div>
+    <div class="cert"><div class="cert-icon">✦</div>IBM Creative/Critical Thinking &amp; IBM Enterprise Design Thinking Co-Creator Badge</div>
+    <div class="cert"><div class="cert-icon">✦</div>Google Creative Certification</div>
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     06 — CONTACT
-════════════════════════════════════════════ -->
+<!-- ══════════ CONTACT ══════════ -->
 <div class="section" id="contact">
-  <div class="section-head">
-    <span class="section-num">06</span>
-    <div class="section-title-wrap">
-      <div class="section-title">Contact</div>
-      <svg class="squiggle" viewBox="0 0 500 6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0,3 Q31,0 63,3 Q94,6 125,3 Q156,0 188,3 Q219,6 250,3 Q281,0 313,3 Q344,6 375,3 Q406,0 438,3 Q469,6 500,3"
-          stroke="#1a4f8a" stroke-width="1.5" fill="none" opacity=".4"/>
-      </svg>
-    </div>
+  <div class="sec-head reveal">
+    <span class="sec-num">// 06</span>
+    <h2 class="sec-title">Contact</h2>
+    <div class="sec-line"></div>
   </div>
-  <div class="contact-grid">
-    <a class="contact-btn" href="mailto:b.karthick@live.com">
+  <div class="contact-cards reveal">
+    <a class="cc primary" href="mailto:b.karthick@live.com">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 5l7 5 7-5"/></svg>
       b.karthick@live.com
     </a>
-    <a class="contact-btn" href="tel:+918695860005">
+    <a class="cc" href="tel:+918695860005">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h3l1.5 3.5-1.75 1A9 9 0 0 0 10.5 10.25l1-1.75L15 10v3a1 1 0 0 1-1 1A13 13 0 0 1 2 3a1 1 0 0 1 1-1Z"/></svg>
       +91 86958 60005
     </a>
-    <a class="contact-btn" href="https://linkedin.com/in/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+    <a class="cc" href="https://linkedin.com/in/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
       LinkedIn
     </a>
-    <a class="contact-btn" href="#">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="1"/><path d="M5 8h6M8 5v6"/></svg>
+    <a class="cc" href="#">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M5 8h6M8 5v6"/></svg>
       Portfolio
     </a>
-    <a class="contact-btn" href="#">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M6 6h4M6 9h4M6 12h2"/></svg>
+    <a class="cc" href="#">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"/><path d="M6 5h4M6 8h4M6 11h2"/></svg>
       Download CV
     </a>
   </div>
 </div>
 
-<footer>
-  Karthick Balakrishnan &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; HCI Researcher &nbsp;·&nbsp; UX Design Technical Lead<br/>
-  <span style="font-size:12px;opacity:.7">Open to PhD opportunities in Human-Computer Interaction — Georgia Tech · University of Michigan · UC San Diego · Stanford · MIT</span>
-</footer>
-
 </div><!-- /page -->
 
+<footer>
+  <span>Karthick Balakrishnan</span> &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; HCI Researcher &nbsp;·&nbsp; UX Design Technical Lead<br/>
+  <div class="phd-targets">
+    <span class="phd-target">Georgia Tech</span>
+    <span class="phd-target">University of Michigan</span>
+    <span class="phd-target">UC San Diego</span>
+    <span class="phd-target">Stanford</span>
+    <span class="phd-target">MIT</span>
+    <span class="phd-target">IIT Madras</span>
+  </div>
+</footer>
+
 <script>
-function toggleProj(btn) {
-  const details = btn.nextElementSibling;
-  const isOpen = details.classList.contains('open');
-  details.classList.toggle('open', !isOpen);
-  btn.classList.toggle('open', !isOpen);
-  btn.setAttribute('aria-expanded', String(!isOpen));
-  btn.querySelector('.proj-toggle-icon').style.transform = isOpen ? '' : 'rotate(90deg)';
-  btn.innerHTML = btn.innerHTML.replace(
-    isOpen ? 'Hide' : 'Show',
-    isOpen ? 'Show' : 'Hide'
-  );
+/* ── LOADER ── */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('out'),1800));
+
+/* ── PARTICLES ── */
+(function(){
+  const wrap=document.getElementById('particles');
+  const colors=['#4f8ef7','#2dd4bf','#a78bfa','#f97316','#34d399'];
+  for(let i=0;i<28;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*3+1;
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    const dur=Math.random()*20+15;
+    const delay=Math.random()*20;
+    const dx=(Math.random()-0.5)*200;
+    p.style.cssText=`
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      background:${color};opacity:.4;
+      --dx:${dx}px;
+      animation-duration:${dur}s;
+      animation-delay:-${delay}s;
+    `;
+    wrap.appendChild(p);
+  }
+})();
+
+/* ── CUSTOM CURSOR ── */
+const cursor=document.getElementById('cursor');
+const cdot=document.getElementById('cursor-dot');
+let mx=window.innerWidth/2,my=window.innerHeight/2;
+let cx=mx,cy=my;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+function animCursor(){
+  cx+=(mx-cx)*0.12;cy+=(my-cy)*0.12;
+  cursor.style.left=cx+'px';cursor.style.top=cy+'px';
+  cdot.style.left=mx+'px';cdot.style.top=my+'px';
+  requestAnimationFrame(animCursor);
 }
+animCursor();
+document.querySelectorAll('a,button,.chip,.metric,.tag').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('hovering'));
+});
+
+/* ── NAV SCROLL ── */
+const nav=document.getElementById('nav');
+const sections=['research','projects','experience','skills','contact'];
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>40);
+  let cur='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<120)cur=id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+},{passive:true});
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('[data-count]').forEach(el=>countUp(el,+el.dataset.count));
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.stagger').forEach(el=>obs.observe(el));
+
+/* ── COUNTER ── */
+function countUp(el,target){
+  let start=null;
+  const dur=1400;
+  function step(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target)+'+';
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target+'+';
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── TYPEWRITER ── */
+const roles=['HCI Researcher','UX Design Technical Lead','Cognitive Science Practitioner','PhD Applicant — 2025/26'];
+let ri=0,ci=0,deleting=false;
+const tw=document.getElementById('typewriter');
+function type(){
+  const current=roles[ri];
+  if(!deleting){
+    tw.textContent=current.substring(0,ci+1);ci++;
+    if(ci===current.length){deleting=true;setTimeout(type,2200);return;}
+  } else {
+    tw.textContent=current.substring(0,ci-1);ci--;
+    if(ci===0){deleting=false;ri=(ri+1)%roles.length;}
+  }
+  setTimeout(type,deleting?45:90);
+}
+setTimeout(type,2800);
+
+/* ── PROJECT TOGGLE ── */
+function toggleProj(btn){
+  const d=btn.nextElementSibling;
+  const open=d.classList.contains('open');
+  d.classList.toggle('open',!open);
+  btn.setAttribute('aria-expanded',String(!open));
+  const t=btn.childNodes[1]?.textContent||btn.lastChild?.textContent||'';
+  if(btn.lastChild?.nodeType===3)
+    btn.lastChild.textContent=open?' Show design details':' Hide design details';
+}
+
+/* ── SMOOTH NAV ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
 </script>
 </body>
 </html>
