@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Case Study: Emergency Response CRM | Saving Lives Through Design</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        ice: {
+                            50: '#f8fafc',
+                            100: '#f0f6ff',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        cadent: {
+                            blue: '#2563eb',
+                            teal: '#00a896',
+                            orange: '#f77f00',
+                            red: '#e63946',
+                            amber: '#ffb703',
+                            emerald: '#10b981'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: rgba(37, 99, 235, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-ice-100 text-ice-900 font-sans antialiased selection:bg-cadent-blue selection:text-white relative">
+    <div id="cursor" class="custom-cursor hidden md:block"></div>
+
+    <!-- Sticky Header -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-ice-200 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-cadent-blue hover:text-blue-800 transition">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                </a>
+                <span class="text-ice-300">|</span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-cadent-blue text-white font-bold text-sm flex items-center justify-center shadow">
+                        C
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-ice-900 text-sm block leading-tight">Cadent Gas DPLA CRM</span>
+                        <span class="text-[11px] text-ice-400 font-mono">Emergency Response UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 text-xs font-semibold text-ice-800">
+                <a href="#research" class="hover:text-cadent-blue transition">01. Research & Audit</a>
+                <a href="#taxonomy" class="hover:text-cadent-blue transition">02. Mental Models</a>
+                <a href="#prototype" class="hover:text-cadent-blue transition">03. Interactive CRM</a>
+                <a href="#testing" class="hover:text-cadent-blue transition">04. Stress Testing</a>
+                <a href="#impact" class="hover:text-cadent-blue transition">05. Outcomes</a>
+            </div>
+
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span> Live Portfolio Case
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-ice-200 bg-white/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider text-cadent-blue mb-4">
+                <span class="bg-blue-50 px-2.5 py-1 rounded border border-blue-200">Emergency Response Public Safety</span>
+                <span>•</span>
+                <span>3 Months Duration</span>
+                <span>•</span>
+                <span>Cognitive Neuroergonomics</span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-ice-900 mb-6 leading-tight max-w-5xl">
+                Emergency Response CRM: <span class="text-cadent-blue">Saving Lives Through Design</span>
+            </h1>
+
+            <p class="text-base md:text-xl text-ice-800 max-w-4xl font-light leading-relaxed mb-10">
+                The highest-stakes interface: When every second counts, a confusing UI is not just a usability failure—it is a life-threatening failure. Redesigning the emergency intake dashboard for UK call-centre agents and field engineers handling critical gas and hazard emergencies.
+            </p>
+
+            <!-- Metrics Highlight Banner -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl bg-white border border-ice-200 shadow-sm mb-12">
+                <div class="p-3">
+                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-blue block mb-1">~52s</span>
+                    <span class="text-xs text-ice-800 font-medium">Ticket Creation Time (Down from ~90s)</span>
+                </div>
+                <div class="p-3">
+                    <span class="text-2xl md:text-3xl font-serif font-bold text-emerald-600 block mb-1">0.7</span>
+                    <span class="text-xs text-ice-800 font-medium">Errors / Session (Down from 3.2)</span>
+                </div>
+                <div class="p-3">
+                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-orange block mb-1">29 / 100</span>
+                    <span class="text-xs text-ice-800 font-medium">NASA-TLX Frustration Score (From 78)</span>
+                </div>
+                <div class="p-3">
+                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-teal block mb-1">-2.3 min</span>
+                    <span class="text-xs text-ice-800 font-medium">Reclaimed per Emergency Call</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: UX RESEARCH & AUDIT -->
+    <section id="research" class="py-16 lg:py-24 border-b border-ice-200 bg-ice-50">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
+                <span class="w-6 h-0.5 bg-cadent-blue"></span>
+                <span>01. UX Research & Immersion</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">Understanding the Physiology of Crisis</h2>
+            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
+                Before touching wireframes, we shadowed agents during peak hours (6:00 AM – 10:00 AM, the "gas-ignition window"). Under extreme stress, working memory shrinks and visual attention narrows.
+            </p>
+
+            <!-- Legacy System Failures Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-red-100 text-cadent-red flex items-center justify-center font-bold text-sm mb-4">
+                        <i class="fa-solid fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Hover Phenomenon</h3>
+                    <p class="text-xs text-ice-800 leading-relaxed">
+                        Agents hovered over fields for an average of <strong>2.3 seconds</strong> before typing—reading micro-text (10-11px) labels repeatedly while trying to listen to distressed callers.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-amber-100 text-cadent-amber flex items-center justify-center font-bold text-sm mb-4">
+                        <i class="fa-solid fa-arrows-spin"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Repetition Spiral</h3>
+                    <p class="text-xs text-ice-800 leading-relaxed">
+                        Navigating away to verify postcodes caused <strong>68% of callers</strong> to restart their issue description from the beginning, adding 90–120 seconds to call duration.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 text-cadent-blue flex items-center justify-center font-bold text-sm mb-4">
+                        <i class="fa-solid fa-[#f77f00]"></i>
+                        <i class="fa-solid fa-clock font-bold"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Critical Pivot Point</h3>
+                    <p class="text-xs text-ice-800 leading-relaxed">
+                        In <strong>73% of calls</strong>, caller distress peaked within the first 90 seconds while confirming postcodes. Lack of address fallback caused 8–14 seconds of dead silence.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Legacy Task Audit Metrics Box -->
+            <div class="p-6 rounded-2xl bg-white border border-red-200 bg-red-50/30">
+                <h3 class="font-serif font-bold text-ice-900 text-base mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-cadent-red"></i> Legacy Workflow Audit Baseline
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                    <div><span class="font-mono font-bold text-red-600 block text-lg">34 Clicks</span>To Create Ticket</div>
+                    <div><span class="font-mono font-bold text-red-600 block text-lg">7 Switches</span>Screen Context Switches</div>
+                    <div><span class="font-mono font-bold text-red-600 block text-lg">26 Fields</span>Flat, Single Scrolling Page</div>
+                    <div><span class="font-mono font-bold text-red-600 block text-lg">10-11px</span>Unreadable Label Micro-Text</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: CARD SORTING & TAXONOMY -->
+    <section id="taxonomy" class="py-16 lg:py-24 border-b border-ice-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
+                <span class="w-6 h-0.5 bg-cadent-blue"></span>
+                <span>02. Information Architecture</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">Restructuring Mental Models (17 Emergency Types)</h2>
+            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
+                Through closed card sorting with 8 agents, we reorganized the flat, alphabetical 17-type dropdown into 4 life-critical priority clusters that match natural conversational triage.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Priority 1 -->
+                <div class="p-5 rounded-2xl bg-red-50 border border-red-200">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-red-200 text-red-800 mb-2 inline-block">Priority 1</span>
+                    <h3 class="font-serif font-bold text-red-950 text-sm mb-2">Life-Threat Emergency</h3>
+                    <p class="text-[11px] text-red-900 leading-relaxed mb-3">Immediate 999 co-dispatch. Mandatory evacuation scripts.</p>
+                    <ul class="text-[11px] text-red-800 space-y-1 list-disc pl-3 font-mono">
+                        <li>Fire / Explosion</li>
+                        <li>Internal Gas Escape</li>
+                        <li>External Gas Escape</li>
+                        <li>Carbon Monoxide</li>
+                    </ul>
+                </div>
+
+                <!-- Priority 2 -->
+                <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-200 text-amber-800 mb-2 inline-block">Priority 2</span>
+                    <h3 class="font-serif font-bold text-amber-950 text-sm mb-2">Supply & Pressure</h3>
+                    <p class="text-[11px] text-amber-900 leading-relaxed mb-3">Urgent response (2-hour ETA). Restores supply grid.</p>
+                    <ul class="text-[11px] text-amber-800 space-y-1 list-disc pl-3 font-mono">
+                        <li>No Gas / Low Pressure</li>
+                        <li>ECV Valve Problem</li>
+                        <li>Purge & Relight</li>
+                        <li>Concern for Safety</li>
+                    </ul>
+                </div>
+
+                <!-- Priority 3 -->
+                <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-blue-200 text-blue-800 mb-2 inline-block">Priority 3</span>
+                    <h3 class="font-serif font-bold text-blue-950 text-sm mb-2">Appliance & Network</h3>
+                    <p class="text-[11px] text-blue-900 leading-relaxed mb-3">Scheduled engineer visit for specific appliance issues.</p>
+                    <ul class="text-[11px] text-blue-800 space-y-1 list-disc pl-3 font-mono">
+                        <li>Appliance Stuck On</li>
+                        <li>Animal / Object Behind</li>
+                        <li>Pipework Survey</li>
+                        <li>Site Works Request</li>
+                    </ul>
+                </div>
+
+                <!-- Priority 4 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-slate-200 text-slate-800 mb-2 inline-block">Priority 4</span>
+                    <h3 class="font-serif font-bold text-slate-950 text-sm mb-2">Administrative</h3>
+                    <p class="text-[11px] text-slate-900 leading-relaxed mb-3">Back-office routing with zero field dispatch needed.</p>
+                    <ul class="text-[11px] text-slate-800 space-y-1 list-disc pl-3 font-mono">
+                        <li>Meter Enquiries</li>
+                        <li>Reportable Issues</li>
+                        <li>Theft of Gas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE PROTOTYPE WORKSTATION -->
+    <section id="prototype" class="py-16 lg:py-24 border-b border-ice-200 bg-ice-50">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
+                <span class="w-6 h-0.5 bg-cadent-blue"></span>
+                <span>03. 3-Screen Progressive Disclosure</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-4">The DPLA Single-Pane Workstation</h2>
+            <p class="text-ice-800 text-base max-w-3xl mb-8 font-light leading-relaxed">
+                Experience the live 3-screen progressive disclosure flow designed for Cadent CCR handlers. Toggle below to test emergency intake scenarios.
+            </p>
+
+            <!-- Workstation UI Sandbox -->
+            <div class="rounded-2xl bg-white border border-ice-200 shadow-lg overflow-hidden">
+                <div class="p-4 bg-ice-900 text-white flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        <span class="text-xs font-mono text-ice-300 ml-2">DPLA Intake v3.4 [3-Screen Architecture]</span>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="loadScenario('b2c')" id="btn-b2c" class="px-3 py-1.5 rounded bg-cadent-blue text-white text-xs font-bold transition">
+                            Priority 1: Gas Escape (B2C)
+                        </button>
+                        <button onclick="loadScenario('b2b')" id="btn-b2b" class="px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition">
+                            Priority 2: Highway Leak (B2B)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white">
+                    <!-- Column 1: Intake & Conversational Script (5 cols) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="p-4 rounded-xl bg-ice-50 border border-ice-200">
+                            <span id="sim-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-red-100 text-red-700">
+                                Active Call Intake
+                            </span>
+                            <h4 id="sim-caller-name" class="font-serif font-bold text-ice-900 text-base mt-2">David Miller (+44 7700 900821)</h4>
+                            <p id="sim-location-text" class="text-xs text-ice-800">142 Oxford Road, Manchester (M1 2WD)</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-200">
+                            <h5 class="text-xs font-mono font-bold uppercase text-cadent-blue mb-2">Conversational Script Scaffold</h5>
+                            <div id="sim-script-box" class="text-xs text-ice-900 leading-relaxed font-sans space-y-2">
+                                <p class="font-semibold text-cadent-blue">"Please advise caller immediately:"</p>
+                                <ul class="list-disc pl-4 space-y-1 text-ice-800">
+                                    <li>Extinguish all naked flames and open doors/windows.</li>
+                                    <li>Do NOT operate electrical light switches.</li>
+                                    <li>Evacuate the property if smell is intense.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-ice-50 border border-ice-200 text-xs space-y-1">
+                            <div class="flex justify-between"><span class="text-ice-400">Pipe Type:</span><span id="sim-pipe-type" class="font-mono font-bold text-ice-900">Low Pressure Polyethylene (90mm)</span></div>
+                            <div class="flex justify-between"><span class="text-ice-400">PSR Flag:</span><span id="sim-psr" class="text-emerald-600 font-bold">Oxygen Dependency (Hearing Impaired)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Esri GIS Grid Overlay (7 cols) -->
+                    <div class="lg:col-span-7 p-4 bg-ice-900 rounded-xl text-white flex flex-col justify-between relative overflow-hidden min-h-[300px]">
+                        <div class="flex justify-between items-center text-xs font-mono mb-2 z-10">
+                            <span class="text-cadent-teal"><i class="fa-solid fa-map"></i> ArcGIS Gas Grid Overlay</span>
+                            <span class="text-ice-400">Sector NW-4B</span>
+                        </div>
+
+                        <!-- Mock Map Canvas -->
+                        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <svg class="absolute inset-0 w-full h-full">
+                            <line x1="10%" y1="30%" x2="90%" y2="70%" stroke="#ef4444" stroke-width="4" stroke-dasharray="6,2" />
+                            <line x1="20%" y1="85%" x2="80%" y2="15%" stroke="#fbbf24" stroke-width="3" />
+                        </svg>
+
+                        <div id="sim-map-pin" class="relative z-10 mx-auto my-auto text-center">
+                            <div class="px-2 py-1 bg-cadent-orange text-white font-mono font-bold text-[10px] rounded shadow mb-1 inline-block animate-bounce">
+                                Flat 4B (Incident Site)
+                            </div>
+                            <div class="w-4 h-4 rounded-full bg-cadent-orange border-2 border-white mx-auto"></div>
+                        </div>
+
+                        <div class="z-10 flex justify-between items-center pt-3 border-t border-ice-800 text-xs">
+                            <span class="text-ice-400">Field Response: Van #402 (ETA 12 mins)</span>
+                            <button class="px-3 py-1.5 rounded bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition">
+                                Dispatch Field Engineer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: STRESS TESTING & OUTCOMES -->
+    <section id="testing" class="py-16 lg:py-24 border-b border-ice-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
+                <span class="w-6 h-0.5 bg-cadent-blue"></span>
+                <span>04. Stress Testing Protocols</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">NASA-TLX Stress Simulation Outcomes</h2>
+            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
+                12 call agents tested the system while listening to high-distress emergency call audio recordings.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
+                    <span class="text-3xl font-serif font-bold text-cadent-blue block mb-1">-42%</span>
+                    <h3 class="font-bold text-ice-900 text-sm mb-1">Ticket Creation Time</h3>
+                    <p class="text-xs text-ice-800">Fall from ~90s down to ~52s per emergency ticket.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
+                    <span class="text-3xl font-serif font-bold text-emerald-600 block mb-1">-78%</span>
+                    <h3 class="font-bold text-ice-900 text-sm mb-1">Form Error Rate</h3>
+                    <p class="text-xs text-ice-800">Field errors dropped from 3.2 down to 0.7 per session.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
+                    <span class="text-3xl font-serif font-bold text-cadent-teal block mb-1">+194%</span>
+                    <h3 class="font-bold text-ice-900 text-sm mb-1">Agent Satisfaction</h3>
+                    <p class="text-xs text-ice-800">Significant lift in post-deployment ease-of-use scores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-ice-900 text-ice-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="text-white font-bold">Karthick Balakrishnan Portfolio</span> • Emergency Response UX
+            </div>
+            <div class="flex space-x-4">
+                <a href="index.html" class="hover:text-white transition">Portfolio Home</a>
+                <span>•</span>
+                <a href="#prototype" class="hover:text-white transition">Interactive Workstation</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        const scenarios = {
+            b2c: {
+                name: "David Miller (+44 7700 900821)",
+                location: "142 Oxford Road, Manchester (M1 2WD)",
+                badge: "Priority 1: Gas Escape",
+                badgeClass: "bg-red-100 text-red-700",
+                script: `<p class="font-semibold text-cadent-blue">"Please advise caller immediately:"</p>
+                         <ul class="list-disc pl-4 space-y-1 text-ice-800">
+                             <li>Extinguish all naked flames and open doors/windows.</li>
+                             <li>Do NOT operate electrical light switches.</li>
+                             <li>Evacuate property if smell is intense.</li>
+                         </ul>`,
+                pipe: "Low Pressure Polyethylene (90mm)",
+                psr: "Oxygen Dependency (Hearing Impaired)",
+                pin: "Flat 4B (Incident Site)"
+            },
+            b2b: {
+                name: "Manchester Bakery Ltd (Commercial)",
+                location: "88 High Street, Manchester (M1 4BT)",
+                badge: "Priority 2: Highway Leak",
+                badgeClass: "bg-amber-100 text-amber-800",
+                script: `<p class="font-semibold text-cadent-amber">"Highway Leak Protocol:"</p>
+                         <ul class="list-disc pl-4 space-y-1 text-ice-800">
+                             <li>Keep pedestrians clear of excavation zone.</li>
+                             <li>Verify if heavy machinery is operating nearby.</li>
+                             <li>Dispatch Tier-1 Emergency Response Team.</li>
+                         </ul>`,
+                pipe: "Medium Pressure Steel (180mm Main)",
+                psr: "Commercial High Density Zone",
+                pin: "High St Excavation Site"
+            }
+        };
+
+        function loadScenario(type) {
+            const data = scenarios[type];
+            document.getElementById('sim-caller-name').innerText = data.name;
+            document.getElementById('sim-location-text').innerText = data.location;
+            document.getElementById('sim-badge').innerText = data.badge;
+            document.getElementById('sim-badge').className = `px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${data.badgeClass}`;
+            document.getElementById('sim-script-box').innerHTML = data.script;
+            document.getElementById('sim-pipe-type').innerText = data.pipe;
+            document.getElementById('sim-psr').innerText = data.psr;
+            document.getElementById('sim-map-pin').querySelector('div').innerText = data.pin;
+
+            document.getElementById('btn-b2c').className = type === 'b2c' ? "px-3 py-1.5 rounded bg-cadent-blue text-white text-xs font-bold transition" : "px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition";
+            document.getElementById('btn-b2b').className = type === 'b2b' ? "px-3 py-1.5 rounded bg-cadent-orange text-white text-xs font-bold transition" : "px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition";
+        }
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            if (cursor) {
+                cursor.style.left = e.clientX - 6 + 'px';
+                cursor.style.top = e.clientY - 6 + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
