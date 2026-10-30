@@ -1,470 +1,881 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX Case Study: Emergency Response CRM | Saving Lives Through Design</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Fraunces', 'serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        ice: {
-                            50: '#f8fafc',
-                            100: '#f0f6ff',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        },
-                        cadent: {
-                            blue: '#2563eb',
-                            teal: '#00a896',
-                            orange: '#f77f00',
-                            red: '#e63946',
-                            amber: '#ffb703',
-                            emerald: '#10b981'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-        .custom-cursor {
-            width: 12px;
-            height: 12px;
-            background: rgba(37, 99, 235, 0.5);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease-out;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Response CRM — Cadent Gas | Executive UX Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #edf6ff;
+    --bg-strong: #dfeeff;
+    --panel: #ffffff;
+    --panel-soft: #f4f9ff;
+    --panel-alt: #edf5ff;
+    --line: rgba(19, 74, 130, 0.12);
+    --line-strong: rgba(19, 74, 130, 0.18);
+    --text: #1a2b3d;
+    --text-2: #4a5c72;
+    --text-3: #70839b;
+    --blue: #2e7de1;
+    --blue-strong: #1158c8;
+    --sky: #7fc6ff;
+    --sky-soft: #dfeeff;
+    --mint: #6dd2c0;
+    --red: #e8220a;
+    --red-soft: rgba(232, 34, 10, 0.08);
+    --amber: #f5a623;
+    --shadow: 0 18px 40px rgba(16, 71, 145, 0.08);
+    --radius: 20px;
+    --maxw: 1120px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: linear-gradient(180deg, #f4faff 0%, #ebf5ff 55%, #f9fcff 100%);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── STICKY NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 24px;
+    display: flex; align-items: center; gap: 20px;
+    overflow-x: auto;
+  }
+  nav a {
+    display: inline-flex; align-items: center;
+    padding: 14px 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-2);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  nav a:hover { color: var(--blue-strong); border-bottom-color: var(--blue-strong); }
+  .nav-logo {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 1.1rem; font-weight: 600; color: var(--blue-strong);
+    letter-spacing: -0.02em; margin-right: auto;
+    white-space: nowrap; padding: 12px 0; flex-shrink: 0;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  
+  section.page {
+    position: relative;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  section.page:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.75);
+    box-shadow: var(--shadow);
+  }
+  .eyebrow .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 0 5px rgba(232, 34, 10, 0.15);
+  }
+
+  h1, h2, h3, h4 { color: var(--text); font-family: "Fraunces", serif; }
+  .display {
+    font-family: "Fraunces", serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+  .display em, .h2 em { font-style: italic; color: var(--blue-strong); }
+  
+  .h2 {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+  .h3 { font-family: "Fraunces", serif; font-size: 1.35rem; font-style: italic; margin-top: 2rem; margin-bottom: 10px; }
+
+  p { color: var(--text-2); font-size: 1rem; line-height: 1.75; }
+  .lead { font-size: 1.18rem; line-height: 1.7; color: var(--text-2); max-width: 780px; margin-bottom: 24px; }
+  .muted { color: var(--text-3); font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .divider { height: 1px; background: linear-gradient(90deg, rgba(46,125,225,0.28), transparent); border: none; margin: 40px 0; }
+
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; margin-top: 16px; }
+  .tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.65);
+    color: var(--text-2);
+    font-size: 0.73rem;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .meta-row { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; }
+  .meta-item .label { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-strong); margin-bottom: 4px; }
+  .meta-item .value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+
+  /* 3D Glass Accent */
+  .iso-accent { position: absolute; top: 40px; right: -40px; width: 260px; height: 260px; opacity: 0.6; pointer-events: none; }
+
+  /* Hero Metric */
+  .hero-metric { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 32px; }
+  .hero-metric .num { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 600; color: var(--blue-strong); line-height: 1; }
+  .hero-metric .cap { font-size: 0.95rem; color: var(--text-2); margin-top: 8px; font-weight: 500; }
+
+  .hero-visual {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--sky), var(--mint));
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media(max-width:860px) { .two-col { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
+
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+  .flow .step { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--text-2); }
+  .flow .arrow { color: var(--blue); font-size: 0.85rem; }
+  .flow.after .step { border-color: var(--blue); color: var(--blue-strong); background: var(--panel-soft); font-weight: 600; }
+
+  /* Method / Stat Cards */
+  .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  @media(max-width:860px) { .method-grid { grid-template-columns: 1fr; } }
+  .method-card { border: 1px solid var(--line); background: rgba(255,255,255,0.85); padding: 22px; border-radius: 18px; box-shadow: var(--shadow); }
+  .method-card .mlabel { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: var(--blue-strong); margin-bottom: 12px; }
+  .method-card .mstat { font-family: "Fraunces", serif; font-style: italic; font-size: 2.2rem; font-weight: 600; color: var(--blue-strong); margin-bottom: 4px; line-height: 1; }
+  .method-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .method-card p { font-size: 0.88rem; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+  @media(max-width:860px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* Finding Blocks */
+  .finding { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 20px; background: rgba(255,255,255,0.85); border: 1px solid var(--line); border-radius: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .finding-num { font-family: "JetBrains Mono", monospace; font-size: 1.2rem; font-weight: 700; color: var(--blue-strong); }
+  .finding-body h5 { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-strong); margin-bottom: 4px; }
+  .finding-body p { font-size: 0.92rem; color: var(--text-2); margin: 0; }
+
+  /* Image Prompt Card */
+  .img-prompt {
+    position: relative;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    margin: 24px 0;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .img-prompt-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--panel-soft);
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--blue-strong); font-weight: 600;
+  }
+  .img-prompt-body {
+    padding: 18px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--text-2);
+    white-space: pre-wrap;
+  }
+  .img-placeholder {
+    height: 140px;
+    background: linear-gradient(135deg, var(--panel-soft) 0%, var(--panel-alt) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-3);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Quotes & Blockquotes */
+  blockquote {
+    margin: 32px 0;
+    padding: 24px 28px;
+    border-left: 4px solid var(--blue-strong);
+    background: rgba(255,255,255,0.85);
+    border-radius: 0 16px 16px 0;
+    box-shadow: var(--shadow);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  blockquote cite {
+    display: block; margin-top: 12px;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-3);
+  }
+
+  /* Insight Callouts */
+  .insight {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--blue);
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 0 16px 16px 0;
+    box-shadow: var(--shadow);
+  }
+  .insight strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blue-strong);
+    margin-bottom: 6px;
+  }
+  .insight p { color: var(--text-2); font-size: 0.93rem; margin: 0; }
+
+  /* Heuristic Table */
+  .role-table { margin-top: 24px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: rgba(255,255,255,0.85); box-shadow: var(--shadow); width: 100%; border-collapse: collapse; }
+  .role-table th { padding: 14px 16px; font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blue-strong); text-transform: uppercase; background: var(--panel-soft); text-align: left; border-bottom: 1px solid var(--line); }
+  .role-table td { padding: 16px; font-size: 0.88rem; color: var(--text-2); border-bottom: 1px solid var(--line); vertical-align: top; }
+  .role-table tr:last-child td { border-bottom: none; }
+  
+  .severity {
+    display: inline-block; padding: 3px 8px; border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+  }
+  .sev-3 { background: rgba(232,34,10,0.1); color: var(--red); border: 1px solid rgba(232,34,10,0.2); }
+  .sev-2 { background: rgba(245,166,35,0.12); color: #d98200; border: 1px solid rgba(245,166,35,0.3); }
+  .sev-1 { background: rgba(109,210,192,0.2); color: #117b67; border: 1px solid rgba(109,210,192,0.4); }
+
+  /* Cards Grid */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 24px 0; }
+  .card { border: 1px solid var(--line); background: rgba(255,255,255,0.85); padding: 22px; border-radius: 18px; box-shadow: var(--shadow); }
+  .card-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+  .card h4 { font-family: "Fraunces", serif; font-style: italic; font-size: 1.1rem; color: var(--text); margin-bottom: 6px; }
+  .card p { font-size: 0.88rem; color: var(--text-2); margin: 0; line-height: 1.6; }
+
+  /* Checklist */
+  .checklist { list-style: none; margin: 20px 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+    font-size: 0.92rem; color: var(--text-2);
+  }
+  .checklist li::before { content: "✓"; color: var(--mint); font-weight: 700; flex-shrink: 0; }
+
+  .footer-mark { margin-top: 80px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+  .pagenum { position: fixed; bottom: 24px; right: 32px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--blue-strong); font-weight: 600; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); box-shadow: var(--shadow); z-index: 10; }
+</style>
 </head>
-<body class="bg-ice-100 text-ice-900 font-sans antialiased selection:bg-cadent-blue selection:text-white relative">
-    <div id="cursor" class="custom-cursor hidden md:block"></div>
+<body>
 
-    <!-- Sticky Header -->
-    <nav class="sticky top-0 z-50 glass-card border-b border-ice-200 px-4 lg:px-8 py-3.5">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-cadent-blue hover:text-blue-800 transition">
-                    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
-                </a>
-                <span class="text-ice-300">|</span>
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 rounded-lg bg-cadent-blue text-white font-bold text-sm flex items-center justify-center shadow">
-                        C
-                    </div>
-                    <div>
-                        <span class="font-serif font-bold text-ice-900 text-sm block leading-tight">Cadent Gas DPLA CRM</span>
-                        <span class="text-[11px] text-ice-400 font-mono">Emergency Response UX</span>
-                    </div>
-                </div>
-            </div>
+<div class="pagenum" id="pagenum">01 / 09</div>
 
-            <div class="hidden md:flex items-center space-x-6 text-xs font-semibold text-ice-800">
-                <a href="#research" class="hover:text-cadent-blue transition">01. Research & Audit</a>
-                <a href="#taxonomy" class="hover:text-cadent-blue transition">02. Mental Models</a>
-                <a href="#prototype" class="hover:text-cadent-blue transition">03. Interactive CRM</a>
-                <a href="#testing" class="hover:text-cadent-blue transition">04. Stress Testing</a>
-                <a href="#impact" class="hover:text-cadent-blue transition">05. Outcomes</a>
-            </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Cadent Gas · Emergency CRM</div>
+  <a href="#overview">Overview</a>
+  <a href="#research">Research</a>
+  <a href="#ideate">Ideate</a>
+  <a href="#prototype">Prototype</a>
+  <a href="#screens">3-Screen Architecture</a>
+  <a href="#test">Test</a>
+  <a href="#delivery">Delivery</a>
+  <a href="#outcomes">Outcomes</a>
+</nav>
 
-            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span> Live Portfolio Case
-            </span>
+<!-- PAGE 01 — HERO & OVERVIEW -->
+<section class="page" id="overview"><div class="wrap">
+  <svg class="iso-accent" viewBox="0 0 200 200" fill="none">
+    <g opacity="0.5">
+      <path d="M100 20 L170 60 L170 140 L100 180 L30 140 L30 60 Z" stroke="#2e7de1" stroke-width="1.2"/>
+      <path d="M100 20 L100 100 M100 100 L170 60 M100 100 L30 60 M100 100 L100 180" stroke="#2e7de1" stroke-width="1.2"/>
+      <circle cx="100" cy="20" r="3" fill="#e8220a"/><circle cx="170" cy="60" r="3" fill="#2e7de1"/>
+      <circle cx="170" cy="140" r="3" fill="#2e7de1"/><circle cx="100" cy="180" r="3" fill="#2e7de1"/>
+      <circle cx="30" cy="140" r="3" fill="#2e7de1"/><circle cx="30" cy="60" r="3" fill="#2e7de1"/>
+      <circle cx="100" cy="100" r="3" fill="#6dd2c0"/>
+    </g>
+  </svg>
+  
+  <div class="eyebrow"><span class="dot"></span>Emergency Response CRM · Cadent Gas</div>
+  <div class="display">Saving Lives Through <em>Design</em></div>
+  <p class="lead" style="margin-top: 16px;">When every second counts, a confusing UI is not just a usability failure — it is a life-threatening failure. A psychologically-grounded redesign of an Emergency Response CRM used by call-centre agents and field engineers across the UK.</p>
+
+  <div class="tag-row">
+    <span class="tag">Cognitive Load Theory</span>
+    <span class="tag">NASA-TLX</span>
+    <span class="tag">Contextual Inquiry</span>
+    <span class="tag">Stress-Testing</span>
+    <span class="tag">Conditional Logic</span>
+    <span class="tag">Jurisdictional AI</span>
+    <span class="tag">WCAG 2.1 AA</span>
+    <span class="tag">GDN API</span>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-item"><div class="label">Domain</div><div class="value">Emergency Response / Public Safety</div></div>
+    <div class="meta-item"><div class="label">Discipline</div><div class="value">Enterprise UX · Cognitive Psychology</div></div>
+    <div class="meta-item"><div class="label">Platform</div><div class="value">Web CRM + Mobile Field App</div></div>
+    <div class="meta-item"><div class="label">Methodology</div><div class="value">Human-Centred Design + Neuroergonomics</div></div>
+    <div class="meta-item"><div class="label">Role</div><div class="value">Lead UX Designer &amp; Psychological Researcher</div></div>
+  </div>
+
+  <div class="hero-metric">
+    <div class="grid">
+      <div style="grid-column: 1 / 6;">
+        <div class="num">↓ 42%</div>
+        <div class="cap">Reduction in emergency ticket creation time</div>
+        <div class="muted" style="margin-top: 12px;">Validated across 90-day post-deployment telemetry</div>
+      </div>
+      <div style="grid-column: 7 / 13;">
+        <div class="method-grid" style="margin-top:0;">
+          <div class="method-card">
+            <div class="mlabel">CALL DURATION</div>
+            <div class="mstat">4–8m</div>
+            <p>Real emergency call length</p>
+          </div>
+          <div class="method-card">
+            <div class="mlabel">NEW ARCHITECTURE</div>
+            <div class="mstat">3</div>
+            <p>Progressive disclosure screens</p>
+          </div>
+          <div class="method-card">
+            <div class="mlabel">EMERGENCY TAXONOMY</div>
+            <div class="mstat">15+</div>
+            <p>Mapped call types</p>
+          </div>
+          <div class="method-card">
+            <div class="mlabel">LINGUISTIC AUDIT</div>
+            <div class="mstat">50+</div>
+            <p>Calls analyzed</p>
+          </div>
+          <div class="method-card">
+            <div class="mlabel">LEGACY FAILURES</div>
+            <div class="mstat">7</div>
+            <p>Documented anti-patterns</p>
+          </div>
+          <div class="method-card">
+            <div class="mlabel">DATA INTEGRITY</div>
+            <div class="mstat">0</div>
+            <p>Loss in handover</p>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</div></section>
 
-    <!-- Hero Section -->
-    <header class="pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-ice-200 bg-white/60 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider text-cadent-blue mb-4">
-                <span class="bg-blue-50 px-2.5 py-1 rounded border border-blue-200">Emergency Response Public Safety</span>
-                <span>•</span>
-                <span>3 Months Duration</span>
-                <span>•</span>
-                <span>Cognitive Neuroergonomics</span>
-            </div>
+<!-- PAGE 02 — PHASE 1: RESEARCH -->
+<section class="page" id="research"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>01 · Research Phase</div>
+  <div class="h2">Understanding the Physiology of <em>Crisis</em></div>
+  <p class="lead">Before touching a single wireframe, we needed to understand the human body under extreme stress. When adrenaline floods the system, cognition narrows. Working memory shrinks. Typing slows. An interface designed for a calm office worker will catastrophically fail an agent managing a panicked caller reporting a gas leak.</p>
 
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-ice-900 mb-6 leading-tight max-w-5xl">
-                Emergency Response CRM: <span class="text-cadent-blue">Saving Lives Through Design</span>
-            </h1>
+  <blockquote>
+    "The agent is not merely a data-entry operator. They are a cognitive bridge between a distressed human and a life-saving system — while simultaneously managing their own emotional regulation."
+    <cite>— Research synthesis, Phase 1 observation notes</cite>
+  </blockquote>
 
-            <p class="text-base md:text-xl text-ice-800 max-w-4xl font-light leading-relaxed mb-10">
-                The highest-stakes interface: When every second counts, a confusing UI is not just a usability failure—it is a life-threatening failure. Redesigning the emergency intake dashboard for UK call-centre agents and field engineers handling critical gas and hazard emergencies.
-            </p>
+  <div class="h3">Method 1 — Contextual Inquiry: Shadowing First Responders</div>
+  <p>We embedded with call-centre agents during peak hours (6–10 AM, the "gas-ignition window") and observed non-verbal behaviour as primary data. The body does not lie. We catalogued every mouse-hover hesitation, every audible sigh, every moment of backward glancing at post-it notes.</p>
 
-            <!-- Metrics Highlight Banner -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl bg-white border border-ice-200 shadow-sm mb-12">
-                <div class="p-3">
-                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-blue block mb-1">~52s</span>
-                    <span class="text-xs text-ice-800 font-medium">Ticket Creation Time (Down from ~90s)</span>
-                </div>
-                <div class="p-3">
-                    <span class="text-2xl md:text-3xl font-serif font-bold text-emerald-600 block mb-1">0.7</span>
-                    <span class="text-xs text-ice-800 font-medium">Errors / Session (Down from 3.2)</span>
-                </div>
-                <div class="p-3">
-                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-orange block mb-1">29 / 100</span>
-                    <span class="text-xs text-ice-800 font-medium">NASA-TLX Frustration Score (From 78)</span>
-                </div>
-                <div class="p-3">
-                    <span class="text-2xl md:text-3xl font-serif font-bold text-cadent-teal block mb-1">-2.3 min</span>
-                    <span class="text-xs text-ice-800 font-medium">Reclaimed per Emergency Call</span>
-                </div>
-            </div>
-        </div>
-    </header>
+  <div style="margin-top: 20px;">
+    <div class="finding">
+      <div class="finding-num">F1</div>
+      <div class="finding-body">
+        <h5>The Hover Phenomenon</h5>
+        <p>Agents hovered over form fields for an average of 2.3 seconds before typing — not from confusion, but from re-reading the label while listening to a caller. This "read-listen-type" tripling is a clear cognitive overload signal the existing UI ignored entirely.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">F2</div>
+      <div class="finding-body">
+        <h5>The Sigh Trigger</h5>
+        <p>Agents invariably sighed when the system required them to navigate away to locate a postcode zone or re-enter a previous address. Each redirect broke conversational flow, forcing the caller to repeat information — escalating distress on both sides of the line.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">F3</div>
+      <div class="finding-body">
+        <h5>Post-it Note Architecture</h5>
+        <p>Every agent desk featured a personal taxonomy of post-it notes: emergency codes, area abbreviations, engineer names. This is a classic "external cognition offload" — a sign the system's information architecture had failed to internalise what users needed most.</p>
+      </div>
+    </div>
+  </div>
 
-    <!-- SECTION 1: UX RESEARCH & AUDIT -->
-    <section id="research" class="py-16 lg:py-24 border-b border-ice-200 bg-ice-50">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
-                <span class="w-6 h-0.5 bg-cadent-blue"></span>
-                <span>01. UX Research & Immersion</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">Understanding the Physiology of Crisis</h2>
-            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
-                Before touching wireframes, we shadowed agents during peak hours (6:00 AM – 10:00 AM, the "gas-ignition window"). Under extreme stress, working memory shrinks and visual attention narrows.
-            </p>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual A: Contextual Inquiry Scene</span></div>
+    <div class="img-placeholder">[ Visual A: Contextual Inquiry Scene ]</div>
+    <div class="img-prompt-body">A photorealistic, documentary-style illustration of a call-centre agent at a cluttered desk covered in yellow post-it notes, headset on, hand hovering over a mouse, face slightly tense. Dual monitors show a complex legacy CRM form. Dramatic side-lighting, desaturated blue-grey tones with warm amber accent from monitor glow. Cinematic composition. No text overlays.</div>
+  </div>
 
-            <!-- Legacy System Failures Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-red-100 text-cadent-red flex items-center justify-center font-bold text-sm mb-4">
-                        <i class="fa-solid fa-mouse-pointer"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Hover Phenomenon</h3>
-                    <p class="text-xs text-ice-800 leading-relaxed">
-                        Agents hovered over fields for an average of <strong>2.3 seconds</strong> before typing—reading micro-text (10-11px) labels repeatedly while trying to listen to distressed callers.
-                    </p>
-                </div>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual A2: Empathy Map</span></div>
+    <div class="img-placeholder">[ Visual A2: Empathy Map — Call-Centre Agent ]</div>
+    <div class="img-prompt-body">A clean, professional UX Empathy Map diagram on a dark charcoal (#1A1A1F) background. Four equal quadrants arranged in a 2x2 grid, separated by bright white divider lines, each quadrant labelled in bold uppercase sans-serif: top-left "SAYS" (speech bubble icon, text examples: "I need the postcode fast", "Can you repeat that?"), top-right "THINKS" (brain icon, text: "I can't lose this caller", "Where is that field again?"), bottom-left "DOES" (hand icon, text: "Hovers over mouse", "Glances at post-it notes"), bottom-right "FEELS" (heart icon, text: "Anxious", "Frustrated", "Under pressure"). Central circle labelled "EMERGENCY CALL AGENT — Sarah, 4 yrs experience." Accent colours: red for FEELS quadrant, amber for THINKS, teal for SAYS, blue for DOES. Minimalist, editorial, UX portfolio quality.</div>
+  </div>
 
-                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-amber-100 text-cadent-amber flex items-center justify-center font-bold text-sm mb-4">
-                        <i class="fa-solid fa-arrows-spin"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Repetition Spiral</h3>
-                    <p class="text-xs text-ice-800 leading-relaxed">
-                        Navigating away to verify postcodes caused <strong>68% of callers</strong> to restart their issue description from the beginning, adding 90–120 seconds to call duration.
-                    </p>
-                </div>
+  <div class="h3">Method 2 — Linguistic Audit of 50+ Emergency Calls</div>
+  <p>We performed a structured discourse analysis on call recordings, tagging every utterance by emotional valence, information density, and pivot point — the precise moment in a call where the caller's distress peaks and the agent's ability to extract structured data drops to its lowest point.</p>
 
-                <div class="p-6 rounded-2xl bg-white border border-ice-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 text-cadent-blue flex items-center justify-center font-bold text-sm mb-4">
-                        <i class="fa-solid fa-[#f77f00]"></i>
-                        <i class="fa-solid fa-clock font-bold"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-ice-900 text-base mb-2">The Critical Pivot Point</h3>
-                    <p class="text-xs text-ice-800 leading-relaxed">
-                        In <strong>73% of calls</strong>, caller distress peaked within the first 90 seconds while confirming postcodes. Lack of address fallback caused 8–14 seconds of dead silence.
-                    </p>
-                </div>
-            </div>
+  <div class="insight">
+    <strong>Critical Finding — The Pivot Point</strong>
+    <p>In 73% of calls, the Critical Pivot Point occurred within 90 seconds of call initiation — typically when the caller was asked to confirm their exact address. Callers under acute stress frequently do not know their precise postcode. The existing system had no fallback. Agents were forced to improvise, causing 8–14 seconds of silence on live emergency calls.</p>
+  </div>
 
-            <!-- Legacy Task Audit Metrics Box -->
-            <div class="p-6 rounded-2xl bg-white border border-red-200 bg-red-50/30">
-                <h3 class="font-serif font-bold text-ice-900 text-base mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation text-cadent-red"></i> Legacy Workflow Audit Baseline
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-                    <div><span class="font-mono font-bold text-red-600 block text-lg">34 Clicks</span>To Create Ticket</div>
-                    <div><span class="font-mono font-bold text-red-600 block text-lg">7 Switches</span>Screen Context Switches</div>
-                    <div><span class="font-mono font-bold text-red-600 block text-lg">26 Fields</span>Flat, Single Scrolling Page</div>
-                    <div><span class="font-mono font-bold text-red-600 block text-lg">10-11px</span>Unreadable Label Micro-Text</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual A3: Affinity Diagram</span></div>
+    <div class="img-placeholder">[ Visual A3: Affinity Diagram — Research Synthesis ]</div>
+    <div class="img-prompt-body">A wide-format affinity diagram / sticky-note cluster board on a near-black background. Hundreds of small rectangular cards (post-it note style) arranged into 6 labelled clusters: "Cognitive Overload Signals" (red cards), "Navigation Failures" (orange), "Data Re-entry Pain" (amber), "Emotional Moments" (pink), "Workarounds & Coping" (yellow), "Positive Moments" (teal). Each cluster has a bold handwritten-style label and approximately 8–12 notes visible. Some cards have red exclamation icons marking critical insights. Top of the board has a horizontal header: "Research Synthesis — 50 Calls + 3 Days Observation." Slightly imperfect, organic layout. Dark mode. Textured corkboard-like background faintly visible.</div>
+  </div>
 
-    <!-- SECTION 2: CARD SORTING & TAXONOMY -->
-    <section id="taxonomy" class="py-16 lg:py-24 border-b border-ice-200 bg-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
-                <span class="w-6 h-0.5 bg-cadent-blue"></span>
-                <span>02. Information Architecture</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">Restructuring Mental Models (17 Emergency Types)</h2>
-            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
-                Through closed card sorting with 8 agents, we reorganized the flat, alphabetical 17-type dropdown into 4 life-critical priority clusters that match natural conversational triage.
-            </p>
+  <div class="h3">Method 3 — Task Analysis: Counting Every Click</div>
+  <p>We task-analysed the legacy workflow end-to-end, mapping each click, each form field, and each modal dialogue required to create an emergency ticket.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Priority 1 -->
-                <div class="p-5 rounded-2xl bg-red-50 border border-red-200">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-red-200 text-red-800 mb-2 inline-block">Priority 1</span>
-                    <h3 class="font-serif font-bold text-red-950 text-sm mb-2">Life-Threat Emergency</h3>
-                    <p class="text-[11px] text-red-900 leading-relaxed mb-3">Immediate 999 co-dispatch. Mandatory evacuation scripts.</p>
-                    <ul class="text-[11px] text-red-800 space-y-1 list-disc pl-3 font-mono">
-                        <li>Fire / Explosion</li>
-                        <li>Internal Gas Escape</li>
-                        <li>External Gas Escape</li>
-                        <li>Carbon Monoxide</li>
-                    </ul>
-                </div>
+  <div class="insight">
+    <strong>Critical Field Finding — The 8-Minute Call Problem</strong>
+    <p>Our call recording analysis revealed that emergency calls averaged <strong>4–8 minutes</strong> in duration — not because the information was complex, but because callers under acute stress repeatedly loop back to the same details. A caller reporting a gas leak will instinctively repeat their address three times, contradict their own account of the smell, and ask "are you still there?" mid-sentence. This double-loop of repetition — caller repeating due to distress, agent asking to repeat due to interface friction — was responsible for an average of 2.3 additional minutes on every call.</p>
+  </div>
 
-                <!-- Priority 2 -->
-                <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-200 text-amber-800 mb-2 inline-block">Priority 2</span>
-                    <h3 class="font-serif font-bold text-amber-950 text-sm mb-2">Supply & Pressure</h3>
-                    <p class="text-[11px] text-amber-900 leading-relaxed mb-3">Urgent response (2-hour ETA). Restores supply grid.</p>
-                    <ul class="text-[11px] text-amber-800 space-y-1 list-disc pl-3 font-mono">
-                        <li>No Gas / Low Pressure</li>
-                        <li>ECV Valve Problem</li>
-                        <li>Purge & Relight</li>
-                        <li>Concern for Safety</li>
-                    </ul>
-                </div>
+  <div class="finding">
+    <div class="finding-num">F4</div>
+    <div class="finding-body">
+      <h5>The Repetition Spiral</h5>
+      <p>When agents lost context mid-call (due to navigating away from the main form), 68% of callers re-stated their core problem from the beginning — adding 90–120 seconds to call duration.</p>
+    </div>
+  </div>
+  <div class="finding">
+    <div class="finding-num">F5</div>
+    <div class="finding-body">
+      <h5>The "Are You Still There?" Signal</h5>
+      <p>In 41% of calls, the caller asked "are you still there?" at least once — always during a period of agent silence caused by navigating the CRM. This question is a distress escalator that resets emotional rapport from scratch.</p>
+    </div>
+  </div>
 
-                <!-- Priority 3 -->
-                <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-blue-200 text-blue-800 mb-2 inline-block">Priority 3</span>
-                    <h3 class="font-serif font-bold text-blue-950 text-sm mb-2">Appliance & Network</h3>
-                    <p class="text-[11px] text-blue-900 leading-relaxed mb-3">Scheduled engineer visit for specific appliance issues.</p>
-                    <ul class="text-[11px] text-blue-800 space-y-1 list-disc pl-3 font-mono">
-                        <li>Appliance Stuck On</li>
-                        <li>Animal / Object Behind</li>
-                        <li>Pipework Survey</li>
-                        <li>Site Works Request</li>
-                    </ul>
-                </div>
+  <div class="stat-grid">
+    <div class="method-card"><div class="mlabel">CALL LENGTH</div><div class="mstat">4–8m</div><p>Average Call Duration</p></div>
+    <div class="method-card"><div class="mlabel">FRICTION TAX</div><div class="mstat">+2.3m</div><p>Added by Interface Friction</p></div>
+    <div class="method-card"><div class="mlabel">LEGACY STEPS</div><div class="mstat">34</div><p>Clicks to Create One Ticket</p></div>
+    <div class="method-card"><div class="mlabel">RE-ENTRY</div><div class="mstat">7</div><p>Redundant Data Entries</p></div>
+  </div>
 
-                <!-- Priority 4 -->
-                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-slate-200 text-slate-800 mb-2 inline-block">Priority 4</span>
-                    <h3 class="font-serif font-bold text-slate-950 text-sm mb-2">Administrative</h3>
-                    <p class="text-[11px] text-slate-900 leading-relaxed mb-3">Back-office routing with zero field dispatch needed.</p>
-                    <ul class="text-[11px] text-slate-800 space-y-1 list-disc pl-3 font-mono">
-                        <li>Meter Enquiries</li>
-                        <li>Reportable Issues</li>
-                        <li>Theft of Gas</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual A4: User Journey Map (As-Is)</span></div>
+    <div class="img-placeholder">[ Visual A4: User Journey Map — Agent (As-Is State) ]</div>
+    <div class="img-prompt-body">A horizontal UX Journey Map diagram on a dark background. Top row shows 6 journey stages as column headers in bold: CALL RECEIVED → IDENTIFY EMERGENCY → CAPTURE ADDRESS → CLASSIFY TYPE → CREATE TICKET → DISPATCH. Below the stages are 4 rows labelled on the left side: "ACTIONS" (icons + short text), "THOUGHTS" (italic quotes in speech bubbles), "EMOTIONS" (a curved emotional arc line — starts neutral, rises to peak stress at stage 3, drops at stage 6), "PAIN POINTS" (red callout badges at stages 2, 3, and 4). The emotion line dips sharply to a red zone labelled "CRITICAL PIVOT POINT" at the address-capture stage. Clean, professional, enterprise UX portfolio style. Colour-coded by severity. Dark mode with white text.</div>
+  </div>
 
-    <!-- SECTION 3: INTERACTIVE PROTOTYPE WORKSTATION -->
-    <section id="prototype" class="py-16 lg:py-24 border-b border-ice-200 bg-ice-50">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
-                <span class="w-6 h-0.5 bg-cadent-blue"></span>
-                <span>03. 3-Screen Progressive Disclosure</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-4">The DPLA Single-Pane Workstation</h2>
-            <p class="text-ice-800 text-base max-w-3xl mb-8 font-light leading-relaxed">
-                Experience the live 3-screen progressive disclosure flow designed for Cadent CCR handlers. Toggle below to test emergency intake scenarios.
-            </p>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual B: Task Flow Map</span></div>
+    <div class="img-placeholder">[ Visual B: Task Flow Map ]</div>
+    <div class="img-prompt-body">A clean, high-contrast process flow diagram on a deep charcoal background. Shows 34 numbered steps as small circular nodes connected by arrows, with 7 nodes highlighted in vivid red (labelled "Redundant Loop") and 4 larger yellow nodes labelled "Context Switch." The overall shape is a winding, chaotic path contrasted against a straight ideal path shown in glowing teal on the right side. Minimal, diagrammatic, technical infographic style.</div>
+  </div>
 
-            <!-- Workstation UI Sandbox -->
-            <div class="rounded-2xl bg-white border border-ice-200 shadow-lg overflow-hidden">
-                <div class="p-4 bg-ice-900 text-white flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                        <span class="text-xs font-mono text-ice-300 ml-2">DPLA Intake v3.4 [3-Screen Architecture]</span>
-                    </div>
+  <div class="h3">The Legacy System — A Documented Failure Catalogue</div>
+  <p>Beyond raw click counts, the legacy system embodied seven systemic design failures that compounded each other under stress.</p>
 
-                    <div class="flex gap-2">
-                        <button onclick="loadScenario('b2c')" id="btn-b2c" class="px-3 py-1.5 rounded bg-cadent-blue text-white text-xs font-bold transition">
-                            Priority 1: Gas Escape (B2C)
-                        </button>
-                        <button onclick="loadScenario('b2b')" id="btn-b2b" class="px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition">
-                            Priority 2: Highway Leak (B2B)
-                        </button>
-                    </div>
-                </div>
+  <div style="margin: 20px 0;">
+    <div class="finding"><div class="finding-num">01</div><div class="finding-body"><h5>No Step-by-Step Structure — Flat Form</h5><p>26 form fields presented simultaneously on a single scrolling page with no sequence or progress anchors.</p></div></div>
+    <div class="finding"><div class="finding-num">02</div><div class="finding-body"><h5>Illegible Typography</h5><p>Labels rendered at 10–11px, becoming unreadable under stress-induced pupillary dilation.</p></div></div>
+    <div class="finding"><div class="finding-num">03</div><div class="finding-body"><h5>Illogical Field Ordering</h5><p>Fields ordered by database column sequence, contradicting the natural flow of spoken emergency calls.</p></div></div>
+    <div class="finding"><div class="finding-num">04</div><div class="finding-body"><h5>Pop-Hover &amp; Modal Dependencies</h5><p>Critical reference data hidden behind volatile hover tooltips that dismissed on minor mouse drift.</p></div></div>
+    <div class="finding"><div class="finding-num">05</div><div class="finding-body"><h5>Page Load Latency</h5><p>Address validation triggered full 3.2s reloads; engineer lookup opened separate tabs with 6–8s delays.</p></div></div>
+    <div class="finding"><div class="finding-num">06</div><div class="finding-body"><h5>No Caller Context Persistence</h5><p>Navigating away from the primary ticket screen risked complete loss of unsaved input data.</p></div></div>
+    <div class="finding"><div class="finding-num">07</div><div class="finding-body"><h5>No Prompting or Call Scripts</h5><p>Offered no call script or question prompts, forcing reliance on unstandardised informal memory.</p></div></div>
+  </div>
 
-                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white">
-                    <!-- Column 1: Intake & Conversational Script (5 cols) -->
-                    <div class="lg:col-span-5 space-y-4">
-                        <div class="p-4 rounded-xl bg-ice-50 border border-ice-200">
-                            <span id="sim-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-red-100 text-red-700">
-                                Active Call Intake
-                            </span>
-                            <h4 id="sim-caller-name" class="font-serif font-bold text-ice-900 text-base mt-2">David Miller (+44 7700 900821)</h4>
-                            <p id="sim-location-text" class="text-xs text-ice-800">142 Oxford Road, Manchester (M1 2WD)</p>
-                        </div>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual B2: Legacy vs. Redesigned Screen Comparison</span></div>
+    <div class="img-placeholder">[ Visual B2: Legacy vs. Redesigned — Side-by-Side Screen Comparison ]</div>
+    <div class="img-prompt-body">A dramatic split-screen comparison on a dark background. LEFT HALF labelled "LEGACY SYSTEM" in red: A cluttered web form screenshot mockup in washed-out grey. Visible elements: 26 form fields stacked vertically in a chaotic order, 10px labels barely visible, a pop-hover tooltip box mid-screen showing postcode data that looks dismissible, a modal dialogue partially obscuring the form, a loading spinner overlay on the address field, no progress indicator, no icons, dropdown menus with text-only options. A red X badge in top corner: "Avg. 34 clicks · 90 sec · 7 re-entries." RIGHT HALF labelled "REDESIGNED SYSTEM" in teal: The clean 3-screen design, showing Screen 1 with auto-populated fields, large readable 18px labels, a clear 3-step progress bar, PSR badge, conditional reporter checkbox, and the script panel on the left. A green tick badge: "Avg. 11 clicks · 52 sec · 0 re-entries." High contrast. Annotated callouts pointing to specific failures on the left and fixes on the right. Dark mode portfolio quality.</div>
+  </div>
 
-                        <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-200">
-                            <h5 class="text-xs font-mono font-bold uppercase text-cadent-blue mb-2">Conversational Script Scaffold</h5>
-                            <div id="sim-script-box" class="text-xs text-ice-900 leading-relaxed font-sans space-y-2">
-                                <p class="font-semibold text-cadent-blue">"Please advise caller immediately:"</p>
-                                <ul class="list-disc pl-4 space-y-1 text-ice-800">
-                                    <li>Extinguish all naked flames and open doors/windows.</li>
-                                    <li>Do NOT operate electrical light switches.</li>
-                                    <li>Evacuate the property if smell is intense.</li>
-                                </ul>
-                            </div>
-                        </div>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual B3: Call Duration Breakdown</span></div>
+    <div class="img-placeholder">[ Visual B3: Call Duration Breakdown — Where Time Was Lost ]</div>
+    <div class="img-prompt-body">A horizontal stacked bar chart on a dark background showing the anatomy of an 8-minute emergency call. Two bars stacked side by side for comparison. Bar 1 "LEGACY SYSTEM (8 min avg)": segmented into colour-coded time blocks — "Caller introduction" (teal, 45s), "Address capture — failed lookup" (red, 90s), "Interface navigation" (deep red, 70s), "Re-entry of repeated data" (orange, 60s), "Caller repetition spiral" (amber, 80s), "Issue classification" (yellow, 60s), "Safety advice" (green, 35s), "Ticket submission — page reload" (red, 40s). Bar 2 "REDESIGNED SYSTEM (4.2 min avg)": same categories but dramatically shorter — especially interface navigation (near zero), re-entry (zero), page reload (zero). Each segment labelled with time in seconds. Below bars: annotation "2.3 min reclaimed from interface friction alone." Clean, bold data visualisation. Dark mode.</div>
+  </div>
+</div></section>
 
-                        <div class="p-3 rounded-lg bg-ice-50 border border-ice-200 text-xs space-y-1">
-                            <div class="flex justify-between"><span class="text-ice-400">Pipe Type:</span><span id="sim-pipe-type" class="font-mono font-bold text-ice-900">Low Pressure Polyethylene (90mm)</span></div>
-                            <div class="flex justify-between"><span class="text-ice-400">PSR Flag:</span><span id="sim-psr" class="text-emerald-600 font-bold">Oxygen Dependency (Hearing Impaired)</span></div>
-                        </div>
-                    </div>
+<!-- PAGE 03 — PHASE 2: IDEATE -->
+<section class="page" id="ideate"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>02 · Ideation Phase</div>
+  <div class="h2">Building the Cognitive <em>Architecture</em></div>
+  <p class="lead">Applying evidence-based psychological frameworks to structure every decision that followed.</p>
 
-                    <!-- Column 2: Esri GIS Grid Overlay (7 cols) -->
-                    <div class="lg:col-span-7 p-4 bg-ice-900 rounded-xl text-white flex flex-col justify-between relative overflow-hidden min-h-[300px]">
-                        <div class="flex justify-between items-center text-xs font-mono mb-2 z-10">
-                            <span class="text-cadent-teal"><i class="fa-solid fa-map"></i> ArcGIS Gas Grid Overlay</span>
-                            <span class="text-ice-400">Sector NW-4B</span>
-                        </div>
+  <div class="h3">Framework 1 — NASA-TLX: Quantifying Mental Demand</div>
+  <p>Measuring workload across Mental Demand, Physical Demand, Temporal Demand, Performance, Effort, and Frustration.</p>
 
-                        <!-- Mock Map Canvas -->
-                        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                        <svg class="absolute inset-0 w-full h-full">
-                            <line x1="10%" y1="30%" x2="90%" y2="70%" stroke="#ef4444" stroke-width="4" stroke-dasharray="6,2" />
-                            <line x1="20%" y1="85%" x2="80%" y2="15%" stroke="#fbbf24" stroke-width="3" />
-                        </svg>
+  <div class="stat-grid">
+    <div class="method-card"><div class="mlabel">MENTAL DEMAND</div><div class="mstat">84/100</div><p>Baseline Cognitive Load</p></div>
+    <div class="method-card"><div class="mlabel">FRUSTRATION</div><div class="mstat">78/100</div><p>System Frustration Score</p></div>
+    <div class="method-card"><div class="mlabel">TEMPORAL PRESSURE</div><div class="mstat">91/100</div><p>Perceived Time Stress</p></div>
+    <div class="method-card"><div class="mlabel">PERFORMANCE</div><div class="mstat">41/100</div><p>Self-Rated Success</p></div>
+  </div>
 
-                        <div id="sim-map-pin" class="relative z-10 mx-auto my-auto text-center">
-                            <div class="px-2 py-1 bg-cadent-orange text-white font-mono font-bold text-[10px] rounded shadow mb-1 inline-block animate-bounce">
-                                Flat 4B (Incident Site)
-                            </div>
-                            <div class="w-4 h-4 rounded-full bg-cadent-orange border-2 border-white mx-auto"></div>
-                        </div>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual C0: User Personas</span></div>
+    <div class="img-placeholder">[ Visual C0: User Persona Cards — 3 Primary Personas ]</div>
+    <div class="img-prompt-body">Three side-by-side UX persona cards on a dark charcoal background, each card a distinct dark panel with a subtle coloured top border. Card 1 — "SARAH / Call-Centre Agent" (red top border): avatar icon (female, headset), age 32, 4 years experience; sections for Goals, Pain Points, Tech Comfort, Motivations, Key Quote in italic. Card 2 — "JAMES / Field Engineer" (amber top border): avatar icon (male, hard hat), age 41, 9 years experience; same section structure, focus on mobile-first needs and safety priorities. Card 3 — "PRIYA / Supervisor" (teal top border): avatar icon (female, management), age 47, 12 years experience; focus on oversight, reporting, compliance. Each card uses clean sans-serif typography, small icons for each attribute section, and a NASA-TLX mini bar chart at the bottom showing that persona's stress profile. Professional UX portfolio aesthetic, dark mode.</div>
+  </div>
 
-                        <div class="z-10 flex justify-between items-center pt-3 border-t border-ice-800 text-xs">
-                            <span class="text-ice-400">Field Response: Van #402 (ETA 12 mins)</span>
-                            <button class="px-3 py-1.5 rounded bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition">
-                                Dispatch Field Engineer
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="insight">
+    <strong>Psychological Implication — Cognitive Load Theory</strong>
+    <p>Scores above 70 indicate extraneous load — effort spent fighting the interface. Our mandate: eliminate extraneous load and redirect it to germane load (understanding the emergency).</p>
+  </div>
 
-    <!-- SECTION 4: STRESS TESTING & OUTCOMES -->
-    <section id="testing" class="py-16 lg:py-24 border-b border-ice-200 bg-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-cadent-blue mb-3">
-                <span class="w-6 h-0.5 bg-cadent-blue"></span>
-                <span>04. Stress Testing Protocols</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-serif font-bold text-ice-900 mb-6">NASA-TLX Stress Simulation Outcomes</h2>
-            <p class="text-ice-800 text-base md:text-lg max-w-4xl mb-12 font-light leading-relaxed">
-                12 call agents tested the system while listening to high-distress emergency call audio recordings.
-            </p>
+  <div class="h3">Framework 2 — Mental Model Mapping: The Site-Arrival Ritual</div>
+  <p>Field engineers' site-arrival sequence: 1. <em>Is anyone in immediate danger?</em> 2. <em>Are there animals or hazards?</em> We redesigned the mobile Safety HUD to surface hazard metadata as the primary focal point.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
-                    <span class="text-3xl font-serif font-bold text-cadent-blue block mb-1">-42%</span>
-                    <h3 class="font-bold text-ice-900 text-sm mb-1">Ticket Creation Time</h3>
-                    <p class="text-xs text-ice-800">Fall from ~90s down to ~52s per emergency ticket.</p>
-                </div>
+  <div class="two-col" style="margin-top: 20px;">
+    <div class="method-card">
+      <div class="mlabel">ENGINEER'S MENTAL MODEL</div>
+      <p style="font-size: 1rem; font-weight: 600; color: var(--text);">Hazard → Access → Emergency Type → Address → Contact</p>
+    </div>
+    <div class="method-card">
+      <div class="mlabel">LEGACY SYSTEM'S MODEL</div>
+      <p style="font-size: 1rem; font-weight: 600; color: var(--text-3);">Ticket ID → Date → Address → Emergency Type → Hazard (buried)</p>
+    </div>
+  </div>
 
-                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
-                    <span class="text-3xl font-serif font-bold text-emerald-600 block mb-1">-78%</span>
-                    <h3 class="font-bold text-ice-900 text-sm mb-1">Form Error Rate</h3>
-                    <p class="text-xs text-ice-800">Field errors dropped from 3.2 down to 0.7 per session.</p>
-                </div>
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual C: Mental Model Mismatch Diagram</span></div>
+    <div class="img-placeholder">[ Visual C: Mental Model Mismatch Diagram ]</div>
+    <div class="img-prompt-body">Two parallel vertical columns on a dark background. Left column labelled "Engineer's Mind" shows 5 priority blocks in descending order: HAZARD (red), ACCESS (orange), EMERGENCY TYPE (yellow), ADDRESS (white), CONTACT (grey). Right column labelled "Legacy System" shows the same 5 blocks in a scrambled, misaligned order, with connecting dotted lines showing the mismatch. Minimalist, editorial infographic with a brutalist data-vis aesthetic. High contrast, no decorative elements.</div>
+  </div>
 
-                <div class="p-6 rounded-2xl bg-ice-50 border border-ice-200">
-                    <span class="text-3xl font-serif font-bold text-cadent-teal block mb-1">+194%</span>
-                    <h3 class="font-bold text-ice-900 text-sm mb-1">Agent Satisfaction</h3>
-                    <p class="text-xs text-ice-800">Significant lift in post-deployment ease-of-use scores.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="h3">Framework 3 — Heuristic Evaluation Against Nielsen's 10</div>
+  <table class="role-table">
+    <thead>
+      <tr><th>Heuristic</th><th>Issue Found</th><th>Severity</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Error Prevention</td><td>No validation on address fields; agents could dispatch to non-existent postcodes</td><td><span class="severity sev-3">Critical</span></td></tr>
+      <tr><td>Flexibility &amp; Efficiency</td><td>No keyboard shortcuts; no saved templates for recurring emergency types</td><td><span class="severity sev-3">Critical</span></td></tr>
+      <tr><td>Visibility of System Status</td><td>No dispatch progress indicator; agents had no confirmation engineer was en route</td><td><span class="severity sev-3">Critical</span></td></tr>
+      <tr><td>Match with Mental Models</td><td>Form field order contradicted the natural conversational flow of an emergency call</td><td><span class="severity sev-2">High</span></td></tr>
+      <tr><td>Aesthetic &amp; Minimal Design</td><td>26 visible fields on the primary form; only 8 were relevant in 90% of cases</td><td><span class="severity sev-2">High</span></td></tr>
+      <tr><td>Recognition Over Recall</td><td>Emergency type was a plain text dropdown with no icons; agents had to memorise codes</td><td><span class="severity sev-1">Medium</span></td></tr>
+    </tbody>
+  </table>
 
-    <!-- Footer -->
-    <footer class="py-10 bg-ice-900 text-ice-400 text-xs">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <span class="text-white font-bold">Karthick Balakrishnan Portfolio</span> • Emergency Response UX
-            </div>
-            <div class="flex space-x-4">
-                <a href="index.html" class="hover:text-white transition">Portfolio Home</a>
-                <span>•</span>
-                <a href="#prototype" class="hover:text-white transition">Interactive Workstation</a>
-            </div>
-        </div>
-    </footer>
+  <div class="h3">Information Architecture — Closed Card Sorting (17 Real Emergency Types)</div>
+  <p>Using the production emergency taxonomy, 8 experienced agents sorted 17 types into natural mental clusters.</p>
 
-    <!-- Interactive Script -->
-    <script>
-        const scenarios = {
-            b2c: {
-                name: "David Miller (+44 7700 900821)",
-                location: "142 Oxford Road, Manchester (M1 2WD)",
-                badge: "Priority 1: Gas Escape",
-                badgeClass: "bg-red-100 text-red-700",
-                script: `<p class="font-semibold text-cadent-blue">"Please advise caller immediately:"</p>
-                         <ul class="list-disc pl-4 space-y-1 text-ice-800">
-                             <li>Extinguish all naked flames and open doors/windows.</li>
-                             <li>Do NOT operate electrical light switches.</li>
-                             <li>Evacuate property if smell is intense.</li>
-                         </ul>`,
-                pipe: "Low Pressure Polyethylene (90mm)",
-                psr: "Oxygen Dependency (Hearing Impaired)",
-                pin: "Flat 4B (Incident Site)"
-            },
-            b2b: {
-                name: "Manchester Bakery Ltd (Commercial)",
-                location: "88 High Street, Manchester (M1 4BT)",
-                badge: "Priority 2: Highway Leak",
-                badgeClass: "bg-amber-100 text-amber-800",
-                script: `<p class="font-semibold text-cadent-amber">"Highway Leak Protocol:"</p>
-                         <ul class="list-disc pl-4 space-y-1 text-ice-800">
-                             <li>Keep pedestrians clear of excavation zone.</li>
-                             <li>Verify if heavy machinery is operating nearby.</li>
-                             <li>Dispatch Tier-1 Emergency Response Team.</li>
-                         </ul>`,
-                pipe: "Medium Pressure Steel (180mm Main)",
-                psr: "Commercial High Density Zone",
-                pin: "High St Excavation Site"
-            }
-        };
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon">🚨</span>
+      <h4>Priority 1 · Life-Threat</h4>
+      <p><strong>Fire · Explosion · Suspected CO · External Gas Escape · Internal Gas Escape</strong><br>Immediate dispatch &amp; mandatory evacuation script.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <h4>Priority 2 · Supply &amp; Pressure</h4>
+      <p><strong>No Gas · Pressure Problems · ECV Problem · Purge &amp; Relight · Concern for Safety</strong><br>Urgent engineer visit &amp; PSR check.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔧</span>
+      <h4>Priority 3 · Appliance &amp; Infra</h4>
+      <p><strong>Appliance Stuck On · Animal/Object Behind · Pipework Enquiry · Site Works</strong><br>Scheduled engineer response.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <h4>Priority 4 · Administrative</h4>
+      <p><strong>Meter Enquiries · Reportable Issues · Theft of Gas</strong><br>Back-office routing.</p>
+    </div>
+  </div>
 
-        function loadScenario(type) {
-            const data = scenarios[type];
-            document.getElementById('sim-caller-name').innerText = data.name;
-            document.getElementById('sim-location-text').innerText = data.location;
-            document.getElementById('sim-badge').innerText = data.badge;
-            document.getElementById('sim-badge').className = `px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${data.badgeClass}`;
-            document.getElementById('sim-script-box').innerHTML = data.script;
-            document.getElementById('sim-pipe-type').innerText = data.pipe;
-            document.getElementById('sim-psr').innerText = data.psr;
-            document.getElementById('sim-map-pin').querySelector('div').innerText = data.pin;
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual C1: Card Sorting Dendrogram</span></div>
+    <div class="img-placeholder">[ Visual C1: Card Sorting Dendrogram — 17 Real Emergency Types ]</div>
+    <div class="img-prompt-body">A UX card sorting dendrogram on a dark charcoal background. A horizontal tree diagram. 17 labelled rectangular cards on the right side (exact names): "Internal Gas Escape", "External Gas Escape", "Suspected Carbon Monoxide", "Fire", "Explosion", "No Gas", "Pressure Problems", "ECV Problem", "Purge & Relight", "Concern for Safety", "Appliance Stuck On", "Animal/Object Behind Appliance", "Pipework Enquiry", "Site Works", "Meter Enquiries", "Reportable Issues", "Theft of Gas". Cards branch left through a dendrogram tree, merging into 4 final cluster groupings labelled with bold labels: "LIFE THREAT · P1" (vivid red branch — first 5 cards), "SUPPLY & PRESSURE · P2" (amber branch — next 5), "APPLIANCE & INFRASTRUCTURE · P3" (blue branch — next 4), "ADMINISTRATIVE · P4" (grey branch — last 3). Each branch fork shows an agreement percentage (e.g., 94%, 87%). Clean, technical, research-quality. White text on dark. Monospace font annotations. Priority severity badges on each cluster label.</div>
+  </div>
 
-            document.getElementById('btn-b2c').className = type === 'b2c' ? "px-3 py-1.5 rounded bg-cadent-blue text-white text-xs font-bold transition" : "px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition";
-            document.getElementById('btn-b2b').className = type === 'b2b' ? "px-3 py-1.5 rounded bg-cadent-orange text-white text-xs font-bold transition" : "px-3 py-1.5 rounded bg-ice-800 text-ice-300 text-xs font-bold transition";
-        }
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual C2: Information Architecture Sitemap</span></div>
+    <div class="img-placeholder">[ Visual C2: Information Architecture Sitemap — Real Emergency CRM ]</div>
+    <div class="img-prompt-body">A full Information Architecture sitemap on a near-black background. Root node at top: "Emergency Response CRM." Branches into 4 primary modules: "NEW CALL FLOW" (red), "CRM DASHBOARD" (amber), "FIELD DISPATCH" (teal), "ADMIN & REPORTING" (grey). Under "NEW CALL FLOW": Screen 1 (Location & Identity), Screen 2 (Emergency Diagnosis — 4 clusters shown as sub-nodes: Life Threat, Supply, Appliance, Admin), Screen 3 (Safety Advice & Dispatch). Under Screen 2, each cluster sub-node shows its 4–5 emergency types as leaf nodes. Under "CRM DASHBOARD": Active Tickets, Queue View, Escalation Log, PSR Flags. Under "FIELD DISPATCH": Engineer Assignment, Safety HUD, GPS Navigation, Job Complete. Under "ADMIN": Reportable Issues, Theft Log, Meter Records, Audit Trail. Nodes colour-coded by module. Dotted-border nodes = conditional. Lightning bolt nodes = API-connected (GDN API on dispatch node). Dark mode. Clean enterprise IA style.</div>
+  </div>
+</div></section>
 
-        // Custom Cursor Logic
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            if (cursor) {
-                cursor.style.left = e.clientX - 6 + 'px';
-                cursor.style.top = e.clientY - 6 + 'px';
-            }
-        });
-    </script>
+<!-- PAGE 04 — PHASE 3: PROTOTYPE -->
+<section class="page" id="prototype"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>03 · Prototype Phase</div>
+  <div class="h2">Designing the <em>External Brain</em></div>
+  <p class="lead">The interface functions as a cognitive prosthetic that actively guides the agent through the call.</p>
+
+  <div class="h3">The Side-by-Side Prompt Layout</div>
+  <div class="two-col">
+    <div class="insight">
+      <strong>Left Column — Reading Zone</strong>
+      <p>Dynamic call script that updates based on the emergency type. Reduces working memory by offloading conversational scaffolding.</p>
+    </div>
+    <div class="insight">
+      <strong>Right Column — Input Zone</strong>
+      <p>Form fields aligned horizontally with script prompts, eliminating vertical eye-travel and diagonal saccades.</p>
+    </div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual D: Side-by-Side CRM Wireframe</span></div>
+    <div class="img-placeholder">[ Visual D: Side-by-Side CRM Wireframe ]</div>
+    <div class="img-prompt-body">A clean, high-fidelity wireframe mockup of a web CRM dashboard on a dark charcoal background. Left half shows a "Live Script" panel with numbered conversational prompts in clean sans-serif text, each line slightly highlighted in sequence. Right half shows a dynamic form with matching input fields horizontally aligned to each script line, connected by subtle dotted horizontal guide lines. Top bar shows: emergency type icons (flame, skull, lightning bolt), caller name, address auto-populated, progress indicator. Colour palette: deep grey, white text, urgent red accents for hazard fields. Modern, clean, slightly futuristic UI design style.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual D2: Agent User Flow</span></div>
+    <div class="img-placeholder">[ Visual D2: User Flow — Agent (Call Handling, Redesigned) ]</div>
+    <div class="img-prompt-body">A detailed UX user flow diagram on a dark background showing the complete agent journey through the redesigned CRM. Flowchart uses standard UX notation: rounded rectangles for screens/pages, diamonds for decision points, parallelograms for inputs/outputs, ovals for start/end. Flow: START → "Inbound Call Received" → "Dashboard Auto-flags Queue" → "Agent Accepts Call" → [Screen: Emergency Type Selector with icons] → Decision diamond: "Type Known?" → YES path → "Conditional Form Loads (8 fields)" → "Address Auto-Lookup" → Decision: "Address Found?" → YES → "PSR Check Auto-runs" → "Script Panel Updates" → "Agent Completes Form" → "Dispatch Button Activates" → "Engineer Assigned" → "Progress Indicator Updates" → END. NO paths show graceful fallback screens. Happy path highlighted in glowing teal. Error/exception paths in amber. Decision diamonds in white. Professional flowchart, monospace labels, dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual D3: Field Engineer User Flow</span></div>
+    <div class="img-placeholder">[ Visual D3: User Flow — Field Engineer (Mobile App) ]</div>
+    <div class="img-prompt-body">A mobile-first user flow diagram on a dark background, portrait-oriented to reflect the mobile context. Flow shows Field Engineer's journey: START (notification ping) → "Push Notification Received" → "Engineer Opens App" → [Screen: Safety HUD loads — full-width amber hazard banner, address, emergency type icon] → "Engineer Reviews Hazards" → Decision: "Accept Job?" → YES → "One-Tap GPS Navigation Launches" → "En Route — Status Updates to Agent" → "Arrival Confirmed" → "Job Details Expandable View" → "Mark Complete" → "Back-office sync" → END. Screens shown as small phone-sized wireframe thumbnails beside each flow step, connected by arrows. Screen thumbnails are dark mode UI. Teal for happy path. Red for hazard-related screens. Clean, minimal UX flow style.</div>
+  </div>
+</div></section>
+
+<!-- PAGE 05 — 3-SCREEN ARCHITECTURE -->
+<section class="page" id="screens"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>03 · System Architecture</div>
+  <div class="h2">The 3-Screen <em>Progressive Disclosure</em> Architecture</div>
+  <p class="lead">Transforming a flat 26-field page into three progressive disclosure screens, ensuring agents never hold more than one conceptual task in working memory.</p>
+
+  <!-- SCREEN 1 -->
+  <div class="method-card" style="margin-bottom: 24px;">
+    <div class="mlabel">SCREEN 01 · ~60 SECONDS</div>
+    <h3 style="margin-top:0;">Location &amp; Caller Identity</h3>
+    <p>Mirrors the opening of an emergency call. Auto-populates address, phone, account details, and PSR flags from CLI inbound data.</p>
+    <div class="tag-row">
+      <span class="tag">Postcode / Pin</span><span class="tag">Street &amp; Door</span><span class="tag">Account Holder Checkbox</span><span class="tag">PSR Flag</span>
+    </div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual P1: Screen 1 Wireframe</span></div>
+    <div class="img-placeholder">[ Visual P1: Screen 1 — Location &amp; Caller Identity Wireframe ]</div>
+    <div class="img-prompt-body">A high-fidelity dark-mode CRM screen wireframe. Top: horizontal progress bar showing "Step 1 of 3 · Location & Caller Identity" with 1/3 filled in red. Header bar shows: inbound call timer (1:24 counting up), caller phone number, agent name. Main content: Left panel (60% width) is the "LIVE SCRIPT" panel showing the agent's opening script in large 18px text: "Good [morning/afternoon]. You've reached the Emergency Gas Line. I can see you're calling from [auto-populated street]. Is that the correct address?" Right panel (40% width) shows a clean form: postcode field (pre-filled, highlighted amber — "auto-detected"), street field (pre-filled), door number field (pre-filled), account holder name (pre-filled), phone (pre-filled). Below these, a clearly visible CHECKBOX: "Is the person at the property?" with YES (default) / NO toggle. When NO is selected, two new fields animate in: "Reporter Name" and "Reporter Phone." A PSR badge in top-right of the form: red star + "Priority Customer." Dark mode, clean, 18px+ fonts, high contrast.</div>
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div class="method-card" style="margin-bottom: 24px;">
+    <div class="mlabel">SCREEN 02 · ~90–180 SECONDS</div>
+    <h3 style="margin-top:0;">Issue Diagnosis — Guided Branching</h3>
+    <p>Replaces flat dropdowns with guided branching logic across four priority clusters (Life Threat, Supply, Appliance, Admin).</p>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual P2: Screen 2 Wireframe</span></div>
+    <div class="img-placeholder">[ Visual P2: Screen 2 — Issue Diagnosis Branching Wireframe ]</div>
+    <div class="img-prompt-body">A high-fidelity dark-mode CRM screen wireframe for Step 2 of 3. Progress bar at top shows "Step 2 of 3 · Issue Diagnosis" with 2/3 filled in amber. Call timer: 1:47. Two-stage layout shown side by side as interaction states. STATE A (first view): The screen shows 4 large, icon-anchored cluster buttons arranged in a 2x2 grid taking up the main content area: "🚨 LIFE THREAT" (red, large), "⚠️ SUPPLY & PRESSURE" (amber), "🔧 APPLIANCE & INFRA" (blue), "📋 ADMINISTRATIVE" (grey). Each cluster button shows the number of types it contains (e.g., "5 emergency types"). Left panel shows script: "What best describes the emergency?" STATE B (after "LIFE THREAT" selected): The 4 clusters collapse. A horizontal row of 5 icon+label buttons appears: "Internal Gas Escape", "External Gas Escape", "Suspected CO" (skull icon), "Fire" (flame icon), "Explosion" (bang icon). Below the selected type (e.g., Suspected CO), a single large question card appears: "Is a CO alarm currently sounding?" with YES (red button) / NO (ghost button). A breadcrumb at top of question area: "Life Threat → Suspected Carbon Monoxide." Bottom of screen: back button + "Q1 of max 5." Clean, annotated, enterprise UX wireframe quality. Dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual P2b: Decision Tree Branch Map</span></div>
+    <div class="img-placeholder">[ Visual P2b: Issue Diagnosis Decision Tree — Full Branch Map ]</div>
+    <div class="img-prompt-body">A wide-format decision tree / branching diagram on a dark background. Root node at left: "WHAT IS THE EMERGENCY?" branching into 4 primary paths: GAS LEAK (red branch), CO / CARBON MONOXIDE (orange branch), ELECTRICAL (yellow branch), WELFARE / VULNERABLE (teal branch). The GAS LEAK branch is shown fully expanded as the primary example, showing 5 levels of questions as rectangular nodes: Q1 Smell gas? → Q2 Inside/Outside? → Q3 Which room? → Q4 Anyone unwell? → Q5 Evacuation needed? → Terminal node: "Priority Classification + Safety Script Triggered." Other branches shown with 2 levels visible then fading to dots ("..."). Each terminal node shows a coloured severity badge: RED (Priority 1 — Immediate), AMBER (Priority 2 — Urgent), GREEN (Priority 3 — Scheduled). Node connections are clean right-to-left tree lines. Elegant, technical, UX portfolio quality. Dark mode.</div>
+  </div>
+
+  <!-- SCREEN 3 -->
+  <div class="method-card" style="margin-bottom: 24px;">
+    <div class="mlabel">SCREEN 03 · ~60–90 SECONDS</div>
+    <h3 style="margin-top:0;">Safety Advice, Confirmation &amp; Dispatch</h3>
+    <p>Delivers scripted safety advice, confirms classification, captures pet/hazard notes, and triggers GDN API dispatch.</p>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual P3: Screen 3 Wireframe</span></div>
+    <div class="img-placeholder">[ Visual P3: Screen 3 — Safety Advice, Confirm &amp; Dispatch Wireframe ]</div>
+    <div class="img-prompt-body">A high-fidelity dark-mode CRM screen wireframe for Step 3 of 3. Progress bar at top is now fully filled in green: "Step 3 of 3 · Safety Advice &amp; Dispatch." Call timer showing 3:12. Two-column layout: LEFT COLUMN (55% width) labelled "SAFETY SCRIPT — Read Aloud" with a subtle green left border. Script text in large, clear 18px font with each instruction on its own numbered line: 1. "Open all windows and doors now." 2. "Do not use any electrical switches." 3. "Leave the property if smell is strong." 4. "Do not re-enter until engineer clears site." Each line has a small checkbox — as agent reads it aloud, they check it off, turning green. RIGHT COLUMN (45% width): Issue Summary card: "Gas Leak · Internal · Kitchen · Priority 1" in a red bordered card. Below it: ETA field: "Engineer ETA: 45–60 minutes" (pre-calculated). Pets checkbox (large, prominent): "Pets on premises?" YES/NO toggle — if YES, a text field expands: "Animal type + location." Final item: a large green "CALLER ACKNOWLEDGED" confirmation button. At the bottom: a massive red "SUBMIT &amp; DISPATCH" button spanning full width of the right column, with a pulsing glow effect. Clean, high-contrast, finalisation screen aesthetic.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual D4: Form State Transitions</span></div>
+    <div class="img-placeholder">[ Visual D4: Prototype Interaction States — Form State Transitions ]</div>
+    <div class="img-prompt-body">A UI state diagram showing 5 screen states of the CRM form panel, arranged left to right in sequence, each state shown as a small high-fidelity dark-mode UI panel connected by labelled transition arrows. State 1: "DEFAULT — Empty form, 26 fields visible, greyed out." State 2: "TYPE SELECTED — Emergency type 'Gas Leak' chosen, form collapses to 8 fields, conditional fields appear with a subtle fade-in animation indicated by dashed outlines." State 3: "ADDRESS RESOLVING — Auto-lookup spinner visible, address field highlighted amber." State 4: "PSR FLAGGED — Red banner appears at top: 'Priority Customer Detected', 3 additional welfare fields expand." State 5: "READY TO DISPATCH — All fields complete, Dispatch button pulses in red, progress indicator at 5/5." Arrows between states are labelled with the trigger (e.g., "User selects type" → "Conditional engine fires"). Clean, annotation-heavy, technical prototype documentation style. Dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual E: Decision Tree Diagram</span></div>
+    <div class="img-placeholder">[ Visual E: Conditional Logic Engine — Full 17-Type Decision Tree ]</div>
+    <div class="img-prompt-body">A wide-format decision tree diagram on a near-black background. Root node on the left: "WHAT IS THE EMERGENCY?" branching into 4 priority cluster nodes: "🚨 LIFE THREAT · P1" (red), "⚠️ SUPPLY & PRESSURE · P2" (amber), "🔧 APPLIANCE & INFRA · P3" (blue), "📋 ADMINISTRATIVE · P4" (grey). Each cluster node branches into its specific emergency types as medium nodes: P1 cluster shows: Internal Gas Escape, External Gas Escape, Suspected Carbon Monoxide, Fire, Explosion. P2 cluster shows: No Gas, Pressure Problems, ECV Problem, Purge & Relight, Concern for Safety. P3 cluster shows: Appliance Stuck On, Animal/Object Behind Appliance, Pipework Enquiry, Site Works. P4 cluster shows: Meter Enquiries, Reportable Issues, Theft of Gas. Each emergency type node then branches into 3–6 question diamonds (decision points), leading to terminal nodes coloured by outcome: RED = Immediate 999 co-dispatch, AMBER = Urgent engineer dispatch, TEAL = Scheduled engineer, GREY = Back office routing. A special "ESCALATION" arrow is shown from P3/P4 branches back up to P1 if gas smell is detected mid-branch. Labels in clean monospace font. Dark mode. Technical, enterprise-quality diagram.</div>
+  </div>
+</div></section>
+
+<!-- PAGE 06 — PHASE 4: TEST -->
+<section class="page" id="test"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>04 · Validation Phase</div>
+  <div class="h2">Proving It Works Under <em>Pressure</em></div>
+  <p class="lead">Simulated stress testing with high-distress emergency call audio playback.</p>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="mlabel">TIME ON TASK</div>
+      <div class="mstat">~52s</div>
+      <p>Down from ~90 seconds (42% reduction maintained under stress audio).</p>
+    </div>
+    <div class="method-card">
+      <div class="mlabel">ERROR RATE</div>
+      <div class="mstat">0.7</div>
+      <p>Form errors dropped from 3.2 per session to 0.7.</p>
+    </div>
+    <div class="method-card">
+      <div class="mlabel">POST-DESIGN NASA-TLX</div>
+      <div class="mstat">51</div>
+      <p>Mental Demand fell from 84/100 to 51/100; Frustration fell to 29.</p>
+    </div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual F: NASA-TLX Radar Chart</span></div>
+    <div class="img-placeholder">[ Visual F: Before/After NASA-TLX Radar Chart ]</div>
+    <div class="img-prompt-body">A radar/spider chart infographic on a deep dark background comparing two states: "Legacy System" (filled in semi-transparent red) and "Redesigned System" (filled in semi-transparent teal). Six axes: Mental Demand, Frustration, Temporal Pressure, Effort, Physical Demand, Performance. Legacy system fills nearly the entire hexagon; redesigned system is significantly smaller in all dimensions except Performance which is larger. Clean, minimal data visualisation with elegant typography. Dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual F2: To-Be Journey Map</span></div>
+    <div class="img-placeholder">[ Visual F2: User Journey Map — Agent (To-Be, Post-Redesign) ]</div>
+    <div class="img-prompt-body">A horizontal UX Journey Map on a dark background showing the REDESIGNED agent experience. Same 6 stage columns: CALL RECEIVED → IDENTIFY EMERGENCY → CAPTURE ADDRESS → CLASSIFY TYPE → CREATE TICKET → DISPATCH. 4 rows: "ACTIONS" (streamlined, fewer steps), "THOUGHTS" (calm quotes: "The script is guiding me", "Address appeared automatically"), "EMOTIONS" (smooth arc staying green/yellow throughout, small dip at stage 3 that quickly recovers — annotated "Auto-lookup resolves in 1.2s"), "DESIGN SOLUTIONS" (teal callout badges: "Icon selector", "Conditional form", "Fuzzy address match", "Live script", "Progress indicator", "One-click dispatch"). A faint ghost of the original As-Is red emotion line shown in background for contrast. Professional, enterprise UX portfolio quality. Dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual G: Tunnel Vision Simulation</span></div>
+    <div class="img-placeholder">[ Visual G: Tunnel Vision UI Simulation ]</div>
+    <div class="img-prompt-body">A split-screen illustration: Left side shows a CRM interface under a "tunnel vision" vignette overlay — dark blurred edges, a narrow oval of visible clarity in the centre, revealing the critical dispatch button and hazard flag. Right side shows the same interface in normal view, with the same central elements clearly accessible. Visual metaphor for stress-induced perceptual narrowing. Moodily lit, slightly surreal, design-portfolio quality. Labels: "Under Stress" and "Normal Conditions."</div>
+  </div>
+</div></section>
+
+<!-- PAGE 07 — PHASE 5: DELIVERY -->
+<section class="page" id="delivery"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>05 · Delivery Phase</div>
+  <div class="h2">From Research to <em>Reality</em></div>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="mlabel">DELIVERABLE 01</div>
+      <h3>Agent CRM</h3>
+      <p>Auto-Address Lookup, 5-stage tracker, side-by-side script, and conditional form engine.</p>
+    </div>
+    <div class="method-card">
+      <div class="mlabel">DELIVERABLE 02</div>
+      <h3>Safety HUD Mobile App</h3>
+      <p>3-second glanceable hazard summary, PSR flags, and one-tap GPS navigation.</p>
+    </div>
+    <div class="method-card">
+      <div class="mlabel">DELIVERABLE 03</div>
+      <h3>Technical Core</h3>
+      <p>GDN API routing, rule-tree architecture, real-time sync, and WCAG 2.1 AA compliance.</p>
+    </div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual H: Mobile Safety HUD</span></div>
+    <div class="img-placeholder">[ Visual H: Mobile Safety HUD Mockup ]</div>
+    <div class="img-prompt-body">A photo-realistic mobile app mockup on a dark smartphone. The screen shows a Safety HUD in dark mode. At the very top, a wide amber/yellow banner reads "⚠ HAZARD: Large dog in kitchen." Below it, a second red banner: "🔴 PSR CUSTOMER — Hearing Impairment." Then: address, emergency type icon (flame), and a large prominent "NAVIGATE" button in bright blue. Bottom: engineer name, ETA, ticket ID. The design is bold, legible from arm's length, and prioritises safety information above all else. No decorative gradients — utilitarian, high contrast, glanceable.</div>
+  </div>
+
+  <ul class="checklist">
+    <li>Auto-Address Lookup with fuzzy-match reduces typing by ~60%</li>
+    <li>5-stage Progress Indicator from ticket open to engineer dispatch</li>
+    <li>Icon-anchored Visual Anchors for all emergency types</li>
+    <li>Safety HUD surfacing hazards in amber/red as primary element</li>
+    <li>One-Tap Navigation from ticket to GPS</li>
+    <li>GDN API Integration with NGN/SGN routing</li>
+    <li>Conditional Logic Engine filtering fields by emergency type</li>
+    <li>WCAG 2.1 AA — 7:1 contrast, min 18px for active fields</li>
+  </ul>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual H2: Component Library</span></div>
+    <div class="img-placeholder">[ Visual H2: Design System — Component Library Spread ]</div>
+    <div class="img-prompt-body">A design system component library overview spread on a dark charcoal background. Organised into clearly labelled sections with thin white divider lines. Sections include: "EMERGENCY TYPE ICONS" (15 icons in a grid: flame, skull/CO, lightning bolt, water drop, house crack, elderly figure etc. — each icon in a coloured circular badge: red for fire, yellow for electrical, blue for flood), "FORM COMPONENTS" (input field variants: default, active/amber-highlighted, error/red, disabled; and a conditional field group shown expanding), "PROGRESS INDICATOR" (5-step horizontal tracker showing stages: Open → Type → Address → Ticket → Dispatched — with active step in red), "HAZARD BADGES" (amber and red label variants for PSR, Animal, Access, Weapon flags), "BUTTONS" (primary red Dispatch button, secondary ghost button, icon-only navigation button), "TYPOGRAPHY SCALE" (heading hierarchy from H1 to body, all high-contrast white on dark). Clean, professional Figma-style component documentation. Monospace labels. Grid-aligned. Dark mode.</div>
+  </div>
+
+  <div class="img-prompt">
+    <div class="img-prompt-header"><span>🎨 Image Prompt — Visual H3: Data Flow Architecture</span></div>
+    <div class="img-placeholder">[ Visual H3: Data Flow Diagram — End-to-End System Architecture ]</div>
+    <div class="img-prompt-body">A system architecture / data flow diagram on a near-black background showing how data moves across the full Emergency Response CRM ecosystem. Three horizontal swim lanes labelled: "AGENT (Web CRM)", "BACK-END / API LAYER", "ENGINEER (Mobile App)". In the Agent lane: boxes for "Emergency Type Selector" → "Conditional Form" → "Address Lookup (GDN API)" → "Ticket Created". In the API layer: boxes for "Conditional Logic Engine", "GDN API / NGN / SGN Router", "PSR Database", "Jurisdictional Intelligence", "Audit Log". In the Engineer lane: boxes for "Push Notification" → "Safety HUD" → "GPS Navigation" → "Job Complete". Arrows between lanes show data flow direction. Arrows crossing swim lanes are labelled with the data payload (e.g., "Hazard metadata", "Ticket ID", "GPS coordinates"). Accent: red for hazard data flows, teal for routing data, white for standard data. Technical, enterprise-quality system diagram. Dark mode.</div>
+  </div>
+</div></section>
+
+<!-- PAGE 08 — OUTCOMES -->
+<section class="page" id="outcomes"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span>06 · Impact &amp; Metrics</div>
+  <div class="h2">The Numbers That <em>Matter Most</em></div>
+
+  <div class="method-grid">
+    <div class="method-card"><div class="mlabel">TICKET SPEED</div><div class="mstat">↓ 42%</div><p>Creation Time Reduction</p></div>
+    <div class="method-card"><div class="mlabel">ERROR RATE</div><div class="mstat">↓ 78%</div><p>Form Field Errors</p></div>
+    <div class="method-card"><div class="mlabel">NASA-TLX</div><div class="mstat">↓ 63%</div><p>Frustration Reduction</p></div>
+    <div class="method-card"><div class="mlabel">DATA LOSS</div><div class="mstat">0</div><p>Handover Failures</p></div>
+    <div class="method-card"><div class="mlabel">SATISFACTION</div><div class="mstat">94%</div><p>Agent CSAT Score</p></div>
+    <div class="method-card"><div class="mlabel">ACCESSIBILITY</div><div class="mstat">7:1</div><p>WCAG Contrast AAA</p></div>
+  </div>
+
+  <blockquote>
+    "I no longer feel like I'm fighting the screen while managing the call. The script tells me what to say, the form fills in as I say it. I can actually focus on the person on the line."
+    <cite>— Senior Call-Centre Agent, post-deployment feedback</cite>
+  </blockquote>
+
+  <div class="h3">The Psychological Principle That Guided Everything</div>
+  <p>This project was anchored in a single insight: <strong>cognitive resources saved from the interface are cognitive resources available for the human.</strong> Every interaction cost removed was a deposit back into the agent's mental account — spent on empathy, precision, and life-saving clarity.</p>
+
+  <div class="footer-mark">Cadent Gas · Emergency Response CRM Case Study</div>
+</div></section>
+
+<script>
+  const pages = document.querySelectorAll('section.page');
+  const label = document.getElementById('pagenum');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        const idx = Array.from(pages).indexOf(e.target) + 1;
+        label.textContent = String(idx).padStart(2,'0') + ' / ' + String(pages.length).padStart(2,'0');
+      }
+    });
+  }, { threshold: 0.3 });
+  pages.forEach(p => io.observe(p));
+</script>
+
 </body>
 </html>
