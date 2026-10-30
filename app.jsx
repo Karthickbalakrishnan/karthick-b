@@ -12,7 +12,7 @@ const PERSONAL_INFO = {
   name: "Karthick Balakrishnan",
   eyebrow: "HCI Researcher • UX Design Technical Lead",
   location: "Chennai, India",
-  summary: "15+ years of UX/product design experience across enterprise systems, fintech, manufacturing, energy, and the public sector. Combining human-centered design with AI-powered UX, LLM-enhanced workflows, and ML-driven experience optimization to improve clarity, trust, and decision-making in complex digital environments.",
+  summary: "15+ years of UX/product design experience across enterprise systems, fintech, manufacturing, energy, and the public sector. Combining human-centered design with AI-powered UX, LLM-enha[...]
   cvLink: "Karthick-UX Designer_HCL_2026.pdf",
   email: "b.karthick@live.com",
   linkedIn: "https://www.linkedin.com",
@@ -100,7 +100,7 @@ const RESEARCH_PAPERS = [
     venue: "ACM India HCI 2026",
     title: "Dignity-First Design in High-Stakes Financial UX: Mitigating Cognitive Tunneling and Funnel Abandonment in Digital Mortgage Systems",
     author: "Karthick Balakrishnan • 2026",
-    abstract: "Explores how trust, clarity, and emotional regulation can be designed into high-stakes financial products without sacrificing conversion or operational efficiency. Evaluated via NASA-TLX cognitive workload metrics.",
+    abstract: "Explores how trust, clarity, and emotional regulation can be designed into high-stakes financial products without sacrificing conversion or operational efficiency. Evaluated via NA[...]
     badge: "Case Study Published",
     note: "PenFed Credit Union Project"
   },
@@ -225,7 +225,7 @@ export default function PortfolioApp() {
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`}
-                className="text-xs font-semibold text-[#4a6382] uppercase tracking-wider hover:text-[#0052cc] relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-500 hover:after:w-full after:transition-all"
+                className="text-xs font-semibold text-[#4a6382] uppercase tracking-wider hover:text-[#0052cc] relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0052cc] after:transition-all hover:after:w-full"
               >
                 {item}
               </a>
@@ -245,7 +245,7 @@ export default function PortfolioApp() {
       <header className="max-w-6xl mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-8 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-white/90 shadow-sm text-xs font-mono font-semibold text-[#0052cc] uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-white/90 shadow-sm text-xs font-mono font-semibold text-[#0052cc] uppercase tracking-[0.16em]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               {PERSONAL_INFO.eyebrow}
             </div>
@@ -294,7 +294,7 @@ export default function PortfolioApp() {
             <div className="bg-white/90 border border-blue-100 rounded-3xl p-6 shadow-xl w-full max-w-xs text-center relative overflow-hidden backdrop-blur-sm">
               <div className="relative w-48 h-48 mx-auto my-4 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-200 via-sky-100 to-teal-100 border border-blue-300/40 animate-spin-slow" />
-                <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#eaf4ff] to-white border border-blue-200 flex items-center justify-center font-serif italic text-5xl text-[#0052cc] font-bold shadow-inner">
+                <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#eaf4ff] to-white border border-blue-200 flex items-center justify-center font-serif italic text-5xl text-[#0052cc] shadow-lg">
                   KB
                 </div>
               </div>
@@ -352,7 +352,7 @@ export default function PortfolioApp() {
                     {project.hasFullPage ? (
                       <button 
                         onClick={() => navigateTo('penfed-case-study')}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0066ff] text-white font-semibold text-xs hover:bg-[#004080] transition-colors shadow-sm hover:shadow group"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0066ff] text-white font-semibold text-xs hover:bg-[#004080] transition-colors shadow-sm hover:shadow-md"
                       >
                         <span>View Project</span>
                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -537,10 +537,304 @@ function PenFedCaseStudyPage({ onBack }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f4f8fc] text-[#0f253e] font-sans antialiased selection:bg-blue-200 selection:text-blue-900">
-      
+    <div className="penfed-case-study min-h-screen bg-[#f4f8fc] text-[#0f253e] font-sans antialiased selection:bg-blue-200 selection:text-blue-900">
+      <style>{`
+        .penfed-case-study {
+          --bg: #f4f8fc;
+          --panel: rgba(255,255,255,0.9);
+          --panel-strong: #ffffff;
+          --panel-soft: #edf6ff;
+          --line: rgba(17, 88, 200, 0.12);
+          --line-strong: rgba(17, 88, 200, 0.2);
+          --text: #0f253e;
+          --text-soft: #3b526d;
+          --text-muted: #5a738e;
+          --accent: #0052cc;
+          --accent-strong: #004080;
+          --blue: #0066ff;
+          --sky: #7fc6ff;
+          --mint: #6dd2c0;
+          --shadow: 0 18px 40px rgba(16, 71, 145, 0.08);
+          --radius: 24px;
+        }
+
+        .penfed-case-study * { box-sizing: border-box; }
+        .penfed-case-study .case-nav {
+          background: rgba(255,255,255,0.95);
+          border-bottom: 1px solid var(--line);
+          box-shadow: 0 10px 25px rgba(17, 88, 200, 0.04);
+          backdrop-filter: blur(14px);
+        }
+        .penfed-case-study .case-nav-item {
+          font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          white-space: nowrap;
+          padding-bottom: 10px;
+          border-bottom: 2px solid transparent;
+          transition: all 0.2s ease;
+        }
+        .penfed-case-study .case-nav-item:hover,
+        .penfed-case-study .case-nav-item.active {
+          color: var(--accent);
+          border-bottom-color: var(--accent);
+        }
+        .penfed-case-study .case-hero {
+          background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 52%, #f4f8fc 100%);
+          border-bottom: 1px solid var(--line);
+        }
+        .penfed-case-study .case-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 9px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--line);
+          background: rgba(255,255,255,0.8);
+          color: var(--accent);
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          box-shadow: var(--shadow);
+        }
+        .penfed-case-study .case-title {
+          font-family: 'Fraunces', Georgia, serif;
+          font-style: italic;
+          font-size: clamp(2.75rem, 5vw, 5rem);
+          line-height: 0.96;
+          letter-spacing: -0.05em;
+          font-weight: 700;
+          color: var(--text);
+        }
+        .penfed-case-study .case-title em {
+          color: var(--blue);
+          font-style: normal;
+        }
+        .penfed-case-study .case-lead {
+          color: var(--text-soft);
+          font-size: 1.08rem;
+          line-height: 1.8;
+          max-width: 760px;
+        }
+        .penfed-case-study .case-meta-grid {
+          border-top: 1px solid var(--line);
+          margin-top: 30px;
+          padding-top: 26px;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0,1fr));
+          gap: 20px;
+        }
+        .penfed-case-study .case-meta-item {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+        }
+        .penfed-case-study .case-meta-item strong {
+          display: block;
+          margin-top: 4px;
+          color: var(--text);
+          font-size: 12px;
+          letter-spacing: 0;
+          text-transform: none;
+          font-family: 'Inter', sans-serif;
+        }
+        .penfed-case-study .case-card {
+          background: rgba(255,255,255,0.9);
+          border: 1px solid var(--line);
+          border-radius: var(--radius);
+          box-shadow: var(--shadow);
+        }
+        .penfed-case-study .case-section {
+          scroll-margin-top: 120px;
+          margin-top: 48px;
+        }
+        .penfed-case-study .case-section-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 12px;
+          margin-bottom: 22px;
+        }
+        .penfed-case-study .case-section-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--accent);
+        }
+        .penfed-case-study .case-section-title {
+          font-family: 'Fraunces', Georgia, serif;
+          font-style: italic;
+          font-size: clamp(1.8rem, 3vw, 2.6rem);
+          letter-spacing: -0.04em;
+          color: var(--text);
+        }
+        .penfed-case-study .case-body {
+          color: var(--text-soft);
+          font-size: 1rem;
+          line-height: 1.82;
+        }
+        .penfed-case-study .case-funnel {
+          background: rgba(255,255,255,0.9);
+          border: 1px solid var(--line);
+          border-radius: 20px;
+          padding: 24px;
+          box-shadow: var(--shadow);
+          margin-top: 18px;
+        }
+        .penfed-case-study .case-funnel-row {
+          margin-bottom: 18px;
+        }
+        .penfed-case-study .case-funnel-label {
+          display: flex;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 8px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          color: var(--text-soft);
+        }
+        .penfed-case-study .case-funnel-bar {
+          height: 12px;
+          border-radius: 999px;
+          background: rgba(17, 88, 200, 0.06);
+          overflow: hidden;
+        }
+        .penfed-case-study .case-funnel-fill {
+          height: 100%;
+          border-radius: inherit;
+          background: linear-gradient(90deg, #0066ff, #7fc6ff);
+        }
+        .penfed-case-study .case-funnel-fill.red {
+          background: linear-gradient(90deg, #f76262, #ff8f6d);
+        }
+        .penfed-case-study .case-grid-2 {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0,1fr));
+          gap: 20px;
+          margin-top: 24px;
+        }
+        .penfed-case-study .case-mini-card {
+          background: rgba(255,255,255,0.9);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          padding: 20px;
+          box-shadow: var(--shadow);
+        }
+        .penfed-case-study .case-mini-card strong {
+          display: block;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          color: var(--accent);
+          margin-bottom: 8px;
+          text-transform: uppercase;
+        }
+        .penfed-case-study .case-mini-card p {
+          color: var(--text-soft);
+          font-size: 0.92rem;
+          line-height: 1.7;
+        }
+        .penfed-case-study .case-metric-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0,1fr));
+          gap: 16px;
+          margin-top: 20px;
+        }
+        .penfed-case-study .case-metric {
+          background: rgba(255,255,255,0.9);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          padding: 24px 18px;
+          text-align: center;
+          box-shadow: var(--shadow);
+        }
+        .penfed-case-study .case-metric .value {
+          font-family: 'Fraunces', Georgia, serif;
+          font-style: italic;
+          font-size: clamp(1.8rem, 3vw, 3rem);
+          font-weight: 700;
+          color: var(--accent);
+        }
+        .penfed-case-study .case-metric .label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          margin-top: 6px;
+        }
+        .penfed-case-study .case-table-wrap {
+          overflow-x: auto;
+          background: rgba(255,255,255,0.9);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          box-shadow: var(--shadow);
+          margin-top: 20px;
+        }
+        .penfed-case-study table {
+          width: 100%;
+          border-collapse: collapse;
+          min-width: 680px;
+        }
+        .penfed-case-study th,
+        .penfed-case-study td {
+          padding: 16px 18px;
+          border-bottom: 1px solid var(--line);
+          vertical-align: top;
+          text-align: left;
+          font-size: 0.92rem;
+          color: var(--text-soft);
+        }
+        .penfed-case-study th {
+          background: rgba(237,246,255,0.95);
+          color: var(--accent);
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+        .penfed-case-study .case-pill {
+          display: inline-flex;
+          align-items: center;
+          padding: 6px 10px;
+          border-radius: 999px;
+          border: 1px solid var(--line);
+          background: rgba(17,88,200,0.06);
+          color: var(--accent);
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+          .penfed-case-study .case-meta-grid,
+          .penfed-case-study .case-grid-2,
+          .penfed-case-study .case-metric-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        @media (max-width: 640px) {
+          .penfed-case-study .case-meta-grid,
+          .penfed-case-study .case-grid-2,
+          .penfed-case-study .case-metric-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
       {/* PERSISTENT HEADER BAR */}
-      <nav className="sticky top-0 z-50 bg-white/95 border-b border-blue-100 shadow-sm backdrop-blur-md">
+      <nav className="case-nav sticky top-0 z-50 bg-white/95 border-b border-blue-100 shadow-sm backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button 
             onClick={onBack}
@@ -565,18 +859,13 @@ function PenFedCaseStudyPage({ onBack }) {
           </a>
         </div>
 
-        {/* SECTION SUB-NAVBAR */}
         <div className="bg-[#ebf4ff] border-t border-blue-100 px-6 overflow-x-auto py-2.5 flex items-center gap-6 scrollbar-none">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setActiveNav(item.id)}
-              className={`text-[11px] font-mono font-semibold whitespace-nowrap transition-colors uppercase tracking-wider ${
-                activeNav === item.id 
-                  ? 'text-[#0052cc] border-b-2 border-[#0052cc] pb-0.5' 
-                  : 'text-[#5a738e] hover:text-[#0052cc]'
-              }`}
+              className={`case-nav-item ${activeNav === item.id ? 'active' : ''}`}
             >
               {item.label}
             </a>
@@ -584,534 +873,323 @@ function PenFedCaseStudyPage({ onBack }) {
         </div>
       </nav>
 
-      {/* CASE STUDY HERO */}
-      <header className="bg-gradient-to-b from-white via-[#f0f7ff] to-[#f4f8fc] border-b border-blue-100 py-16 px-6">
+      <header className="case-hero py-16 px-6">
         <div className="max-w-6xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 border border-blue-200 text-[#0052cc] text-xs font-mono font-bold uppercase tracking-wider">
+          <div className="case-chip">
             <Award size={14} />
             <span>ACM India HCI 2026 • Full Research Case Study</span>
           </div>
 
-          <h1 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0f253e] leading-tight max-w-5xl">
-            From <span className="text-[#0066ff] not-italic font-normal">Stranger</span> to <span className="text-[#0066ff] not-italic font-normal">Homeowner</span>: Redesigning Financial Dignity
+          <h1 className="case-title max-w-5xl">
+            From <em>Stranger</em> to <em>Homeowner</em>: Redesigning Financial Dignity
           </h1>
 
-          <p className="text-lg text-[#3b526d] max-w-3xl leading-relaxed">
-            A comprehensive Human-Computer Interaction case study evaluating the operational and psychological mechanics of a 33-step enterprise mortgage portal, transforming a 62% funnel drop-off into a high-trust digital experience.
+          <p className="case-lead">
+            A comprehensive Human-Computer Interaction case study evaluating the operational and psychological mechanics of a 33-step enterprise mortgage portal, transforming a 62% funnel drop-off into a guided, trust-building journey.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-blue-100 font-mono text-xs text-[#5a738e]">
-            <div>
-              <span className="block text-[10px] text-gray-400 uppercase">Client</span>
-              <strong className="text-[#0f253e] font-semibold">PenFed Credit Union (USA)</strong>
+          <div className="case-meta-grid">
+            <div className="case-meta-item">
+              <span>Client</span>
+              <strong>PenFed Credit Union (USA)</strong>
             </div>
-            <div>
-              <span className="block text-[10px] text-gray-400 uppercase">Methodology</span>
-              <strong className="text-[#0f253e] font-semibold">NASA-TLX, A/B Testing, UT</strong>
+            <div className="case-meta-item">
+              <span>Methodology</span>
+              <strong>NASA-TLX, A/B Testing, UT</strong>
             </div>
-            <div>
-              <span className="block text-[10px] text-gray-400 uppercase">Key Artifacts</span>
-              <strong className="text-[#0f253e] font-semibold">LO Engine, Readiness Score</strong>
+            <div className="case-meta-item">
+              <span>Key Artifacts</span>
+              <strong>LO Engine, Readiness Score</strong>
             </div>
-            <div>
-              <span className="block text-[10px] text-gray-400 uppercase">Primary Outcome</span>
-              <strong className="text-[#0052cc] font-bold">+42% Application Conversion</strong>
+            <div className="case-meta-item">
+              <span>Primary Outcome</span>
+              <strong style={{ color: '#0052cc', fontWeight: 700 }}>+42% Application Conversion</strong>
             </div>
           </div>
         </div>
       </header>
 
-      {/* MAIN CONTENT CONTAINER */}
-      <main className="max-w-6xl mx-auto px-6 py-12 space-y-20">
-
-        {/* SECTION 01: PROBLEM FRAMING */}
-        <section id="problem" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 01</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Problem Framing & Baseline Funnel Drop-off</h2>
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        <section id="problem" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 01</span>
+            <h2 className="case-section-title">Problem Framing & Baseline Funnel Drop-off</h2>
           </div>
 
-          <p className="text-[#3b526d] leading-relaxed">
-            Before proposing a single UI component, we established a quantified baseline: precise abandonment percentages at every stage of the legacy application. Without this, no claim of improvement can be data-supported, and no intervention can be traced to a specific failure point.
+          <p className="case-body">
+            Before proposing a single UI component, we established a quantified baseline: precise abandonment percentages at every stage of the legacy application. Without this, no claim of improvement could be trusted.
           </p>
 
-          <div className="bg-white border border-blue-100 rounded-2xl p-6 shadow-sm space-y-4">
-            <h3 className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-wider">Quantified Baseline Funnel (n=18,400 Application Starts)</h3>
-            
-            <div className="space-y-3 font-mono text-xs">
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span>Step 1: Application Page Reached</span>
-                  <span className="font-bold text-blue-600">100%</span>
-                </div>
-                <div className="w-full h-3 bg-blue-50 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500 w-full" />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span>Step 2: First Field Interaction</span>
-                  <span className="font-bold text-blue-600">82%</span>
-                </div>
-                <div className="w-full h-3 bg-blue-50 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500 w-[82%]" />
-                </div>
-                <span className="text-[10px] text-red-500">18% left without touching Step 1 — no orientation provided.</span>
-              </div>
-
-              <div>
-                <div className="flex justify-between mb-1 text-red-600 font-bold">
-                  <span>Step 3: 11-Doc List Displayed (PRIMARY EXIT POINT)</span>
-                  <span>38%</span>
-                </div>
-                <div className="w-full h-3 bg-red-50 rounded-full overflow-hidden">
-                  <div className="h-full bg-red-500 w-[38%]" />
-                </div>
-                <span className="text-[10px] text-red-600 font-bold">52% abandoned in under 90 seconds of seeing the overwhelming document list.</span>
-              </div>
-
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span>Steps 4–32: General Form Body</span>
-                  <span className="font-bold text-blue-600">28%</span>
-                </div>
-                <div className="w-full h-3 bg-blue-50 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-400 w-[28%]" />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between mb-1 text-red-600 font-bold">
-                  <span>Step 33: Validation Blindside (SECONDARY EXIT)</span>
-                  <span>18%</span>
-                </div>
-                <div className="w-full h-3 bg-red-50 rounded-full overflow-hidden">
-                  <div className="h-full bg-red-500 w-[18%]" />
-                </div>
-                <span className="text-[10px] text-red-600">28% of those who reached Step 33 abandoned after 45+ minutes of work.</span>
-              </div>
+          <div className="case-funnel">
+            <h3 style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0052cc', marginBottom: '18px' }}>Quantified Baseline Funnel (n=18,400 Application Starts)</h3>
+            <div className="case-funnel-row">
+              <div className="case-funnel-label"><span>Step 1: Application Page Reached</span><span>100%</span></div>
+              <div className="case-funnel-bar"><div className="case-funnel-fill" style={{ width: '100%' }} /></div>
+            </div>
+            <div className="case-funnel-row">
+              <div className="case-funnel-label"><span>Step 2: First Field Interaction</span><span>82%</span></div>
+              <div className="case-funnel-bar"><div className="case-funnel-fill" style={{ width: '82%' }} /></div>
+            </div>
+            <div className="case-funnel-row">
+              <div className="case-funnel-label"><span>Step 3: 11-Document List Displayed</span><span>38%</span></div>
+              <div className="case-funnel-bar"><div className="case-funnel-fill red" style={{ width: '38%' }} /></div>
+            </div>
+            <div className="case-funnel-row">
+              <div className="case-funnel-label"><span>Steps 4–32: General Form Body</span><span>28%</span></div>
+              <div className="case-funnel-bar"><div className="case-funnel-fill" style={{ width: '28%' }} /></div>
+            </div>
+            <div className="case-funnel-row" style={{ marginBottom: 0 }}>
+              <div className="case-funnel-label"><span>Step 33: Validation Blindside</span><span>18%</span></div>
+              <div className="case-funnel-bar"><div className="case-funnel-fill red" style={{ width: '18%' }} /></div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 02: RESEARCH SEQUENCING */}
-        <section id="sequencing" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 02</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Research Sequencing & Double Diamond Plan</h2>
+        <section id="sequencing" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 02</span>
+            <h2 className="case-section-title">Research Sequencing & Double Diamond Plan</h2>
           </div>
-
-          <p className="text-[#3b526d] leading-relaxed">
-            In high-stakes financial UX, research order is paramount. Testing before diagnosing produces solutions to the wrong problem. We structured our research over a 26-week Double Diamond framework.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
-            <div className="bg-white p-5 border border-blue-100 rounded-xl space-y-2">
-              <span className="text-blue-600 font-bold">Weeks 1–4: Discover & Audit</span>
-              <p className="text-[#3b526d] text-xs">Stakeholder interviews (n=14), Analytics Funnel Audit (n=18,400), and Session Replay coding (n=340).</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-xl space-y-2">
-              <span className="text-blue-600 font-bold">Weeks 5–12: Define & Shadow</span>
-              <p className="text-[#3b526d] text-xs">Exit surveys (n=320), Moderated Think-Aloud UT (n=20), and Loan Officer workflow shadowing (n=8).</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-xl space-y-2">
-              <span className="text-blue-600 font-bold">Weeks 13–20: Develop & Design</span>
-              <p className="text-[#3b526d] text-xs">Card sorting (n=24), failed chatbot prototype iteration, and Ice Blue Design System production.</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-xl space-y-2">
-              <span className="text-blue-600 font-bold">Weeks 21–26: Deliver & Validate</span>
-              <p className="text-[#3b526d] text-xs">A/B Testing (n=2,400), NASA-TLX re-measurement, and LO Engine deployment.</p>
-            </div>
+          <p className="case-body">In high-stakes financial UX, research order is paramount. Testing before diagnosing produces solutions to the wrong problem. We structured the work over a 26-week Double Diamond model to ensure problem clarity before design intervention.</p>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>Weeks 1–4</strong><p>Stakeholder interviews, analytics funnel audit, and session replay coding.</p></div>
+            <div className="case-mini-card"><strong>Weeks 5–12</strong><p>Exit surveys, think-alouds, and loan officer workflow shadowing.</p></div>
+            <div className="case-mini-card"><strong>Weeks 13–20</strong><p>Card sorting, prototype iteration, and design-system definition.</p></div>
+            <div className="case-mini-card"><strong>Weeks 21–26</strong><p>A/B validation, NASA-TLX measurement, and deployment review.</p></div>
           </div>
         </section>
 
-        {/* SECTION 03: STAKEHOLDER RESEARCH */}
-        <section id="stakeholder" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 03</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Stakeholder Research & Alignment</h2>
+        <section id="stakeholder" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 03</span>
+            <h2 className="case-section-title">Stakeholder Research & Alignment</h2>
           </div>
-
-          <div className="bg-white border border-blue-100 rounded-2xl p-6 shadow-sm space-y-4">
-            <h3 className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-wider">Internal Perspectives Across 5 Functions (n=14)</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                <strong className="block text-[#0f253e] mb-1">Loan Officers (n=4)</strong>
-                <p className="text-[#3b526d]">"At least half of my applications are missing critical documents. I spend 20 minutes triaging before calling."</p>
-              </div>
-              <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                <strong className="block text-[#0f253e] mb-1">Call Center Leads (n=3)</strong>
-                <p className="text-[#3b526d]">"70% of calls on Monday are status inquiries from applicants who don't know what happens next."</p>
-              </div>
-              <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                <strong className="block text-[#0f253e] mb-1">Compliance Officers (n=2)</strong>
-                <p className="text-[#3b526d]">"Mandatory RESPA, ECOA, and Reg B disclosures cannot be buried; pre-approval must be conditional."</p>
-              </div>
-            </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>Loan Officers</strong><p>“At least half of my applications are missing critical documents. I spend 20 minutes triaging before calling.”</p></div>
+            <div className="case-mini-card"><strong>Call Center Leads</strong><p>“70% of calls on Monday are status inquiries from applicants who do not know what happens next.”</p></div>
+            <div className="case-mini-card"><strong>Compliance Officers</strong><p>“Mandatory RESPA, ECOA, and Reg B disclosures cannot be buried; pre-approval must be conditional.”</p></div>
+            <div className="case-mini-card"><strong>Applicants</strong><p>“I do not know what I am missing, and I don’t know whether I am allowed to pause or continue.”</p></div>
           </div>
         </section>
 
-        {/* SECTION 04: USER RESEARCH & RECRUITMENT */}
-        <section id="users" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 04</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">End-User Research & Archetype Recruiting</h2>
+        <section id="users" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 04</span>
+            <h2 className="case-section-title">End-User Research & Archetype Recruiting</h2>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl space-y-2">
-              <span className="text-xs font-mono font-bold text-blue-600 block">TYPE A</span>
-              <h4 className="font-bold text-sm text-[#0f253e]">First-Time Buyer (Guest)</h4>
-              <p className="text-xs text-[#3b526d]">High financial anxiety, zero PenFed relationship, needs orientation.</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl space-y-2">
-              <span className="text-xs font-mono font-bold text-blue-600 block">TYPE B</span>
-              <h4 className="font-bold text-sm text-[#0f253e]">Existing Member (Refi)</h4>
-              <p className="text-xs text-[#3b526d]">Expects institutional recognition; frustrated by manual re-entry.</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl space-y-2">
-              <span className="text-xs font-mono font-bold text-blue-600 block">TYPE C</span>
-              <h4 className="font-bold text-sm text-[#0f253e]">Co-Applicant Pairs</h4>
-              <p className="text-xs text-[#3b526d]">Needs asynchronous workflow options due to conflicting schedules.</p>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl space-y-2">
-              <span className="text-xs font-mono font-bold text-blue-600 block">TYPE D</span>
-              <h4 className="font-bold text-sm text-[#0f253e]">Military / VA Applicant</h4>
-              <p className="text-xs text-[#3b526d]">Time-zone constrained; requires specialized BAH/COE handling.</p>
-            </div>
+          <div className="case-metric-grid">
+            <div className="case-metric"><div className="value">A</div><div className="label">First-Time Buyer</div></div>
+            <div className="case-metric"><div className="value">B</div><div className="label">Existing Member</div></div>
+            <div className="case-metric"><div className="value">C</div><div className="label">Co-Applicant Pairs</div></div>
+            <div className="case-metric"><div className="value">D</div><div className="label">Military / VA</div></div>
           </div>
         </section>
 
-        {/* SECTION 05: PERSONAS */}
-        <section id="personas" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 05</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Research-Derived User Personas</h2>
+        <section id="personas" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 05</span>
+            <h2 className="case-section-title">Research-Derived User Personas</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
-              <span className="text-xs font-mono text-blue-600 font-bold">PERSONA A • MAYA CHEN</span>
-              <h3 className="font-bold text-[#0f253e]">First-Time Buyer (San Jose, CA)</h3>
-              <p className="text-xs text-[#3b526d] leading-relaxed">
-                "I kept second-guessing whether I was filling things in right. The form just sat there waiting, and I had nobody to ask."
-              </p>
-            </div>
-            <div className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
-              <span className="text-xs font-mono text-blue-600 font-bold">PERSONA C • CPT. DAVID PARK</span>
-              <h3 className="font-bold text-[#0f253e]">US Army, Deployed (South Korea)</h3>
-              <p className="text-xs text-[#3b526d] leading-relaxed">
-                "I am trying to buy a home from 13 time zones away. I need this to work without calling anyone between 9 AM and 5 PM EST."
-              </p>
-            </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>Persona A • Maya Chen</strong><p>First-time buyer in California. Anxiety-driven, uncertain about missing paperwork, and highly sensitive to “what happens next” messaging.</p></div>
+            <div className="case-mini-card"><strong>Persona C • CPT. David Park</strong><p>Active military member abroad. Needs asynchronous completion, timezone-aware scheduling, and highly clear guidance.</p></div>
           </div>
         </section>
 
-        {/* SECTION 06: EMPATHY MAPS */}
-        <section id="empathy" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 06</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Empathy Mapping: Maya Chen</h2>
+        <section id="empathy" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 06</span>
+            <h2 className="case-section-title">Empathy Mapping</h2>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-mono mb-2">💬 SAYS</strong>
-              <p className="text-[#3b526d]">"How long is this going to take? Do I have all these documents ready?"</p>
-            </div>
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-mono mb-2">💭 THINKS</strong>
-              <p className="text-[#3b526d]">"What if I enter something wrong and get rejected? Nobody is watching if I leave."</p>
-            </div>
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-mono mb-2">⚡ DOES</strong>
-              <p className="text-[#3b526d]">Opens 4 tabs, scrolls to bottom of doc list, stops at SSN field for 3 mins, leaves.</p>
-            </div>
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-mono mb-2">❤️ FEELS</strong>
-              <p className="text-[#3b526d]">Anxious, overwhelmed, untrusted, and emotionally exhausted.</p>
-            </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>What they say</strong><p>“How long is this going to take? Do I have all these documents ready?”</p></div>
+            <div className="case-mini-card"><strong>What they think</strong><p>“What if I enter something wrong and get rejected? Nobody is watching if I leave.”</p></div>
+            <div className="case-mini-card"><strong>What they do</strong><p>Open multiple tabs, pause at SSN, scroll to the bottom of document list, and abandon.</p></div>
+            <div className="case-mini-card"><strong>What they feel</strong><p>Anxious, overwhelmed, emotionally exhausted, and uncertain about control.</p></div>
           </div>
         </section>
 
-        {/* SECTION 07: PAIN POINT MATRIX */}
-        <section id="painpoints" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 07</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Cross-Segment Pain Point Matrix</h2>
+        <section id="painpoints" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 07</span>
+            <h2 className="case-section-title">Cross-Segment Pain Point Matrix</h2>
           </div>
-
-          <div className="overflow-x-auto bg-white border border-blue-100 rounded-2xl">
-            <table className="w-full text-left text-xs font-sans border-collapse">
+          <div className="case-table-wrap">
+            <table>
               <thead>
-                <tr className="bg-blue-50/50 border-b border-blue-100 font-mono text-blue-900">
-                  <th className="p-3">Stage</th>
-                  <th className="p-3">Maya (Guest)</th>
-                  <th className="p-3">James (Member)</th>
-                  <th className="p-3">Cpt. Park (Military)</th>
+                <tr>
+                  <th>Stage</th>
+                  <th>Maya (Guest)</th>
+                  <th>James (Member)</th>
+                  <th>Cpt. Park (Military)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-blue-50 text-[#3b526d]">
+              <tbody>
                 <tr>
-                  <td className="p-3 font-bold text-[#0f253e]">Start</td>
-                  <td className="p-3">No orientation or welcome.</td>
-                  <td className="p-3">Not recognized as member.</td>
-                  <td className="p-3">VA loan option obscured.</td>
+                  <td><strong>Start</strong></td>
+                  <td>No orientation or welcome.</td>
+                  <td>Not recognized as a member.</td>
+                  <td>VA loan option obscured.</td>
                 </tr>
                 <tr>
-                  <td className="p-3 font-bold text-[#0f253e]">Step 3 Docs</td>
-                  <td className="p-3">Abandons at 11-doc wall.</td>
-                  <td className="p-3">Dislikes redundant uploads.</td>
-                  <td className="p-3">COE upload slot missing.</td>
+                  <td><strong>Step 3 Docs</strong></td>
+                  <td>Abandons at the 11-document wall.</td>
+                  <td>Dislikes redundant uploads.</td>
+                  <td>COE upload step missing.</td>
                 </tr>
                 <tr>
-                  <td className="p-3 font-bold text-[#0f253e]">Post-Submit</td>
-                  <td className="p-3">Anxious status waiting.</td>
-                  <td className="p-3">Generic response call.</td>
-                  <td className="p-3">9–5 EST call impossible.</td>
+                  <td><strong>Post-Submit</strong></td>
+                  <td>Anxious status waiting.</td>
+                  <td>Generic response call.</td>
+                  <td>9–5 EST call impossible.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* SECTION 08: RESEARCH METHODS */}
-        <section id="methods" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 08</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Research Methods Inventory</h2>
+        <section id="methods" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 08</span>
+            <h2 className="case-section-title">Research Methods Inventory</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-bold mb-1">01. Session Replay (n=340)</strong>
-              <p className="text-[#3b526d]">Hotjar recordings coded for rage-clicks, hover hesitations, and drop-off triggers.</p>
-            </div>
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-bold mb-1">02. NASA-TLX Scale</strong>
-              <p className="text-[#3b526d]">Standardized cognitive workload index measuring mental, physical, and temporal demands.</p>
-            </div>
-            <div className="bg-white p-4 border border-blue-100 rounded-xl">
-              <strong className="block text-blue-600 font-bold mb-1">03. Card Sorting (n=24)</strong>
-              <p className="text-[#3b526d]">Unmoderated card sort via Optimal Workshop to restructure database-driven IA.</p>
-            </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>01. Session Replay</strong><p>340 recordings coded for rage-clicks, hover hesitations, and exit triggers.</p></div>
+            <div className="case-mini-card"><strong>02. NASA-TLX</strong><p>Standardized cognitive workload index across phases of the application journey.</p></div>
+            <div className="case-mini-card"><strong>03. Card Sorting</strong><p>24 participants helped reshape the information architecture and field grouping logic.</p></div>
+            <div className="case-mini-card"><strong>04. Stakeholder Shadowing</strong><p>Loan officer workflow mapping improved operational handoff and scheduling automation.</p></div>
           </div>
         </section>
 
-        {/* SECTION 09: PSYCHOLOGICAL FRAMEWORKS */}
-        <section id="frameworks" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 09</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Applied Behavioural Frameworks</h2>
+        <section id="frameworks" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 09</span>
+            <h2 className="case-section-title">Applied Behavioural Frameworks</h2>
           </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card"><strong>Cognitive Load Theory</strong><p>Reduced extraneous load by moving from 33 unordered steps to six focused progressive panels.</p></div>
+            <div className="case-mini-card"><strong>Goal Gradient Effect</strong><p>Introduced a dynamic readiness score and visible progress to motivate completion.</p></div>
+          </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div className="bg-white p-5 border border-blue-100 rounded-xl">
-              <h4 className="font-bold text-[#0f253e] mb-1">Cognitive Load Theory (Sweller)</h4>
-              <p className="text-[#3b526d]">Eliminated extraneous load from 33 unordered steps into 6 focused progressive panels.</p>
+        <section id="lo" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 10</span>
+            <h2 className="case-section-title">Loan Officer Workflow Optimization</h2>
+          </div>
+          <div className="case-grid-2">
+            <div className="case-mini-card" style={{ borderColor: 'rgba(232,34,10,0.2)' }}><strong style={{ color: '#b3261e' }}>As-Is Flow</strong><p>Generic email alert → manual triage → missing-document identification → cold call → unstructured 23-minute review.</p></div>
+            <div className="case-mini-card" style={{ borderColor: 'rgba(17, 123, 103, 0.2)' }}><strong style={{ color: '#117b67' }}>Redesigned Flow</strong><p>Readiness score → pre-filled calendar slot → gap brief → structured 11-minute review.</p></div>
+          </div>
+        </section>
+
+        <section id="ia" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 11</span>
+            <h2 className="case-section-title">6-Step Information Architecture</h2>
+          </div>
+          <div className="case-grid-2" style={{ gridTemplateColumns: 'repeat(6, minmax(0, 1fr))' }}>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>01</strong><p style={{ margin: 0 }}>Goal</p></div>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>02</strong><p style={{ margin: 0 }}>Identity</p></div>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>03</strong><p style={{ margin: 0 }}>Property</p></div>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>04</strong><p style={{ margin: 0 }}>Income</p></div>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>05</strong><p style={{ margin: 0 }}>Assets</p></div>
+            <div className="case-mini-card" style={{ padding: '14px 10px', textAlign: 'center' }}><strong style={{ display: 'block', marginBottom: '0' }}>06</strong><p style={{ margin: 0 }}>Review</p></div>
+          </div>
+        </section>
+
+        <section id="flows" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 12</span>
+            <h2 className="case-section-title">Asynchronous User Flows</h2>
+          </div>
+          <div className="case-mini-card"><p>Co-applicants received secure individual magic links to complete their income sections asynchronously without sharing credentials or waiting for simultaneous free time.</p></div>
+        </section>
+
+        <section id="interaction" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 13</span>
+            <h2 className="case-section-title">SSN Trust Layer & Inline Micro-Interactions</h2>
+          </div>
+          <div className="case-mini-card"><strong>Trust copy</strong><p>Added explicit reassurance: “We use soft credit checks to protect your score during pre-qualification. Your SSN is encrypted end-to-end.”</p></div>
+        </section>
+
+        <section id="income" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 14</span>
+            <h2 className="case-section-title">Grouped Panel Income Entry</h2>
+          </div>
+          <div className="case-mini-card"><p>Replaced rigid single-field gross income prompts with specialized modules for W-2, RSU, BAH/military allowance, and self-employment Schedule C revenue.</p></div>
+        </section>
+
+        <section id="upload" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 15</span>
+            <h2 className="case-section-title">Progressive Document Collection</h2>
+          </div>
+          <div className="case-mini-card"><p>Only two essential documents were requested at submission; the remaining nine were deferred post-submission without blocking pre-qualification.</p></div>
+        </section>
+
+        <section id="iteration" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 16</span>
+            <h2 className="case-section-title">Prototype Failure & Rapid Iteration</h2>
+          </div>
+          <div className="case-mini-card" style={{ borderColor: 'rgba(232,34,10,0.2)' }}><strong style={{ color: '#b3261e' }}>Failed hypothesis</strong><p>Testing revealed applicants felt a chatbot was inefficient for sensitive financial data entry. The interaction spiked cognitive load, so we immediately shifted to structured grouped panels.</p></div>
+        </section>
+
+        <section id="preloan" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 17</span>
+            <h2 className="case-section-title">Instant Pre-Loan Success Letter</h2>
+          </div>
+          <div className="case-card" style={{ padding: '28px 24px', borderColor: 'rgba(17,88,200,0.25)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--line)', paddingBottom: '12px' }}>
+              <span style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1.3rem', color: '#0052cc', fontWeight: 700 }}>PenFed Conditional Pre-Approval</span>
+              <span className="case-pill">Instant PDF</span>
             </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-xl">
-              <h4 className="font-bold text-[#0f253e] mb-1">Goal Gradient Effect (Kivetz)</h4>
-              <p className="text-[#3b526d]">Progressive bar showing real-time readiness acceleration to motivate completion.</p>
-            </div>
+            <p style={{ marginTop: '16px', color: 'var(--text-soft)' }}>Submitted applications instantly produced a PDF pre-approval certificate with precise estimated purchasing capacity based on real readiness data.</p>
           </div>
         </section>
 
-        {/* SECTION 10: LOAN OFFICER WORKFLOW */}
-        <section id="lo" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 10</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Loan Officer Workflow Optimization</h2>
+        <section id="engine" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 18</span>
+            <h2 className="case-section-title">Time-Zone Aware LO Booking Engine</h2>
           </div>
+          <div className="case-mini-card"><p>Eliminated cold calls by embedding live loan officer calendar booking directly on the confirmation screen and auto-converting applicants’ time zones.</p></div>
+        </section>
 
-          <div className="bg-white border border-blue-100 rounded-2xl p-6 space-y-4">
-            <h3 className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-wider">Before vs. After LO Operational Efficiency</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-              <div className="p-4 bg-red-50/50 rounded-xl border border-red-100">
-                <strong className="block text-red-900 font-bold mb-1">AS-IS LO FLOW (55–70 Min Prep)</strong>
-                <p className="text-red-800">Generic email alert → Manual CRM triage → Missing doc identification → Cold call (34% connect) → Unstructured 23-min review.</p>
-              </div>
-              <div className="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
-                <strong className="block text-emerald-900 font-bold mb-1">REDESIGNED LO FLOW (16 Min Total)</strong>
-                <p className="text-emerald-800">Automated Readiness Score → Pre-filled calendar slot → Auto-generated gap brief → Structured 11-min review.</p>
-              </div>
-            </div>
+        <section id="outcomes" className="case-section">
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 19</span>
+            <h2 className="case-section-title">Measured Enterprise Business Outcomes</h2>
+          </div>
+          <div className="case-metric-grid">
+            <div className="case-metric"><div className="value">+42%</div><div className="label">Application completion</div></div>
+            <div className="case-metric"><div className="value">-71%</div><div className="label">Status call reduction</div></div>
+            <div className="case-metric"><div className="value">$1.6M</div><div className="label">Annual overhead saved</div></div>
+            <div className="case-metric"><div className="value">47.8</div><div className="label">NASA-TLX</div></div>
           </div>
         </section>
 
-        {/* SECTION 11: INFORMATION ARCHITECTURE */}
-        <section id="ia" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 11</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">6-Step Information Architecture</h2>
+        <section id="conclusion" className="case-section" style={{ paddingBottom: '48px' }}>
+          <div className="case-section-header">
+            <span className="case-section-label">// Section 20</span>
+            <h2 className="case-section-title">Summary & Academic Contribution</h2>
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center text-xs font-mono">
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">01. Goal</div>
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">02. Identity</div>
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">03. Property</div>
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">04. Income</div>
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">05. Assets</div>
-            <div className="p-3 bg-white border border-blue-100 rounded-xl">06. Review</div>
-          </div>
-        </section>
-
-        {/* SECTION 12: USER FLOWS */}
-        <section id="flows" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 12</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Asynchronous User Flows</h2>
-          </div>
-
-          <p className="text-xs text-[#3b526d] leading-relaxed bg-white p-5 border border-blue-100 rounded-2xl">
-            Co-applicants receive secure individual magic links to complete their respective income sections asynchronously without sharing credentials or waiting for simultaneous free time.
-          </p>
-        </section>
-
-        {/* SECTION 13: INTERACTION DESIGN & TRUST */}
-        <section id="interaction" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 13</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">SSN Trust Layer & Inline Micro-Interactions</h2>
-          </div>
-
-          <div className="bg-white p-6 border border-blue-100 rounded-2xl space-y-3 text-xs">
-            <h4 className="font-bold text-[#0f253e]">Contextual SSN Request Shield</h4>
-            <p className="text-[#3b526d]">
-              Added explicit trust copy: "We use soft credit checks to protect your score during pre-qualification. Your SSN is encrypted end-to-end."
+          <div className="case-card" style={{ background: 'linear-gradient(135deg, #0066ff 0%, #004080 100%)', color: '#fff', padding: '32px 28px' }}>
+            <h3 style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '2rem', marginBottom: '12px' }}>Reframing High-Stakes Financial UX</h3>
+            <p style={{ color: 'rgba(255,255,255,0.88)', lineHeight: 1.8, maxWidth: '780px' }}>
+              By replacing administrative suspicion with dignity-first interaction architecture, financial institutions can reduce operational friction while building lasting trust. This project demonstrated that conversion gains and emotional reassurance are not competing goals—they are a unified design outcome.
             </p>
-          </div>
-        </section>
-
-        {/* SECTION 14: VARIABLE INCOME UX */}
-        <section id="income" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 14</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Grouped Panel Income Entry</h2>
-          </div>
-
-          <p className="text-xs text-[#3b526d] bg-white p-5 border border-blue-100 rounded-2xl">
-            Replaced rigid single-field gross income prompts with specialized input modules for W-2, RSU, BAH/military allowance, and self-employment Schedule C revenue.
-          </p>
-        </section>
-
-        {/* SECTION 15: PROGRESSIVE UPLOADS */}
-        <section id="upload" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 15</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Progressive Document Collection</h2>
-          </div>
-
-          <div className="bg-white p-6 border border-blue-100 rounded-2xl text-xs space-y-2">
-            <span className="font-mono text-blue-600 font-bold">DEFERRED DOCUMENTATION PATTERN</span>
-            <p className="text-[#3b526d]">
-              Only 2 essential documents are requested at application submission; the remaining 9 are deferred post-submission without blocking pre-qualification.
-            </p>
-          </div>
-        </section>
-
-        {/* SECTION 16: PROTOTYPE ITERATION */}
-        <section id="iteration" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 16</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Prototype Failure & Rapid Iteration</h2>
-          </div>
-
-          <div className="bg-white p-6 border border-blue-100 rounded-2xl space-y-3 text-xs">
-            <span className="text-red-500 font-mono font-bold">FAILED MID-FI HYPOTHESIS: CONVERSATIONAL CHATBOT</span>
-            <p className="text-[#3b526d]">
-              Testing revealed applicants felt an AI chatbot was inefficient for financial data entry (NASA-TLX score spiked to 81.2). Iterated immediately to structured grouped panels.
-            </p>
-          </div>
-        </section>
-
-        {/* SECTION 17: PRE-LOAN SUCCESS LETTER */}
-        <section id="preloan" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 17</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Instant Pre-Loan Success Letter</h2>
-          </div>
-
-          <div className="bg-white border-2 border-blue-200 rounded-2xl p-6 shadow-sm space-y-4">
-            <div className="flex justify-between items-center border-b border-blue-100 pb-3">
-              <span className="font-serif italic font-bold text-lg text-[#0052cc]">PenFed Conditional Pre-Approval</span>
-              <span className="font-mono text-xs text-emerald-600 font-bold">INSTANT PDF GENERATED</span>
-            </div>
-            <p className="text-xs text-[#3b526d]">
-              Submitted applications instantly issue an official PDF Conditional Pre-Approval Certificate with precise estimated purchasing capacity based on entered readiness data.
-            </p>
-          </div>
-        </section>
-
-        {/* SECTION 18: LO SCHEDULING ENGINE */}
-        <section id="engine" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 18</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Time-Zone Aware LO Booking Engine</h2>
-          </div>
-
-          <div className="bg-white p-6 border border-blue-100 rounded-2xl text-xs space-y-2">
-            <span className="font-mono text-blue-600 font-bold">DIRECT CALENDAR INTEGRATION</span>
-            <p className="text-[#3b526d]">
-              Eliminated cold calls by embedding live LO calendar booking directly on the confirmation screen, automatically converting applicant time zones for overseas military members.
-            </p>
-          </div>
-        </section>
-
-        {/* SECTION 19: MEASURED OUTCOMES */}
-        <section id="outcomes" className="scroll-mt-32 space-y-6">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 19</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Measured Enterprise Business Outcomes</h2>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl text-center">
-              <span className="font-serif italic text-3xl font-bold text-[#0052cc] block">+42%</span>
-              <span className="text-[10px] font-mono text-[#5a738e] uppercase">Application Completion</span>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl text-center">
-              <span className="font-serif italic text-3xl font-bold text-[#0052cc] block">-71%</span>
-              <span className="text-[10px] font-mono text-[#5a738e] uppercase">Status Call Reduction</span>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl text-center">
-              <span className="font-serif italic text-3xl font-bold text-[#0052cc] block">$1.6M</span>
-              <span className="text-[10px] font-mono text-[#5a738e] uppercase">Annual Overhead Saved</span>
-            </div>
-            <div className="bg-white p-5 border border-blue-100 rounded-2xl text-center">
-              <span className="font-serif italic text-3xl font-bold text-[#0052cc] block">47.8</span>
-              <span className="text-[10px] font-mono text-[#5a738e] uppercase">NASA-TLX (vs 72.4)</span>
+            <div style={{ marginTop: '24px' }}>
+              <button onClick={onBack} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] rounded-xl text-xs font-bold hover:bg-blue-50 transition-colors">Return to Portfolio Main Page</button>
             </div>
           </div>
         </section>
-
-        {/* SECTION 20: CONCLUSION */}
-        <section id="conclusion" className="scroll-mt-32 space-y-6 pb-12">
-          <div className="flex items-center gap-3 border-b border-blue-100 pb-3">
-            <span className="font-mono text-xs font-bold text-[#0052cc] uppercase tracking-widest">// SECTION 20</span>
-            <h2 className="font-serif italic text-2xl md:text-3xl font-bold text-[#0f253e]">Summary & Academic Contribution</h2>
-          </div>
-
-          <div className="bg-gradient-to-r from-blue-600 to-[#004080] text-white p-8 rounded-3xl space-y-4">
-            <h3 className="font-serif italic text-2xl font-bold">Reframing High-Stakes Financial UX</h3>
-            <p className="text-xs text-blue-100 leading-relaxed max-w-3xl">
-              By replacing administrative suspicion with Dignity-First interaction architecture, financial institutions can dramatically reduce operational friction while building lasting trust during life’s most significant transactions.
-            </p>
-            <div className="pt-4 flex gap-4">
-              <button 
-                onClick={onBack}
-                className="px-5 py-2.5 bg-white text-[#0052cc] rounded-xl text-xs font-bold hover:bg-blue-50 transition-colors"
-              >
-                Return to Portfolio Main Page
-              </button>
-            </div>
-          </div>
-        </section>
-
       </main>
 
-      {/* FOOTER */}
       <footer className="border-t border-blue-100 bg-white py-8 text-center text-xs text-[#5a738e] font-mono">
         <p>PenFed Credit Union UX Case Study • Authored by Karthick Balakrishnan</p>
       </footer>
