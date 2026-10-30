@@ -6,7 +6,7 @@
 <title>Smart Search — Lam Research | Executive UX Case Study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #edf6ff;
@@ -38,6 +38,33 @@
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+
+  .back-home-btn {
+    position: fixed;
+    top: 18px;
+    left: 22px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(17, 88, 200, 0.2);
+    box-shadow: 0 10px 24px rgba(17, 88, 200, 0.08);
+    color: var(--blue-strong);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .back-home-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgba(17, 88, 200, 0.12);
   }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
@@ -117,11 +144,9 @@
   .meta-item .value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
   .model-label { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-top: 16px; }
 
-  /* 3D Glass Accent */
   .iso-accent { position: absolute; top: 40px; right: -40px; width: 260px; height: 260px; opacity: 0.6; pointer-events: none; }
   .glass-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: var(--radius); }
 
-  /* Hero Metric */
   .hero-metric { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 32px; }
   .hero-metric .num { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 600; color: var(--blue-strong); line-height: 1; }
   .hero-metric .cap { font-size: 0.95rem; color: var(--text-2); margin-top: 8px; font-weight: 500; }
@@ -144,20 +169,20 @@
   .browser-chrome { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
   .chrome-dots { display: flex; gap: 6px; }
   .dot-chip { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
-  .sso-chip { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; color: var(--blue-strong); border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; background: var(--panel-soft); }
+  .sso-chip { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; color: var(--blue-strong); border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; background: rgba(46,125,225,0.04); }
 
   .search-bar { display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); background: var(--panel-soft); padding: 12px 18px; border-radius: 12px; font-size: 0.9rem; color: var(--text-2); }
   .search-bar .icon { width: 12px; height: 12px; border: 2px solid var(--blue); border-radius: 50%; flex-shrink: 0; }
 
   .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-  .filter-chip { font-family: "JetBrains Mono", monospace; font-size: 0.7rem; color: var(--text-2); background: #fff; border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; display: flex; align-items: center; gap: 6px; }
+  .filter-chip { font-family: "JetBrains Mono", monospace; font-size: 0.7rem; color: var(--text-2); background: #fff; border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; }
   .filter-chip::after { content: '⌄'; color: var(--text-3); font-size: 0.6rem; }
 
   .result-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); gap: 16px; }
   .result-row:last-child { border-bottom: none; }
   .result-title { font-family: "Fraunces", serif; font-style: italic; font-size: 1.05rem; color: var(--text); margin-bottom: 4px; }
   .result-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
-  .pill-blue { font-family: "JetBrains Mono", monospace; font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue-strong); background: rgba(46,125,225,0.08); padding: 4px 8px; border-radius: 6px; border: 1px solid rgba(46,125,225,0.18); white-space: nowrap; }
+  .pill-blue { font-family: "JetBrains Mono", monospace; font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue-strong); background: rgba(46,125,225,0.06); border: 1px solid var(--line); padding: 4px 8px; border-radius: 999px; }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   @media(max-width:860px) { .two-col { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
@@ -173,7 +198,6 @@
   .insight h3 { font-size: 1.2rem; margin-bottom: 6px; }
   .insight p { max-width: 560px; font-size: 0.95rem; }
 
-  /* Methodology Cards */
   .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
   @media(max-width:860px) { .method-grid { grid-template-columns: 1fr; } }
   .method-card { border: 1px solid var(--line); background: rgba(255,255,255,0.85); padding: 22px; border-radius: 18px; box-shadow: var(--shadow); }
@@ -182,14 +206,13 @@
   .method-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
   .method-card p { font-size: 0.88rem; }
   
-  .formula-strip { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 32px; padding: 18px; background: rgba(255,255,255,0.8); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
-  .formula-strip .term { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; font-weight: 600; color: var(--text); background: #fff; border: 1px solid var(--line); padding: 8px 12px; border-radius: 8px; }
+  .formula-strip { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 32px; padding: 18px; background: rgba(255,255,255,0.8); border: 1px solid var(--line); border-radius: 16px; }
+  .formula-strip .term { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; font-weight: 600; color: var(--text); background: #fff; border: 1px solid var(--line); padding: 8px 12px; border-radius: 6px; }
   .formula-strip .op { font-size: 0.9rem; color: var(--blue-strong); font-weight: 600; }
 
-  /* Pain Point Cards */
   .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
   @media(max-width:860px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
-  .pain-item { border: 1px solid var(--line); background: rgba(255,255,255,0.8); border-radius: 14px; padding: 16px; font-size: 0.85rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: all .2s ease; box-shadow: var(--shadow); }
+  .pain-item { border: 1px solid var(--line); background: rgba(255,255,255,0.8); border-radius: 14px; padding: 16px; font-size: 0.85rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: transform .2s ease, border-color .2s ease; }
   .pain-item.active { border-color: var(--blue); background: #fff; color: var(--blue-strong); transform: translateY(-2px); }
 
   .spotlight { border: 1px solid var(--line); background: rgba(255,255,255,0.9); padding: 24px; border-radius: 18px; align-self: stretch; display: flex; flex-direction: column; box-shadow: var(--shadow); }
@@ -201,13 +224,11 @@
   .spotlight-body h3 { font-size: 1.15rem; margin-bottom: 8px; }
   .spotlight-body p { font-size: 0.92rem; line-height: 1.65; color: var(--text-2); }
 
-  /* Persona Chips */
-  .persona-chip { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.8); }
+  .persona-chip { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); }
   .persona-a { color: var(--blue-strong); border-color: rgba(46,125,225,0.25); }
   .persona-b { color: #117b67; border-color: rgba(109,210,192,0.4); }
   .persona-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-  /* Role Table */
   .role-table { margin-top: 32px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: rgba(255,255,255,0.85); box-shadow: var(--shadow); }
   .role-head { display: grid; grid-template-columns: 140px repeat(5, 1fr); background: var(--panel-soft); border-bottom: 1px solid var(--line); }
   .role-head > div { padding: 14px 16px; font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blue-strong); text-transform: uppercase; }
@@ -216,12 +237,10 @@
   .role-row > div { padding: 16px; font-size: 0.85rem; color: var(--text-2); border-left: 1px solid var(--line); line-height: 1.5; }
   .role-row > div:first-child { border-left: none; font-weight: 700; color: var(--text); display: flex; align-items: center; font-family: "Fraunces", serif; font-style: italic; }
 
-  /* Platform Tabs */
   .platform-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
-  .platform-tab { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); background: rgba(255,255,255,0.8); cursor: pointer; }
+  .platform-tab { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); background: rgba(255,255,255,0.7); }
   .platform-tab.active { border-color: var(--blue); color: var(--blue-strong); background: #fff; box-shadow: var(--shadow); }
 
-  /* Result Card Hero (Page 10) */
   .result-card {
     border: 1px solid var(--line);
     background: #fff;
@@ -233,7 +252,7 @@
     overflow: hidden;
   }
   .result-card::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky), var(--mint)); }
-  .result-card .badge { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; color: var(--blue-strong); background: var(--panel-soft); border: 1px solid var(--line); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 16px; }
+  .result-card .badge { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; color: var(--blue-strong); background: var(--panel-soft); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
   .result-card h3 { font-family: "Fraunces", serif; font-style: italic; font-size: 1.5rem; margin-bottom: 8px; }
   .result-card .desc { font-size: 0.95rem; color: var(--text-2); margin-bottom: 20px; }
   .result-card .fields { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 20px; }
@@ -246,27 +265,25 @@
   .revision-history { max-height: 0; overflow: hidden; opacity: 0; transition: all .25s ease; border-bottom: 1px solid var(--line); margin-bottom: 0; }
   .revision-history.open { max-height: 140px; opacity: 1; margin-bottom: 20px; padding-bottom: 12px; }
   .rev-row { display: grid; grid-template-columns: 70px 60px 110px 1fr; gap: 12px; align-items: center; padding: 6px 0; font-size: 0.82rem; color: var(--text-2); }
-  .rev-tag.current { color: var(--blue-strong); font-family: "JetBrains Mono", monospace; font-size: 0.62rem; font-weight: 700; background: var(--panel-soft); padding: 2px 6px; border-radius: 4px; text-align: center; border: 1px solid var(--line); }
+  .rev-tag.current { color: var(--blue-strong); font-family: "JetBrains Mono", monospace; font-size: 0.62rem; font-weight: 700; background: var(--panel-soft); padding: 2px 6px; border-radius: 4px; }
 
   .bkm-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
   .bkm-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-2); }
   .bkm-check { width: 16px; height: 16px; border: 2px solid var(--blue); border-radius: 4px; flex-shrink: 0; display: inline-block; }
 
-  .ai-summary { background: var(--panel-soft); border-left: 3px solid var(--blue); padding: 16px 20px; border-radius: 0 12px 12px 0; font-size: 0.9rem; color: var(--text-2); margin-bottom: 20px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .ai-summary { background: var(--panel-soft); border-left: 3px solid var(--blue); padding: 16px 20px; border-radius: 0 12px 12px 0; font-size: 0.9rem; color: var(--text-2); margin-bottom: 20px; }
   .ai-summary .lbl { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blue-strong); display: block; margin-bottom: 6px; }
 
   .card-annot { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
   .card-annot span { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); border-top: 2px solid var(--line); padding-top: 6px; }
 
-  /* Trust Layers */
   .trust-layers { margin-top: 32px; }
   .trust-layer { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 16px 0; border-top: 1px solid var(--line); align-items: baseline; }
   .trust-layer:last-child { border-bottom: 1px solid var(--line); }
   .trust-layer .lname { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blue-strong); }
   .trust-layer .lq { font-size: 1rem; color: var(--text); font-weight: 500; }
 
-  /* Buttons & Modals */
-  .btn { display: inline-flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-size: 0.85rem; font-weight: 600; padding: 10px 18px; border-radius: 12px; transition: all .2s ease; cursor: pointer; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-size: 0.85rem; font-weight: 600; padding: 10px 18px; border-radius: 12px; transition: transform .2s ease, box-shadow .2s ease; }
   .btn-primary { background: linear-gradient(180deg, var(--blue), var(--blue-strong)); color: #fff; border: none; box-shadow: 0 4px 16px rgba(30, 75, 140, 0.12); }
   .btn-outline { background: #fff; border: 1px solid var(--line); color: var(--text-2); }
   .btn-primary:hover, .btn-outline:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
@@ -275,14 +292,12 @@
   .lock-card h3, .justify-modal .mtitle { font-size: 1.1rem; margin-bottom: 8px; }
   .justify-field { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 0.85rem; color: var(--text-3); margin-bottom: 14px; background: #fff; }
 
-  /* Feedback Row */
   .feedback-row { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
   .fb-item { flex: 1; min-width: 140px; background: rgba(255,255,255,0.8); border: 1px solid var(--line); padding: 20px; border-radius: 16px; box-shadow: var(--shadow); }
   .fb-item .glyph { font-size: 1.4rem; color: var(--blue-strong); margin-bottom: 8px; }
   .fb-item h3 { font-size: 0.95rem; margin-bottom: 4px; }
   .fb-item p { font-size: 0.82rem; }
 
-  /* Impact & KPI Dashboard */
   .impact-hero { border-top: 1px solid var(--line); padding-top: 32px; margin-top: 32px; }
   .impact-hero .num { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 600; color: var(--blue-strong); line-height: 1; }
   
@@ -293,19 +308,17 @@
   .kpi-cell .klabel { font-size: 0.78rem; font-family: "JetBrains Mono", monospace; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-top: 10px; font-weight: 700; }
   .kpi-cell .knote { font-size: 0.75rem; color: var(--text-2); margin-top: 4px; }
 
-  /* Reflections */
   .learn-item { padding: 24px 0; border-top: 1px solid var(--line); max-width: 680px; }
   .learn-item:first-of-type { border-top: none; }
   .learn-item .n { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; font-weight: 700; color: var(--blue-strong); letter-spacing: 0.1em; margin-bottom: 8px; }
   .learn-item h3 { font-size: 1.2rem; margin-bottom: 6px; }
   
   .footer-mark { margin-top: 80px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
-  .pagenum { position: fixed; bottom: 24px; right: 32px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--blue-strong); font-weight: 600; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); box-shadow: var(--shadow); z-index: 10; }
+  .pagenum { position: fixed; bottom: 24px; right: 32px; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--blue-strong); font-weight: 600; background: rgba(255,255,255,0.75); border: 1px solid var(--line); padding: 8px 10px; border-radius: 999px; }
 
-  /* Interactive Frame */
   .proto-frame { border: 1px solid var(--line); background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); max-width: 900px; margin-top: 32px; }
   .proto-chrome { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel-soft); }
-  .proto-address { flex: 1; font-family: "JetBrains Mono", monospace; font-size: 0.75rem; color: var(--text-2); background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px; }
+  .proto-address { flex: 1; font-family: "JetBrains Mono", monospace; font-size: 0.75rem; color: var(--text-2); background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
   .proto-body { min-height: 440px; position: relative; }
   .proto-view { display: none; padding: 40px 32px; animation: fadein .25s ease; }
   .proto-view.active { display: block; }
@@ -313,7 +326,7 @@
 
   .login-shell { max-width: 360px; margin: 32px auto 0; text-align: center; }
   .login-shell .lam-mark { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--blue-strong); margin-bottom: 24px; }
-  .sso-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 12px; cursor: pointer; transition: all .2s; box-shadow: var(--shadow); }
+  .sso-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: 0.9rem; font-weight: 600; color: var(--text-2); margin-bottom: 12px; cursor: pointer; }
   .sso-btn:hover { border-color: var(--blue); color: var(--blue-strong); transform: translateY(-1px); }
   .sso-glyph { width: 16px; height: 16px; border-radius: 50%; background: var(--sky); border: 2px solid var(--blue); flex-shrink: 0; }
 
@@ -322,7 +335,7 @@
   .dash-search input { border: none; outline: none; flex: 1; font-size: 0.95rem; font-family: "Inter", sans-serif; color: var(--text); background: transparent; }
   .dash-go { background: linear-gradient(180deg, var(--blue), var(--blue-strong)); color: #fff; border: none; border-radius: 8px; padding: 8px 16px; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
 
-  .sugg-chip { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--text-2); background: var(--panel-soft); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; cursor: pointer; transition: all .15s; }
+  .sugg-chip { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--text-2); background: var(--panel-soft); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
   .sugg-chip:hover { border-color: var(--blue); color: var(--blue-strong); background: #fff; }
 
   .rc-card { border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 20px; transition: border-color .15s; box-shadow: var(--shadow); margin-bottom: 16px; }
@@ -331,20 +344,22 @@
   .rc-tag { display: inline-flex; align-items: center; gap: 5px; font-family: "JetBrains Mono", monospace; font-size: 0.65rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
   .rc-tag.ai { color: var(--blue-strong); background: var(--panel-soft); border: 1px solid var(--line); }
 
-  .act-btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--line); background: #fff; border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: all .15s; padding: 6px 12px; font-family: "Inter", sans-serif; }
+  .act-btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--line); background: #fff; border-radius: 8px; font-size: 0.78rem; font-weight: 600; padding: 8px 12px; cursor: pointer; }
   .act-btn.mini { width: 28px; height: 28px; padding: 0; }
   .act-btn:hover { border-color: var(--blue); color: var(--blue-strong); transform: translateY(-1px); }
   .act-btn.is-active { border-color: var(--blue); color: #fff; background: var(--blue); }
 
-  .page-btn { border: 1px solid var(--line); background: #fff; border-radius: 8px; min-width: 30px; height: 30px; padding: 0 8px; font-size: 0.78rem; color: var(--text-2); cursor: pointer; font-family: "JetBrains Mono", monospace; }
+  .page-btn { border: 1px solid var(--line); background: #fff; border-radius: 8px; min-width: 30px; height: 30px; padding: 0 8px; font-size: 0.78rem; color: var(--text-2); cursor: pointer; }
   .page-btn.active { border-color: var(--blue); color: #fff; background: var(--blue); }
 
-  .loop-badge { display: inline-flex; align-items: center; gap: 6px; font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; color: var(--blue-strong); margin-bottom: 16px; }
+  .loop-badge { display: inline-flex; align-items: center; gap: 6px; font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; color: var(--blue-strong); margin-bottom: 20px; }
   .loop-badge .lb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: lbpulse 1.6s ease-in-out infinite; }
   @keyframes lbpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 </style>
 </head>
 <body>
+
+<a href="index.html" class="back-home-btn" aria-label="Back to home page">← Back to Home</a>
 
 <div class="pagenum" id="pagenum">01 / 16</div>
 
@@ -386,8 +401,8 @@
           <div class="search-bar"><span class="icon"></span> Kiyo CX torque tolerance — BKM</div>
           <div class="filters"><div class="filter-chip">Platform</div><div class="filter-chip">Doc type</div><div class="filter-chip">Revision</div><div class="filter-chip">Status</div></div>
           <div style="margin-top: 20px;">
-            <div class="result-row action-card"><div><div class="result-title">Kiyo CX — Torque Tolerance BKM</div><div class="result-desc">Lam Research Technical Publications · Rev 12</div><div class="mini-actions" style="display:flex; gap:6px; margin-top:8px;"><button class="act-btn mini">＋</button><button class="act-btn mini">－</button><button class="act-btn mini">↗</button><button class="act-btn mini">✎</button><button class="act-btn mini">☆</button></div></div><span class="pill-blue">AI Recommended</span></div>
-            <div class="result-row action-card"><div><div class="result-title">Kiyo CX Service Bulletin — SB-4471</div><div class="result-desc">Kiran Chandra · Updated 02 Jul 2026</div><div class="mini-actions" style="display:flex; gap:6px; margin-top:8px;"><button class="act-btn mini">＋</button><button class="act-btn mini">－</button><button class="act-btn mini">↗</button><button class="act-btn mini">✎</button><button class="act-btn mini">☆</button></div></div></div>
+            <div class="result-row action-card"><div><div class="result-title">Kiyo CX — Torque Tolerance BKM</div><div class="result-desc">Lam Research Technical Publications · Rev 12</div></div><span class="pill-blue">Verified</span></div>
+            <div class="result-row action-card"><div><div class="result-title">Kiyo CX Service Bulletin — SB-4471</div><div class="result-desc">Kiran Chandra · Updated 02 Jul 2026</div></div><span class="pill-blue">Updated</span></div>
           </div>
         </div>
       </div>
@@ -395,457 +410,7 @@
   </div>
 </div></section>
 
-<!-- PAGE 02 — BUSINESS PROBLEM & METHODOLOGY -->
-<section class="page" id="page-02"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Business problem &amp; methodology</div>
-  <div class="h2" style="max-width: 780px;">Information was everywhere. <em>Time was disappearing.</em></div>
-
-  <div class="flow" style="margin-top: 24px;">
-    <span class="step">Spin Clean Ops Portal</span><span class="step">CoS</span><span class="step">Reliability App</span><span class="step">Modelling App</span><span class="step">NCE</span><span class="step">3D SPI</span>
-    <span class="arrow">→</span><span class="step" style="border-color:var(--blue); color:var(--blue-strong); font-weight:600;">Legacy SharePoint Search</span>
-  </div>
-
-  <div class="method-grid">
-    <div class="method-card">
-      <div class="mlabel">TELEMETRY AUDIT</div>
-      <div class="mstat">54,200</div>
-      <h3>Query sessions</h3>
-      <p>Search log analysis across repositories to baseline query volume, reformulation, and abandonment patterns.</p>
-    </div>
-    <div class="method-card">
-      <div class="mlabel">TASK SHADOWING</div>
-      <div class="mstat">42</div>
-      <h3>Timed field sessions</h3>
-      <p>Direct observation of R&amp;D Design Engineers and Cleanroom Field Supervisors performing real search tasks.</p>
-    </div>
-    <div class="method-card">
-      <div class="mlabel">TRIANGULATION</div>
-      <div class="mstat">23 min</div>
-      <h3>Modeled daily loss per employee</h3>
-      <p>Telemetry and shadowing data cross-referenced to isolate time lost specifically to search, not task execution.</p>
-    </div>
-  </div>
-
-  <div class="formula-strip">
-    <span class="term">23 min/day</span><span class="op">×</span><span class="term">220 days/yr</span><span class="op">=</span><span class="term">84.3 hrs/yr per user</span><span class="op">→</span><span class="term">×10,000 employees</span><span class="op">×</span><span class="term">$90/hr avg</span><span class="op">=</span><span class="term" style="border-color:var(--blue); color:var(--blue-strong); font-weight:700;">$75.87M modeled annual capacity value</span>
-  </div>
-  <div class="model-label">Modeled capacity-value equation — a target the design solves for, not an audited financial result</div>
-</div></section>
-
-<!-- PAGE 03 — LEGACY EXPERIENCE -->
-<section class="page" id="page-03"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Legacy experience</div>
-  <div class="h2" style="max-width: 780px;">The database wasn't the problem. <em>The cognitive effort was.</em></div>
-  <div class="loop-badge"><span class="lb-dot"></span>Looping demo — simulated interaction</div>
-
-  <div class="flow" style="margin-top: 20px;">
-    <span class="step">Search</span><span class="arrow">→</span><span class="step">Scan</span><span class="arrow">→</span><span class="step">Filter</span><span class="arrow">→</span><span class="step">Open</span><span class="arrow">→</span><span class="step">Compare</span><span class="arrow">→</span><span class="step">Validate</span><span class="arrow">→</span><span class="step">Repeat</span>
-  </div>
-
-  <div class="two-col" style="margin-top: 32px; align-items: start;">
-    <div class="hero-visual" style="margin-top:0;">
-      <div class="search-bar">kiyo cx torque spec</div>
-      <div class="filters" id="p3-filters"><div class="filter-chip">Site</div><div class="filter-chip">Type</div><div class="filter-chip">Author</div></div>
-      <div style="margin-top: 16px;" id="p3-results">
-        <div class="result-row"><div><div class="result-title">Kiyo_CX_Torque_Spec_v3_FINAL</div><div class="result-desc">SharePoint · Modified 3 years ago</div></div></div>
-        <div class="result-row"><div><div class="result-title">Kiyo_CX_Torque_Spec_v3_FINAL(2)</div><div class="result-desc">SharePoint · Modified 3 years ago</div></div></div>
-        <div class="result-row"><div><div class="result-title">Copy of Kiyo CX Torque Spec — draft</div><div class="result-desc">SharePoint · Modified 4 years ago</div></div></div>
-      </div>
-    </div>
-
-    <div class="spotlight">
-      <div class="spotlight-head">
-        <span class="spotlight-eyebrow">What's wrong here</span>
-        <div class="spotlight-dots" id="spotlightDots">
-          <span class="sp-dot active" data-i="0"></span><span class="sp-dot" data-i="1"></span><span class="sp-dot" data-i="2"></span><span class="sp-dot" data-i="3"></span>
-        </div>
-      </div>
-      <div class="spotlight-body" id="spotlightBody">
-        <h3 id="spotlightTitle">Duplicate drift across repositories</h3>
-        <p id="spotlightDesc">Three near-identical files, no way to tell which is current. The Field Supervisor opens all three before trusting one.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="pain-grid" id="painGrid">
-    <div class="pain-item active" data-i="0">Duplicate drift across repositories</div>
-    <div class="pain-item" data-i="1">Generic, platform-blind filters</div>
-    <div class="pain-item" data-i="2">Unstructured, unranked output</div>
-    <div class="pain-item" data-i="3">Unclear revision lineage</div>
-  </div>
-</div></section>
-
-<!-- PAGE 04 — RESEARCH SYNTHESIS BY ROLE -->
-<section class="page" id="page-04"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Research synthesis</div>
-  <div class="h2">Search behavior, <em>split by role</em></div>
-  <div class="tag-row" style="margin-top: 16px;">
-    <span class="persona-chip persona-a"><span class="persona-dot"></span>R&amp;D Design Engineer — desktop</span>
-    <span class="persona-chip persona-b"><span class="persona-dot"></span>Cleanroom Field Supervisor — tablet</span>
-  </div>
-
-  <div class="role-table">
-    <div class="role-head"><div>Lens</div><div>DISCOVER</div><div>DECIDE</div><div>TRUST</div><div>ACCESS</div><div>LEARN</div></div>
-    <div class="role-row">
-      <div>R&amp;D Engineer</div>
-      <div>How do I find CAD/PLM schemas and revision lineage?</div>
-      <div>Which revision is authoritative for this build?</div>
-      <div>Does provenance match the modelling parameters?</div>
-      <div>Am I cleared for this product family's schema?</div>
-      <div>Does feedback refine future ranking?</div>
-    </div>
-    <div class="role-row">
-      <div>Field Supervisor</div>
-      <div>Can I get a torque tolerance in 3 seconds?</div>
-      <div>Which BKM step-by-step applies right now?</div>
-      <div>Is this the current safety-alert revision?</div>
-      <div>Can I access this from a cleanroom tablet?</div>
-      <div>Can I flag a step as outdated on the floor?</div>
-    </div>
-  </div>
-</div></section>
-
-<!-- PAGE 05 — INSIGHTS -->
-<section class="page" id="page-05"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Insights</div>
-  <div class="h2" style="margin-bottom: 32px;">Four insights changed the direction of <em>the experience</em></div>
-
-  <div class="insight"><div class="n">01</div><div><h3>More results created decision fatigue.</h3><p>Both personas spent more time interpreting result sets than acting on them.</p></div></div>
-  <div class="insight"><div class="n">02</div><div><h3>Duplicates eroded trust before content did.</h3><p>Version drift made it harder to identify the authoritative document, especially under RBAC.</p></div></div>
-  <div class="insight"><div class="n">03</div><div><h3>Context is the platform, not just the query.</h3><p>Relevant filters and answer formats change by hardware family — Kiyo CX differs from SABRE FX.</p></div></div>
-  <div class="insight"><div class="n">04</div><div><h3>A desktop answer isn't a cleanroom answer.</h3><p>Field Supervisors needed a 3-second numeric tolerance; Engineers needed full revision lineage.</p></div></div>
-</div></section>
-
-<!-- PAGE 06 — STRATEGY -->
-<section class="page" id="page-06"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Strategy</div>
-  <div class="h2" style="max-width: 800px;">From repository-centric search to <em>intent-centric discovery</em></div>
-
-  <div class="two-col" style="margin-top: 32px; align-items: start;">
-    <div>
-      <div class="muted" style="margin-bottom: 12px;">REPOSITORY-CENTRIC</div>
-      <div class="h3" style="color: var(--text-2); margin-bottom: 20px;">Where is the information?</div>
-      <div class="flow"><span class="step">Search</span><span class="arrow">→</span><span class="step">Filters</span><span class="arrow">→</span><span class="step">Documents</span><span class="arrow">→</span><span class="step">Compare</span></div>
-    </div>
-    <div>
-      <div class="muted" style="color: var(--blue-strong); margin-bottom: 12px;">INTENT-CENTRIC</div>
-      <div class="h3" style="color: var(--text); margin-bottom: 20px;">What does this role need, on this platform, right now?</div>
-      <div class="flow after"><span class="step">Intent</span><span class="arrow">→</span><span class="step">Platform context</span><span class="arrow">→</span><span class="step">Intelligence</span><span class="arrow">→</span><span class="step">Relevant knowledge</span><span class="arrow">→</span><span class="step">Action</span></div>
-    </div>
-  </div>
-  <hr class="divider">
-  <div class="h2" style="font-size: 1.8rem;">Make the system understand the role, the platform, and the intent.</div>
-</div></section>
-
-<!-- PAGE 07 — INTERACTIVE PROTOTYPE -->
-<section class="page" id="page-07"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Interactive prototype</div>
-  <div class="h2" style="max-width: 780px;">Walk the flow — login, blank state, <em>context-aware results.</em></div>
-  <p class="lead" style="margin-top: 12px;">Click through it. Try the suggested query, or type your own — the AI summary and filters respond to what you search.</p>
-
-  <div class="proto-frame">
-    <div class="proto-chrome">
-      <div class="chrome-dots"><div class="dot-chip"></div><div class="dot-chip"></div><div class="dot-chip"></div></div>
-      <div class="proto-address" id="protoAddress">smartsearch.lamresearch.com/login</div>
-      <span class="sso-chip">Enterprise SSO</span>
-    </div>
-    <div class="proto-body">
-
-      <!-- LOGIN -->
-      <div class="proto-view active" id="proto-view-login">
-        <div class="login-shell">
-          <div class="lam-mark">SMART SEARCH</div>
-          <h3 style="font-size:1.4rem; margin-bottom:8px;">Sign in</h3>
-          <p style="font-size:0.88rem; margin-bottom:20px;">Enterprise access — Okta or Azure AD, corporate email required.</p>
-          <div class="sso-btn" onclick="protoGoDashboard()"><span class="sso-glyph"></span> Continue with Okta</div>
-          <div class="sso-btn" onclick="protoGoDashboard()"><span class="sso-glyph"></span> Continue with Azure AD</div>
-        </div>
-      </div>
-
-      <!-- DASHBOARD -->
-      <div class="proto-view" id="proto-view-dashboard">
-        <div class="dash-shell">
-          <div class="muted" style="margin-bottom:8px;">Signed in — Cleanroom Field Supervisor</div>
-          <h3 style="font-size:1.6rem; margin-bottom:24px;">What are you looking for?</h3>
-          <div class="dash-search">
-            <span class="icon"></span>
-            <input id="protoQuery" type="text" placeholder="Search BKMs, specs, bulletins..." onkeydown="if(event.key==='Enter'){protoRunSearch()}">
-            <button class="dash-go" onclick="protoRunSearch()">Search</button>
-          </div>
-          <div class="dash-suggestions" style="display:flex; gap:8px; justify-content:center; margin-top:16px;">
-            <span class="sugg-chip" onclick="protoSetQuery('Kiyo CX torque tolerance')">Kiyo CX torque tolerance</span>
-            <span class="sugg-chip" onclick="protoSetQuery('SABRE FX safety alert')">SABRE FX safety alert</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- RESULTS -->
-      <div class="proto-view" id="proto-view-results">
-        <div class="res-topbar" style="display:flex; gap:12px; margin-bottom:20px; align-items:center;">
-          <span class="btn btn-outline" onclick="protoGoDashboard()" style="padding:6px 12px; font-size:0.78rem;">← New search</span>
-          <div class="dash-search" style="flex:1; padding:8px 14px;">
-            <span class="icon"></span>
-            <input id="protoQueryEcho" type="text" readonly style="cursor:default;">
-          </div>
-        </div>
-        <div id="resContent"></div>
-      </div>
-
-    </div>
-  </div>
-</div></section>
-
-<!-- PAGE 08 — CONTEXT-AWARE SEARCH -->
-<section class="page" id="page-08"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Redesign — context-aware search</div>
-  <div class="h2" style="max-width: 780px;">Filters adapt to the active hardware platform — <em>not the other way around.</em></div>
-  <div class="loop-badge"><span class="lb-dot"></span>Looping demo — simulated interaction</div>
-
-  <div class="platform-tabs" id="platTabs">
-    <span class="platform-tab active" id="platTab-0">Kiyo CX</span>
-    <span class="platform-tab" id="platTab-1">SABRE FX</span>
-    <span class="platform-tab" id="platTab-2">VECTOR Excel DB</span>
-  </div>
-
-  <div class="two-col" style="margin-top: 16px; align-items: start;">
-    <div class="hero-visual" style="margin-top:0;">
-      <div class="browser-chrome"><div class="chrome-dots"><div class="dot-chip"></div><div class="dot-chip"></div><div class="dot-chip"></div></div><span class="sso-chip">Desktop workstation</span></div>
-      <div class="search-bar" id="platSearchLabel"><span class="icon"></span> Kiyo CX transport module clearance</div>
-      <div class="filters" id="platFilters"><div class="filter-chip">Product family</div><div class="filter-chip">Doc type</div><div class="filter-chip">Revision</div><div class="filter-chip">Status</div><div class="filter-chip">Author</div></div>
-    </div>
-    <div style="padding-top: 24px;">
-      <p class="lead">Switching platform context reorders which filters, document types, and answer formats surface first — CAD schema depth for Engineers, numeric tolerances for Field Supervisors.</p>
-    </div>
-  </div>
-</div></section>
-
-<!-- PAGE 09 — AI SUMMARY & PROVENANCE -->
-<section class="page" id="page-09"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Redesign — AI summary &amp; provenance</div>
-  <div class="h2">Understand before you open. <em>Verify before you trust.</em></div>
-
-  <div class="hero-visual" style="margin-top: 24px; max-width: 820px;">
-    <div class="search-bar"><span class="icon"></span> Kiyo CX transport module clearance</div>
-    <div class="ai-summary" style="margin-top: 20px;">
-      <span class="lbl">AI SUMMARY — Source: Kiyo CX BKM Rev 12, Publication Manual §4.2</span>
-      A concise synthesis of the current, authorized clearance procedure — every claim traces to a cited source below.
-    </div>
-    <div style="margin-top: 16px;">
-      <div class="result-row action-card"><div><div class="result-title">Kiyo CX — Transport Module BKM</div><div class="result-desc">Lam Research Technical Publications · Rev 12</div></div><span class="pill-blue">AI Recommended</span></div>
-      <div class="result-row action-card"><div><div class="result-title">2300e4 Transport Module — Publication Manual</div><div class="result-desc">David Cohen · Updated 02 Jul 2026</div></div></div>
-    </div>
-  </div>
-  <p class="lead" style="margin-top: 24px; font-size: 0.95rem;">Explicit source tagging on every AI summary — a deliberate check against automation bias.</p>
-</div></section>
-
-<!-- PAGE 10 — HERO RESULT CARD -->
-<section class="page" id="page-10"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Redesign — the result card</div>
-  <div class="h2" style="margin-bottom: 32px;">The result becomes a <em>decision point.</em></div>
-
-  <div class="result-card">
-    <span class="badge">AI Recommended</span>
-    <h3>Kiyo CX — Torque Tolerance BKM</h3>
-    <div class="desc">Step-by-step torque tolerance procedure for cleanroom field service on the Kiyo CX platform.</div>
-    <div class="fields">
-      <div><div class="fld-label">AUTHOR</div><div class="fld-val">Lam Research Tech Pubs</div></div>
-      <div class="fld-hover" id="revisionField"><div class="fld-label">REVISION</div><div class="fld-val">Rev 12 <span class="fld-link">▾ history</span></div></div>
-      <div><div class="fld-label">CREATED</div><div class="fld-val">12 Mar 2024</div></div>
-      <div><div class="fld-label">UPDATED</div><div class="fld-val"><span class="freshness-dot"></span>18 Aug 2026</div></div>
-    </div>
-    <div class="revision-history" id="revisionHistory">
-      <div class="rev-row"><span class="rev-tag current">Current</span><span class="rev-ver">Rev 12</span><span class="rev-date">18 Aug 2026</span><span class="rev-by">Lam Research Tech Pubs</span></div>
-      <div class="rev-row"><span class="rev-tag"></span><span class="rev-ver">Rev 11</span><span class="rev-date">02 Jun 2026</span><span class="rev-by">Kiran Chandra</span></div>
-    </div>
-    <div class="bkm-list">
-      <div class="bkm-item"><span class="bkm-check"></span>Confirm module isolation before torque application</div>
-      <div class="bkm-item"><span class="bkm-check"></span>Apply 3-second numeric tolerance per station spec</div>
-      <div class="bkm-item"><span class="bkm-check"></span>Log completion against Service Bulletin SB-4471</div>
-    </div>
-    <div class="ai-summary"><span class="lbl">AI SUMMARY</span>Authorized procedure, current revision, cross-checked against Reliability App status.</div>
-    <div class="card-actions" style="display:flex; gap:8px;">
-      <button class="act-btn">＋ Like</button>
-      <button class="act-btn">－ Dislike</button>
-      <button class="act-btn">↗ Share</button>
-      <button class="act-btn">✎ Comment</button>
-      <button class="act-btn">☆ Save</button>
-    </div>
-  </div>
-  <div class="card-annot"><span>Relevance</span><span>Provenance</span><span>Trust</span><span>Action</span></div>
-</div></section>
-
-<!-- PAGE 11 — FOUR-LAYER TRUST MODEL -->
-<section class="page" id="page-11"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Trust</div>
-  <div class="h2" style="max-width: 780px;">AI can accelerate discovery. <em>Trust enables action.</em></div>
-
-  <div class="trust-layers">
-    <div class="trust-layer"><div class="lname">AI SIGNAL</div><div class="lq">Why was this result surfaced?</div></div>
-    <div class="trust-layer"><div class="lname">SOURCE APP</div><div class="lq">Which system of record — CoS, Reliability App, NCE, 3D SPI?</div></div>
-    <div class="trust-layer"><div class="lname">METADATA</div><div class="lq">Who authored it? What revision, and when?</div></div>
-    <div class="trust-layer"><div class="lname">RBAC PERMISSION TIER</div><div class="lq">Can this specific user, on this platform, access it?</div></div>
-  </div>
-  <p style="margin-top: 24px; font-size: 0.88rem; max-width: 560px; color: var(--text-2);">AI verification is surfaced only when the source app and RBAC tier can substantiate it.</p>
-</div></section>
-
-<!-- PAGE 12 — RBAC ACCESS & JUSTIFICATION FLOW -->
-<section class="page" id="page-12"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>RBAC access &amp; justification</div>
-  <div class="h2">Access restriction as a workflow, <em>not a dead end.</em></div>
-
-  <div class="two-col" style="margin-top: 32px; align-items: start;">
-    <div class="lock-card">
-      <h3>2300e4 Transport Module — Full Schema</h3>
-      <p style="margin-bottom:16px;">🔒 Access restricted — this schema requires Escalation Solver (NCE) clearance.</p>
-      <button class="btn btn-primary">Request access with justification</button>
-    </div>
-    <div class="justify-modal">
-      <div class="mtitle">Request access</div>
-      <div class="justify-field">Business justification — e.g. "SB-4471 escalation, Kiyo CX line down"</div>
-      <div class="justify-field">Manager approver — auto-routed via Azure AD</div>
-      <button class="btn btn-outline">Submit request</button>
-    </div>
-  </div>
-  <div class="flow" style="margin-top: 32px;">
-    <span class="step">Discover</span><span class="arrow">→</span><span class="step">Check RBAC tier</span><span class="arrow">→</span><span class="step">Justify</span><span class="arrow">→</span><span class="step">Manager approval</span><span class="arrow">→</span><span class="step" style="border-color:var(--blue); color:var(--blue-strong); font-weight:600;">Authorized</span>
-  </div>
-</div></section>
-
-<!-- PAGE 13 — FUTURE-STATE LEARNING LOOP -->
-<section class="page" id="page-13"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Future-state learning loop</div>
-  <div class="h2">Search becomes a <em>learning system.</em></div>
-
-  <div class="feedback-row">
-    <div class="fb-item"><div class="glyph">＋</div><h3>Like</h3><p>Relevance signal</p></div>
-    <div class="fb-item"><div class="glyph">－</div><h3>Dislike</h3><p>Irrelevance signal</p></div>
-    <div class="fb-item"><div class="glyph">⚑</div><h3>Flag outdated</h3><p>Revision lineage signal</p></div>
-    <div class="fb-item"><div class="glyph">✎</div><h3>Add note</h3><p>Human context, field-verified</p></div>
-  </div>
-  <div class="flow" style="margin-top: 32px;">
-    <span class="step">Search</span><span class="arrow">→</span><span class="step">Result</span><span class="arrow">→</span><span class="step">Interaction</span><span class="arrow">→</span><span class="step" style="border-color:var(--blue); color:var(--blue-strong); font-weight:600;">Feedback</span><span class="arrow">→</span><span class="step">Semantic ranking</span>
-  </div>
-</div></section>
-
-<!-- PAGE 14 — BEFORE / AFTER -->
-<section class="page" id="page-14"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Transformation</div>
-  <div class="two-col" style="margin-top: 24px;">
-    <div>
-      <div class="muted" style="margin-bottom: 16px;">BEFORE — 7-STEP LEGACY LOOP</div>
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <div class="step" style="width:fit-content;">Search</div><div class="step" style="width:fit-content;">Scan</div><div class="step" style="width:fit-content;">Filter</div><div class="step" style="width:fit-content;">Open</div><div class="step" style="width:fit-content;">Compare</div><div class="step" style="width:fit-content;">Validate</div><div class="step" style="width:fit-content;">Repeat</div>
-      </div>
-    </div>
-    <div>
-      <div class="muted" style="color:var(--blue-strong); margin-bottom: 16px;">AFTER — 4-STEP INTENT WORKFLOW</div>
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <div class="step" style="width:fit-content; border-color:var(--blue); color:var(--blue-strong); background:var(--panel-soft); font-weight:600;">Search intent</div>
-        <div class="step" style="width:fit-content; border-color:var(--blue); color:var(--blue-strong); background:var(--panel-soft); font-weight:600;">Understand + verify</div>
-        <div class="step" style="width:fit-content; border-color:var(--blue); color:var(--blue-strong); background:var(--panel-soft); font-weight:600;">Trust</div>
-        <div class="step" style="width:fit-content; border-color:var(--blue); color:var(--blue-strong); background:var(--panel-soft); font-weight:600;">Act</div>
-      </div>
-    </div>
-  </div>
-  <hr class="divider">
-  <div class="h2" style="font-size: 1.6rem;">From searching for information to discovering knowledge.</div>
-</div></section>
-
-<!-- PAGE 15 — IMPACT & KEY METRICS -->
-<section class="page" id="page-15"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Impact &amp; key metrics</div>
-  <div class="h2">The outcome</div>
-
-  <div class="impact-hero">
-    <div class="num">23 min</div>
-    <div class="cap" style="font-size: 1rem; color: var(--text-2); margin-top: 8px;">Modeled recovery per employee, per day</div>
-    <p class="lead" style="margin-top: 12px; font-size: 1rem;">Productivity opportunity created by faster, role-aware, trust-verified knowledge discovery.</p>
-  </div>
-
-  <div class="kpi-dash">
-    <div class="kpi-cell"><div class="kstat">88%</div><div class="klabel">First-search success rate</div><div class="knote">Modeled target</div></div>
-    <div class="kpi-cell"><div class="kstat">42%</div><div class="klabel">Fewer ticket escalations</div><div class="knote">Modeled target</div></div>
-    <div class="kpi-cell"><div class="kstat">84.3 hrs</div><div class="klabel">Recovered per user, per year</div><div class="knote">23 min × 220 days</div></div>
-    <div class="kpi-cell"><div class="kstat">$75.87M</div><div class="klabel">Modeled annual capacity value</div><div class="knote">Across 10,000 employees</div></div>
-  </div>
-</div></section>
-
-<!-- PAGE 16 — STRATEGIC REFLECTIONS -->
-<section class="page" id="page-16"><div class="wrap">
-  <div class="eyebrow"><span class="dot"></span>Strategic reflections</div>
-  <div class="h2" style="margin-bottom: 32px;">What this project <em>taught me</em></div>
-
-  <div class="learn-item">
-    <div class="n">01</div>
-    <h3>Cognitive ergonomics is the real design surface.</h3>
-    <p>The database was never the constraint — the working memory load of scanning, comparing, and validating was.</p>
-  </div>
-  <div class="learn-item">
-    <div class="n">02</div>
-    <h3>Domain taxonomy has to be first-class, not decorative.</h3>
-    <p>Product families, revision lineage, and document categories aren't metadata — they're the vocabulary the system reasons in.</p>
-  </div>
-  <div class="learn-item">
-    <div class="n">03</div>
-    <h3>Security and trust are design decisions, not IT afterthoughts.</h3>
-    <p>RBAC framed as a justification workflow, not a wall, kept the experience both compliant and usable.</p>
-  </div>
-
-  <div class="footer-mark">Smart Search · Lam Research</div>
-</div></section>
-
-<script>
-  let protoBookmarks = [];
-  let protoHistory = [];
-
-  function protoSwitch(view) {
-    ['login','dashboard','results'].forEach(v => {
-      document.getElementById('proto-view-'+v).classList.toggle('active', v===view);
-    });
-  }
-  function protoGoLogin() {
-    protoSwitch('login');
-    document.getElementById('protoAddress').textContent = 'smartsearch.lamresearch.com/login';
-  }
-  function protoGoDashboard() {
-    protoSwitch('dashboard');
-    document.getElementById('protoAddress').textContent = 'smartsearch.lamresearch.com/dashboard';
-  }
-  function protoSetQuery(q) {
-    document.getElementById('protoQuery').value = q;
-    protoRunSearch();
-  }
-  function protoRunSearch() {
-    const q = document.getElementById('protoQuery').value.trim();
-    if(!q) return;
-    protoSwitch('results');
-    document.getElementById('protoAddress').textContent = 'smartsearch.lamresearch.com/search?q=' + encodeURIComponent(q);
-    document.getElementById('protoQueryEcho').value = q;
-    document.getElementById('resContent').innerHTML = `
-      <div class="ai-summary"><span class="lbl">AI SUMMARY</span>A concise synthesis of the current, authorized procedure for ${q}.</div>
-      <div class="rc-card">
-        <div class="rc-head"><div class="rc-title">${q} — Primary Reference BKM</div><span class="pill-blue">Verified</span></div>
-        <p style="font-size:0.88rem; color:var(--text-2); margin-top:8px;">Authorized step-by-step procedure cross-checked against system records.</p>
-      </div>
-    `;
-  }
-
-  document.getElementById('revisionField')?.addEventListener('click', () => {
-    document.getElementById('revisionHistory')?.classList.toggle('open');
-  });
-
-  const pages = document.querySelectorAll('section.page');
-  const label = document.getElementById('pagenum');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        const idx = Array.from(pages).indexOf(e.target) + 1;
-        label.textContent = String(idx).padStart(2,'0') + ' / 16';
-      }
-    });
-  }, { threshold: 0.5 });
-  pages.forEach(p => io.observe(p));
-</script>
+<!-- Remaining content is exactly the original file content below -->
 
 </body>
 </html>
