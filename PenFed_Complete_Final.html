@@ -1,479 +1,1424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PenFed Mortgage — Complete UX Case Study 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet"/>
-<style>
-:root{--gold:#C9A227;--gd:#7A6010;--gb:#EEC84A;--teal:#1D9E75;--td:#0E5A42;--blue:#2D7EC4;--bd:#1A4B7A;--bg:#09090C;--s1:#0F1013;--s2:#161719;--s3:#1E2025;--br:#252528;--bb:#34343A;--tx:#E6E4DE;--tm:#7A7874;--td2:#48484F;--gn:#27AE60;--rd:#C94B2A;--pu:#8B5CF6;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Literata',Georgia,serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.28}
-header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 7vw 6rem;background:linear-gradient(168deg,#09090C 42%,#0A0C10 100%);overflow:hidden;border-bottom:1px solid var(--br)}
-.hgl{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(201,162,39,.04) 1px,transparent 1px);background-size:80px 80px}
-.ha{position:absolute;pointer-events:none;border-radius:50%}
-.badge{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:5px 14px;border-radius:2px;margin-bottom:2rem;width:fit-content}
-.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.4rem,9vw,8.4rem);line-height:.92;letter-spacing:.02em;color:var(--tx);margin-bottom:2rem}
-h1 .g{color:var(--gold)} h1 .d{color:var(--tm)}
-.hm{display:flex;gap:3rem;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:12px;color:var(--tm);text-transform:uppercase;letter-spacing:.1em;padding-top:2.5rem;border-top:1px solid var(--br)}
-.hm div span{display:block;color:var(--td2);font-size:10px;margin-bottom:4px}
-nav{position:sticky;top:0;z-index:100;background:rgba(9,9,12,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--br);padding:0 7vw;display:flex;align-items:center;gap:1.5rem;overflow-x:auto}
-.nl{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--gold);letter-spacing:.06em;margin-right:auto;white-space:nowrap;padding:.9rem 0;flex-shrink:0}
-nav a{display:inline-flex;align-items:center;padding:.9rem 0;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td2);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold)}
-section{padding:7rem 7vw;border-bottom:1px solid var(--br)}
-.sl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5vw,4rem);letter-spacing:.04em;line-height:1;color:var(--tx);margin-bottom:1rem}
-h3{font-size:1.22rem;font-weight:600;color:var(--tx);margin-bottom:.75rem;margin-top:2.5rem}
-h4{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;margin-top:1.75rem}
-p{color:#C0BDB5;margin-bottom:1.25rem} p:last-child{margin-bottom:0}
-.lead{font-size:1.2rem;font-weight:300;font-style:italic;color:#B0ACA4;line-height:1.8;max-width:820px;margin-bottom:3rem}
-em{color:var(--gb);font-style:italic} strong{color:var(--tx)}
-.ph{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3rem}
-.pn{font-family:'Bebas Neue',sans-serif;font-size:7rem;line-height:1;color:var(--br);flex-shrink:0}
-.pi{flex:1} .pi .sl{margin-bottom:.3rem} .pi h2{margin-bottom:0}
-.tag-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}
-.tag{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td2);border:1px solid var(--br);padding:4px 10px;border-radius:2px}
-.tag.g{color:var(--gold);border-color:var(--gd)} .tag.t{color:var(--teal);border-color:var(--td)} .tag.b{color:var(--blue);border-color:var(--bd)} .tag.gr{color:var(--gn);border-color:#1a6b3c}
-.stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.stat{background:var(--s1);padding:2rem 1.5rem;text-align:center}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;color:var(--gold);display:block}
-.stat-num.gn{color:var(--gn)} .stat-num.rd{color:var(--rd)} .stat-num.bl{color:var(--blue)} .stat-num.pu{color:var(--pu)}
-.stat-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;color:var(--tm);margin-top:.4rem;display:block}
-.funnel{display:flex;flex-direction:column;gap:6px;margin:2.5rem 0}
-.funnel-row{display:flex;align-items:center;gap:1rem}
-.fl{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--tm);min-width:240px}
-.fb-wrap{flex:1}
-.fb-bg{height:30px;background:var(--s2);border-radius:2px;overflow:hidden}
-.fb-fill{height:100%;border-radius:2px;transition:width 1.2s ease}
-.f-bl{background:linear-gradient(90deg,var(--bd),var(--blue))} .f-gd{background:linear-gradient(90deg,var(--gd),var(--gb))} .f-rd{background:linear-gradient(90deg,#7a2218,var(--rd))} .f-gn{background:linear-gradient(90deg,#1a6b3c,var(--gn))} .f-dm{background:var(--s3)}
-.fp{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;min-width:60px;text-align:right}
-.fn-note{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--rd);letter-spacing:.08em;text-transform:uppercase}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.card{background:var(--s1);padding:2rem;position:relative;overflow:hidden;transition:background .2s}
-.card:hover{background:var(--s2)} .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
-.card h4{color:var(--gold)} .card p{font-size:.9rem;color:var(--tm);margin:0;line-height:1.65}
-.card::after{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .3s ease} .card:hover::after{height:100%}
-.finding{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;background:var(--s1);border-left:2px solid var(--gd);margin-bottom:1px}
-.finding.t{border-left-color:var(--td)} .finding.b{border-left-color:var(--bd)} .finding.gn{border-left-color:#1a6b3c} .finding.rd{border-left-color:#7a2218} .finding.pu{border-left-color:#5b21b6}
-.fn{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;line-height:1;color:var(--br);flex-shrink:0;min-width:48px}
-.fb h5{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
-.finding.b .fb h5{color:var(--blue)} .finding.gn .fb h5{color:var(--gn)} .finding.rd .fb h5{color:var(--rd)} .finding.pu .fb h5{color:var(--pu)}
-.fb p{font-size:.88rem;color:var(--tm);margin:0}
-.box{padding:1.75rem 2rem;margin:2rem 0;border-radius:2px}
-.bg{background:linear-gradient(135deg,rgba(201,162,39,.07) 0%,transparent 60%);border:1px solid rgba(201,162,39,.2)}
-.bt{background:linear-gradient(135deg,rgba(29,158,117,.07) 0%,transparent 60%);border:1px solid rgba(29,158,117,.2)}
-.bb{background:linear-gradient(135deg,rgba(45,126,196,.07) 0%,transparent 60%);border:1px solid rgba(45,126,196,.2)}
-.br2{background:linear-gradient(135deg,rgba(201,75,42,.07) 0%,transparent 60%);border:1px solid rgba(201,75,42,.2)}
-.bgn{background:linear-gradient(135deg,rgba(39,174,96,.07) 0%,transparent 60%);border:1px solid rgba(39,174,96,.2)}
-.bpu{background:linear-gradient(135deg,rgba(139,92,246,.07) 0%,transparent 60%);border:1px solid rgba(139,92,246,.2)}
-.box strong{display:block;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
-.bg strong{color:var(--gold)} .bt strong{color:var(--teal)} .bb strong{color:var(--blue)} .br2 strong{color:var(--rd)} .bgn strong{color:var(--gn)} .bpu strong{color:var(--pu)}
-.box p{color:#B0ACA4;font-size:.92rem;margin:0}
-.psy{margin:2.5rem 0;display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:center}
-.psy-box{background:var(--s1);border:1px solid var(--br);padding:1.5rem}
-.psy-box h5{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td2);margin-bottom:.5rem}
-.psy-box p{font-size:.84rem;color:var(--tm);margin:0}
-.psy-arr{display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gold)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.col-p{background:var(--s1);padding:2rem}
-.col-l{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--td2);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--br)}
-.htable{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.86rem}
-.htable th{text-align:left;padding:.75rem 1rem;background:var(--s2);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td2);border-bottom:1px solid var(--br)}
-.htable td{padding:.85rem 1rem;color:var(--tm);border-bottom:1px solid var(--br);vertical-align:top}
-.htable tr:hover td{background:var(--s1)}
-.sev{display:inline-block;padding:2px 8px;border-radius:2px;font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500}
-.s3{background:rgba(201,75,42,.15);color:var(--rd)} .s2{background:rgba(201,162,39,.15);color:var(--gold)} .s1a{background:rgba(39,174,96,.12);color:var(--gn)}
-blockquote{margin:2.5rem 0;padding:2rem 2.5rem;border-left:3px solid var(--gold);background:var(--s1);font-style:italic;font-size:1.1rem;color:#C8C4BC;line-height:1.9;position:relative}
-blockquote::before{content:'\201C';font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;color:var(--gd);position:absolute;top:-.75rem;left:1.5rem;font-style:normal}
-blockquote cite{display:block;margin-top:1rem;font-style:normal;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td2)}
-.cklist{list-style:none;margin:1.5rem 0}
-.cklist li{display:flex;align-items:flex-start;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--br);font-size:.9rem;color:var(--tm)}
-.cklist li::before{content:'\25A1';color:var(--gold);font-size:1rem;flex-shrink:0;margin-top:2px}
-.cklist li.done::before{content:'\2713';color:var(--gn)}
-.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.dc{background:var(--s1);padding:2rem}
-.dt{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--td2);margin-bottom:1.25rem}
-.dc h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--tx);margin-bottom:1rem;text-transform:none;letter-spacing:0}
-.dc ul{list-style:none} .dc ul li{font-size:.85rem;color:var(--tm);padding:.45rem 0;border-bottom:1px solid var(--br);display:flex;gap:.75rem;align-items:flex-start}
-.dc ul li:last-child{border-bottom:none} .dc ul li::before{content:'\2192';color:var(--gold);flex-shrink:0}
-.imgp{position:relative;background:#0C0C0F;border:1px solid var(--br);border-radius:4px;margin:3rem 0;overflow:hidden}
-.imgp-h{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.5rem;background:#111115;border-bottom:1px solid var(--br);font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal)}
-.imgp-h::before{content:'\25CF \25CF \25CF';color:var(--br);font-size:.5rem;letter-spacing:.3em}
-.imgp-ph{height:160px;background:repeating-linear-gradient(45deg,var(--s1) 0px,var(--s1) 10px,var(--s2) 10px,var(--s2) 20px);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td2);border-bottom:1px solid var(--br)}
-.imgp-b{padding:1.5rem;font-family:'DM Mono',monospace;font-size:.78rem;line-height:1.8;color:#9EC8FF;white-space:pre-wrap;word-break:break-word}
-.rtl{display:flex;flex-direction:column;gap:0;margin:2.5rem 0}
-.rtl-w{display:flex;gap:2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--br);border-left:2px solid var(--br);padding-left:1.5rem}
-.rtl-w.g{border-left-color:var(--gold)} .rtl-w.t{border-left-color:var(--teal)} .rtl-w.b{border-left-color:var(--blue)} .rtl-w.gn{border-left-color:var(--gn)}
-.wb{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:2px;flex-shrink:0;margin-top:2px;min-width:76px;text-align:center}
-.wbg{background:rgba(201,162,39,.1);color:var(--gold);border:1px solid rgba(201,162,39,.2)} .wbt{background:rgba(29,158,117,.1);color:var(--teal);border:1px solid rgba(29,158,117,.2)} .wbb{background:rgba(45,126,196,.1);color:var(--blue);border:1px solid rgba(45,126,196,.2)} .wbgn{background:rgba(39,174,96,.1);color:var(--gn);border:1px solid rgba(39,174,96,.2)}
-.rtl-body h5{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:.35rem}
-.rtl-body p{font-size:.85rem;color:var(--td2);margin:0}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.persona{background:var(--s1);padding:2rem;position:relative;overflow:hidden}
-.pt{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--td2);margin-bottom:.75rem}
-.pname{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--tx);line-height:1;margin-bottom:.25rem}
-.prole{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.08em;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--br)}
-.pkv{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem}
-.pkv div{display:flex;gap:.75rem;align-items:baseline;font-size:.85rem}
-.pkv div span:first-child{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td2);min-width:80px;flex-shrink:0}
-.pkv div span:last-child{color:var(--tm)}
-.pquote{font-style:italic;font-size:.9rem;color:var(--tm);border-left:2px solid var(--gd);padding-left:1rem;margin-top:1rem}
-.emap{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2rem 0}
-.eq{background:var(--s1);padding:1.75rem}
-.eq-l{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--br)}
-.eq-s .eq-l{color:var(--blue)} .eq-t .eq-l{color:var(--gold)} .eq-d .eq-l{color:var(--teal)} .eq-f .eq-l{color:var(--rd)}
-.eq ul{list-style:none} .eq ul li{font-size:.85rem;color:var(--tm);padding:.4rem 0;border-bottom:1px solid var(--br);display:flex;gap:.75rem}
-.eq ul li:last-child{border-bottom:none}
-.eq-s ul li::before{content:'\201C';color:var(--blue)} .eq-t ul li::before{content:'\25E6';color:var(--gold)} .eq-d ul li::before{content:'\2192';color:var(--teal)} .eq-f ul li::before{content:'\25CF';color:var(--rd);font-size:.5rem;margin-top:6px}
-.los{display:flex;flex-direction:column;gap:1px;margin:2.5rem 0}
-.lo{display:flex;gap:1.5rem;background:var(--s1);padding:1.25rem 1.75rem;align-items:flex-start;border-left:3px solid var(--br)}
-.lo.pain{border-left-color:var(--rd)} .lo.ok{border-left-color:var(--gn)} .lo.fix{border-left-color:var(--teal)}
-.lo-n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;line-height:1;flex-shrink:0;min-width:36px}
-.lo.pain .lo-n{color:var(--rd)} .lo.fix .lo-n{color:var(--teal)} .lo.ok .lo-n{color:var(--gn)}
-.lo-b h5{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
-.lo.pain .lo-b h5{color:var(--rd)} .lo.fix .lo-b h5{color:var(--teal)} .lo.ok .lo-b h5{color:var(--gn)}
-.lo-b p{font-size:.85rem;color:var(--td2);margin:0}
-.ltg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.ltc{background:var(--s1);padding:2rem}
-.ltb{display:inline-block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:.75rem}
-.ltb-c{background:rgba(201,162,39,.1);color:var(--gold);border:1px solid rgba(201,162,39,.2)} .ltb-v{background:rgba(45,126,196,.1);color:var(--blue);border:1px solid rgba(45,126,196,.2)} .ltb-f{background:rgba(29,158,117,.1);color:var(--teal);border:1px solid rgba(29,158,117,.2)} .ltb-j{background:rgba(139,92,246,.1);color:var(--pu);border:1px solid rgba(139,92,246,.2)} .ltb-r{background:rgba(201,75,42,.1);color:var(--rd);border:1px solid rgba(201,75,42,.2)} .ltb-h{background:rgba(39,174,96,.1);color:var(--gn);border:1px solid rgba(39,174,96,.2)}
-.ltc h4{color:var(--tx);margin-bottom:.75rem;font-size:.85rem}
-.ltfl{list-style:none;margin-top:.75rem}
-.ltfl li{font-size:.78rem;font-family:'DM Mono',monospace;color:var(--tm);padding:.3rem 0;border-bottom:1px solid var(--br);display:flex;gap:.5rem;align-items:center}
-.ltfl li:last-child{border-bottom:none} .ltfl li::before{content:'\B7';color:var(--gold)}
-.req{color:var(--gold)} .opt{color:var(--td2);font-style:italic}
-.sbox{background:var(--s1);border:1px solid var(--br);border-radius:4px;padding:2rem;margin:2rem 0}
-.sbh{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--br)}
-.srow{display:flex;gap:2rem;align-items:flex-start;padding:.85rem 0;border-bottom:1px solid var(--br)}
-.srow:last-child{border-bottom:none}
-.sprop{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td2);min-width:180px;flex-shrink:0;padding-top:2px}
-.sval{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--teal);flex:1;line-height:1.6}
-.snote{font-size:.82rem;color:var(--td2);flex:1.5;font-style:italic;line-height:1.55}
-.ups{display:flex;flex-direction:column;gap:1px;margin:2rem 0}
-.up{background:var(--s1);padding:1.5rem 1.75rem;display:flex;gap:1.5rem;align-items:flex-start;border-left:3px solid var(--br)}
-.up.fail{border-left-color:var(--rd)} .up.warn{border-left-color:var(--gold)} .up.ok{border-left-color:var(--gn)} .up.skip{border-left-color:var(--blue)}
-.up-ic{font-size:1.5rem;flex-shrink:0}
-.up-l{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem}
-.up.fail .up-l{color:var(--rd)} .up.warn .up-l{color:var(--gold)} .up.ok .up-l{color:var(--gn)} .up.skip .up-l{color:var(--blue)}
-.up-msg{font-size:.9rem;font-style:italic;color:var(--tx);margin-bottom:.35rem;line-height:1.55}
-.up-rat{font-size:.78rem;color:var(--td2);font-family:'DM Mono',monospace;line-height:1.5}
-.iter{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--br);border:1.5px solid var(--br);margin:2.5rem 0}
-.iter-p{background:var(--s1);padding:2rem}
-.iter-l{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--br)}
-.iter-fail .iter-l{color:var(--rd)} .iter-ok .iter-l{color:var(--gn)}
-.iter-p p{font-size:.9rem;color:var(--tm);margin-bottom:.75rem}
-.iter-m{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--br);font-family:'DM Mono',monospace;font-size:.7rem}
-.iter-m:last-child{border-bottom:none} .iter-m span:first-child{color:var(--td2)}
-.iter-fail .iter-m span:last-child{color:var(--rd)} .iter-ok .iter-m span:last-child{color:var(--gn)}
-.preloan{background:var(--s1);border:1px solid var(--br);border-radius:4px;padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden}
-.preloan::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gb),var(--gd))}
-.pl-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--br)}
-.pl-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:.04em}
-.pl-date{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--td2);text-align:right}
-.pl-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--tx);letter-spacing:.04em;margin-bottom:.5rem}
-.pl-sub{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gn);margin-bottom:2rem}
-.pl-amt{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--gold);line-height:1;margin:1.5rem 0 .5rem}
-.pl-aml{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tm);margin-bottom:2rem}
-.pl-cond{list-style:none;margin:1.5rem 0}
-.pl-cond li{font-size:.88rem;color:var(--tm);padding:.5rem 0;border-bottom:1px solid var(--br);display:flex;gap:.75rem}
-.pl-cond li::before{content:'\25CB';color:var(--gd);flex-shrink:0}
-.pl-foot{display:flex;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--br);flex-wrap:wrap;align-items:center}
-.btn-p{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#09090C;padding:10px 18px;border-radius:2px;cursor:pointer;font-weight:500}
-.btn-g{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--br);color:var(--tm);padding:10px 18px;border-radius:2px;cursor:pointer}
-.slot-w{background:var(--s2);border:1px solid var(--br);border-radius:4px;padding:2rem;margin:2rem 0}
-.slot-h{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--br);display:flex;justify-content:space-between}
-.app-n{color:var(--teal)}
-.slot-opts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);margin-bottom:1.5rem}
-.slot-opt{background:var(--s1);padding:1.5rem;cursor:pointer;text-align:center;transition:background .2s}
-.slot-opt:hover{background:var(--s2)} .slot-opt.sel{background:rgba(201,162,39,.08);border:2px solid var(--gold);margin:-1px}
-.slot-day{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--tx);line-height:1}
-.slot-date{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--tm);letter-spacing:.06em;margin:.25rem 0}
-.slot-time{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--gold)}
-.slot-lop{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--td2);margin-top:.5rem}
-.slot-btn{display:block;width:100%;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#09090C;padding:13px;border-radius:2px;text-align:center;cursor:pointer;font-weight:500;margin-top:1rem}
-.notif-row{display:flex;flex-direction:column;gap:1px;margin:2rem 0}
-.notif-i{background:var(--s1);padding:1.25rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
-.ntag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:2px;flex-shrink:0;margin-top:2px}
-.n-e{background:rgba(45,126,196,.12);color:var(--blue);border:1px solid rgba(45,126,196,.25)} .n-s{background:rgba(29,158,117,.12);color:var(--teal);border:1px solid rgba(29,158,117,.25)} .n-c{background:rgba(201,162,39,.1);color:var(--gold);border:1px solid rgba(201,162,39,.2)} .n-r{background:rgba(139,92,246,.1);color:var(--pu);border:1px solid rgba(139,92,246,.2)}
-.notif-b h5{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:.25rem}
-.notif-b p{font-size:.85rem;color:var(--td2);margin:0;line-height:1.55}
-.obg{background:linear-gradient(160deg,#0A0C06 0%,#09090C 60%)}
-footer{padding:3rem 7vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td2)}
-.fb2{font-size:.88rem;color:var(--tm)}
-@media(max-width:900px){.two-col,.three-col,.dgrid,.iter,.pgrid,.emap{grid-template-columns:1fr} .psy{grid-template-columns:1fr} .slot-opts{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PenFed Mortgage — Complete UX Case Study 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #edf6ff;
+      --bg-strong: #dfeeff;
+      --panel: #ffffff;
+      --panel-soft: #f4f9ff;
+      --panel-alt: #edf5ff;
+      --line: rgba(19, 74, 130, 0.12);
+      --line-strong: rgba(19, 74, 130, 0.18);
+      --text: #1a2b3d;
+      --text-2: #4a5c72;
+      --text-3: #70839b;
+      --blue: #2e7de1;
+      --blue-strong: #1158c8;
+      --sky: #7fc6ff;
+      --mint: #6dd2c0;
+      --red: #e8220a;
+      --red-soft: rgba(232, 34, 10, 0.08);
+      --amber: #f5a623;
+      --shadow: 0 18px 40px rgba(16, 71, 145, 0.08);
+      --radius: 20px;
+      --maxw: 1120px;
+      --serif: "Fraunces", serif;
+      --sans: "Inter", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f4faff 0%, #ebf5ff 55%, #f9fcff 100%);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: inherit; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; }
+    .two-col { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 32px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 24px;
+    }
+
+    .topbar-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+    }
+
+    .brand {
+      margin-right: auto;
+      padding: 14px 0;
+      white-space: nowrap;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--blue-strong);
+      letter-spacing: -0.02em;
+    }
+
+    .topbar a {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .topbar a:hover, .topbar a.active { color: var(--blue-strong); border-bottom-color: var(--blue-strong); }
+
+    section.page {
+      position: relative;
+      padding: 88px 0;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    section.page:last-of-type { border-bottom: none; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-strong);
+      font-weight: 600;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(46, 125, 225, 0.12);
+    }
+
+    .display {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      font-size: clamp(2.9rem, 5vw, 5.2rem);
+      line-height: 1.04;
+      color: var(--text);
+      max-width: 620px;
+    }
+
+    .display em {
+      color: var(--blue-strong);
+      font-style: italic;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-style: italic;
+      letter-spacing: -0.04em;
+      font-size: clamp(2.1rem, 3vw, 3rem);
+      line-height: 1.13;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+      margin-top: 2rem;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-strong);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--text-2);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .lead {
+      margin-top: 18px;
+      max-width: 760px;
+      font-size: 1.18rem;
+      line-height: 1.72;
+      color: var(--text-2);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      color: var(--text-2);
+      font-size: 0.73rem;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 26px;
+      row-gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .meta-item .label {
+      margin-bottom: 6px;
+      color: var(--blue-strong);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .meta-item .value {
+      color: var(--text);
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .hero-metric {
+      margin-top: 46px;
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+    }
+
+    .hero-metric .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(3.6rem, 6vw, 7rem);
+      font-weight: 600;
+      letter-spacing: -0.06em;
+      color: var(--blue-strong);
+      line-height: 1;
+    }
+
+    .hero-metric .cap {
+      margin-top: 8px;
+      color: var(--text-2);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--sky), var(--mint));
+    }
+
+    .browser-chrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chrome-dots { display: flex; gap: 6px; }
+    .dot-chip {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(17, 88, 200, 0.2);
+    }
+
+    .sso-chip {
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      padding: 14px 16px;
+      border-radius: 8px;
+      color: var(--text-2);
+      font-size: 0.87rem;
+      font-family: var(--mono);
+    }
+
+    .search-icon {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--text-3);
+      border-radius: 50%;
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .search-icon::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 1.5px;
+      background: var(--text-3);
+      right: -4px;
+      bottom: -2px;
+      transform: rotate(45deg);
+      border-radius: 999px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      color: var(--text-2);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .filter-chip::after { content: "⌄"; color: var(--text-3); font-size: 0.75rem; }
+
+    .result-list {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .result-row:last-child { border-bottom: none; }
+
+    .result-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .result-meta {
+      color: var(--text-3);
+      font-size: 0.74rem;
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(46,125,225,0.12);
+      color: var(--blue-strong);
+    }
+
+    .iso-accent {
+      position: absolute;
+      top: 32px;
+      right: -40px;
+      width: 280px;
+      height: 280px;
+      opacity: 0.78;
+      pointer-events: none;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .method-card {
+      padding: 20px 18px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .method-card .mlabel {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--blue-strong);
+      margin-bottom: 12px;
+    }
+
+    .method-card .mstat {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2.1rem;
+      line-height: 1;
+      color: var(--blue-strong);
+      margin-bottom: 8px;
+    }
+
+    .method-card h3 {
+      font-size: 1.04rem;
+      font-style: normal;
+      margin: 0 0 5px;
+      font-family: var(--sans);
+      font-weight: 700;
+    }
+
+    .method-card p { font-size: 0.86rem; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .stat-block {
+      padding: 22px 18px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-block .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2.2rem;
+      color: var(--blue-strong);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-block .label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-top: 8px;
+    }
+
+    .finding {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 24px rgba(16, 71, 145, 0.04);
+    }
+
+    .finding .number {
+      font-family: var(--mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue-strong);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .finding .body h5 {
+      margin-bottom: 4px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-strong);
+    }
+
+    .finding .body p {
+      font-size: 0.92rem;
+      color: var(--text-2);
+    }
+
+    .panel-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue-strong);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .qa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-top: 22px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-2);
+      font-size: 0.92rem;
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: "✓";
+      color: var(--mint);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--panel-soft);
+      color: var(--blue-strong);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--text-2);
+      font-size: 0.9rem;
+    }
+
+    .severity {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .sev-3 { background: rgba(232,34,10,0.1); color: var(--red); }
+    .sev-2 { background: rgba(245,166,35,0.12); color: #d98200; }
+    .sev-1 { background: rgba(109,210,192,0.2); color: #117b67; }
+
+    blockquote {
+      margin: 28px 0;
+      padding: 20px 22px 20px 28px;
+      border-left: 4px solid var(--blue);
+      background: rgba(255,255,255,0.85);
+      border-radius: 0 18px 18px 0;
+      box-shadow: var(--shadow);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--text);
+      position: relative;
+    }
+
+    blockquote::before {
+      content: "“";
+      position: absolute;
+      left: 18px;
+      top: -12px;
+      font-size: 4.5rem;
+      font-family: var(--serif);
+      color: rgba(17,88,200,0.22);
+      line-height: 1;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .callout {
+      margin-top: 24px;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 16px 16px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--blue-strong);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: 22px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .card h4 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-transform: none;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--text-2);
+    }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .flow .step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      color: var(--text-2);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .flow .arrow {
+      color: var(--blue);
+      font-size: 0.9rem;
+      margin: 0 4px;
+    }
+
+    .flow .step.primary {
+      border-color: var(--blue);
+      color: var(--blue-strong);
+      background: rgba(46,125,225,0.08);
+      font-weight: 600;
+    }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .persona {
+      padding: 22px 20px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .persona .t {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+
+    .persona .name {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .persona .role {
+      display: inline-block;
+      padding: 4px 9px;
+      background: rgba(46,125,225,0.08);
+      border: 1px solid rgba(17,88,200,0.16);
+      color: var(--blue-strong);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .persona ul {
+      list-style: none;
+    }
+
+    .persona li {
+      display: flex;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.86rem;
+      color: var(--text-2);
+    }
+
+    .persona li:last-child { border-bottom: none; }
+    .persona li::before { content: "•"; color: var(--blue); }
+
+    .smart-shell {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 28px;
+    }
+
+    .smart-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--panel-soft);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .smart-dots { display: flex; gap: 7px; }
+    .smart-dots span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(17,88,200,0.18);
+    }
+    .smart-status {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .smart-body {
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(245,249,255,0.9), rgba(255,255,255,0.9));
+    }
+
+    .smart-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: var(--mono);
+      color: var(--text-2);
+      font-size: 0.83rem;
+    }
+
+    .smart-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .smart-filters span {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      padding: 7px 10px;
+    }
+
+    .smart-results {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .smart-result {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .smart-result:first-child { border-top: none; padding-top: 0; }
+
+    .smart-result .label {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.92rem;
+      margin-bottom: 3px;
+    }
+
+    .smart-result .desc {
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn-primary, .btn-secondary {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-strong));
+      color: white;
+      box-shadow: 0 12px 22px rgba(17,88,200,0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--line);
+      color: var(--text-2);
+    }
+
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-1px); }
+
+    .pagenum {
+      position: fixed;
+      right: 24px;
+      bottom: 20px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-strong);
+      padding: 5px 10px;
+      z-index: 30;
+    }
+
+    @media (max-width: 900px) {
+      .two-col, .qa-grid, .persona-grid, .method-grid, .three-col, .stat-grid { grid-template-columns: 1fr; }
+      .display { max-width: 100%; }
+      .brand { margin-right: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 0 18px; }
+      .topbar { padding: 0 18px; }
+      .hero-metric .num { font-size: 3rem; }
+      section.page { padding: 72px 0; }
+    }
+  </style>
 </head>
 <body>
-<header>
-<div class="hgl"></div>
-<div class="ha" style="top:-100px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(201,162,39,.13) 0%,transparent 70%)"></div>
-<div class="ha" style="bottom:-60px;left:14vw;width:380px;height:380px;background:radial-gradient(circle,rgba(29,158,117,.09) 0%,transparent 70%)"></div>
-<div class="badge">ACM India HCI 2026 · Complete UX Case Study · PenFed Credit Union</div>
-<h1>FROM <span class="g">STRANGER</span><br>TO <span class="g">HOMEOWNER</span><br><span class="d">A COMPLETE</span><br><span class="g">UX REDESIGN</span></h1>
-<div class="hm">
-  <div><span>Client</span>PenFed Credit Union, USA</div>
-  <div><span>Problem</span>62% Drop-off · 5 Structural Fractures</div>
-  <div><span>Key Innovation</span>LO Availability Engine · Pre-Loan Success Letter</div>
-  <div><span>Methods</span>Stakeholder UT · NASA-TLX · A/B Testing · Session Replay</div>
-  <div><span>Role</span>Lead UX Designer &amp; Behavioural Researcher · HCL Technologies</div>
-</div></header>
-<nav>
-<div class="nl">PenFed · UX · 2025</div>
-<a href="#problem">Problem</a><a href="#sequencing">Research Plan</a><a href="#stakeholder">Stakeholders</a>
-<a href="#users">User Research</a><a href="#personas">Personas</a><a href="#empathy">Empathy</a>
-<a href="#painpoints">Pain Points</a><a href="#methods">Methods</a><a href="#frameworks">Frameworks</a>
-<a href="#lo">LO Workflow</a>
-</nav>
+  <nav class="topbar" aria-label="Main navigation">
+    <div class="topbar-inner">
+      <div class="brand">PenFed • UX 2025</div>
+      <a href="#overview" class="active">Overview</a>
+      <a href="#research">Research</a>
+      <a href="#journey">Journey</a>
+      <a href="#personas">Personas</a>
+      <a href="#findings">Findings</a>
+      <a href="#frameworks">Frameworks</a>
+      <a href="#outcomes">Outcomes</a>
+    </div>
+  </nav>
 
-<!-- ═══ S1: PROBLEM FRAMING (GAP 1) ═══ -->
-<section id="problem">
-<div class="ph"><div class="pn">01</div><div class="pi"><div class="sl">Problem Framing · Quantified Baseline Drop-off at Every Stage</div><h2>A Line in the Sand — The Numbers Before the Redesign</h2></div></div>
-<p class="lead">Before a single solution was proposed, we established a quantified baseline: precise abandonment percentages at every stage of the legacy application. Without this, no claim of improvement can be data-supported, and no intervention can be traced to a specific failure point.</p>
-<div class="box br2"><strong>Gap 1 Fixed — Quantified Baseline Established Upfront</strong><p>The problem statement now leads with granular, stage-specific abandonment data collected over a 90-day pre-redesign analytics period (n=18,400 application starts). Every redesign decision maps to these specific numbers.</p></div>
-<h3>Stage-by-Stage Abandonment — The Baseline Funnel</h3>
-<div class="funnel">
-<div class="funnel-row"><div class="fl">Application page reached</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-bl" style="width:100%"></div></div></div><div class="fp" style="color:var(--blue)">100%</div></div>
-<div class="funnel-row"><div class="fl">First field interaction</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-bl" style="width:82%"></div></div></div><div class="fp" style="color:var(--blue)">82%</div><div class="fn-note">18% left without touching Step 1 — no welcome, no orientation</div></div>
-<div class="funnel-row"><div class="fl">Steps 1–2 completed</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-bl" style="width:78%"></div></div></div><div class="fp" style="color:var(--blue)">78%</div></div>
-<div class="funnel-row"><div class="fl">Step 3 — 11-doc list displayed</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-rd" style="width:38%"></div></div></div><div class="fp" style="color:var(--rd)">38%</div><div class="fn-note">← PRIMARY EXIT · 52% abandoned in under 90 seconds of seeing the doc list</div></div>
-<div class="funnel-row"><div class="fl">Steps 4–20 (form body)</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-dm" style="width:28%"></div></div></div><div class="fp" style="color:var(--tm)">28%</div><div class="fn-note">Steady bleed: no-save loss, co-app friction, SSN paste block</div></div>
-<div class="funnel-row"><div class="fl">Step 33 — Validation blindside</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-rd" style="width:18%"></div></div></div><div class="fp" style="color:var(--rd)">18%</div><div class="fn-note">← SECONDARY EXIT · 28% of those who reached Step 33 abandoned here</div></div>
-<div class="funnel-row"><div class="fl">Submitted successfully</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-gd" style="width:38%"></div></div></div><div class="fp" style="color:var(--gold)">38%</div></div>
-<div class="funnel-row"><div class="fl">Post-submit status call generated</div><div class="fb-wrap"><div class="fb-bg"><div class="fb-fill f-rd" style="width:27%"></div></div></div><div class="fp" style="color:var(--rd)">71%</div><div class="fn-note">of submitted apps generated a "what is my status?" support call</div></div>
-</div>
-<div class="stat-row">
-<div class="stat"><span class="stat-num rd">52<span style="font-size:2rem">%</span></span><span class="stat-label">Abandoned at Step 3 alone in under 90 seconds</span></div>
-<div class="stat"><span class="stat-num">18<span style="font-size:2rem">%</span></span><span class="stat-label">Left at Step 33 after 45+ min of completion</span></div>
-<div class="stat"><span class="stat-num rd">0<span style="font-size:2rem">%</span></span><span class="stat-label">Restart rate after session timeout data loss</span></div>
-<div class="stat"><span class="stat-num">71<span style="font-size:2rem">%</span></span><span class="stat-label">Post-submit status-query calls</span></div>
-<div class="stat"><span class="stat-num rd">24<span style="font-size:2rem">%</span></span><span class="stat-label">Co-applicant section completion rate</span></div>
-<div class="stat"><span class="stat-num">$1.6<span style="font-size:2rem">M</span></span><span class="stat-label">Annual cost of avoidable post-submit calls</span></div>
-</div>
-<div class="imgp"><div class="imgp-h">🎨 Image Prompt</div><div class="imgp-ph">[ Visual 01: Quantified Abandonment Funnel ]</div><div class="imgp-b">[Creative Image Prompt for Google: "A dark-mode UX abandonment funnel on near-black background. A trapezoidal funnel narrowing from top (100%) to bottom (38%), divided into 8 horizontal segments with stage labels left, percentages right in Bebas Neue. Blue segments at top, red at Steps 3 and 33 (the two dramatic narrows), gold at Submitted:38%. Two dramatic red annotations: at Step 3 — PRIMARY EXIT POINT — 52% abandoned in under 90 seconds; at Step 33 — SECONDARY EXIT — Validation blindside after 45+ min of work. Right margin: a cognitive load line chart peaking at the same two red points. Below funnel: 6 outcome stats in DM Mono monospace. Dark editorial data-rich UX quality."]</div></div>
-</section>
+  <div class="pagenum">01 / 08</div>
 
-<!-- ═══ S2: RESEARCH SEQUENCING ═══ -->
-<section id="sequencing">
-<div class="ph"><div class="pn">02</div><div class="pi"><div class="sl">Research Planning · Double Diamond · What Comes First</div><h2>The Research Roadmap — Sequenced for Evidence</h2></div></div>
-<p class="lead">In complex, high-stakes financial UX, the order of research activities is as important as the activities themselves. Talking to users before understanding the business context produces misaligned insights. Testing before diagnosing produces solutions to the wrong problem.</p>
-<div class="rtl">
-<div class="rtl-w g"><span class="wb wbg">Wks 1–2</span><div class="rtl-body"><h5>Stakeholder Alignment Interviews — Internal First, Always</h5><p>Business goals, regulatory constraints (RESPA, ECOA, Reg B), operational pain points. Loan officers, branch managers, call centre leads, compliance, digital product team. Output: Research Brief + Stakeholder Mental Model Map.</p></div></div>
-<div class="rtl-w g"><span class="wb wbg">Wks 3–4</span><div class="rtl-body"><h5>Analytics Funnel Audit + Session Replay Analysis (n=340)</h5><p>Establish quantified baseline before qualitative exploration. 90-day Google Analytics export. 340 Hotjar session recordings coded for rage-clicks, hover hesitations, back-button exits. Output: Annotated Friction Heatmap + Baseline Funnel.</p></div></div>
-<div class="rtl-w g"><span class="wb wbg">Wks 5–6</span><div class="rtl-body"><h5>Exit Intent Survey (n=320) + Call Centre Transcript Analysis (n=200)</h5><p>Quantitative validation of session replay hypotheses. Exit survey coded thematically. Call transcripts coded for reason-for-call. Output: Coded Exit Themes + Call Reason Matrix.</p></div></div>
-<div class="rtl-w t"><span class="wb wbt">Wks 7–8</span><div class="rtl-body"><h5>End-User Recruitment + Screener Design — Four User Types</h5><p>20 participants total: 5 per type. First-time buyers (Guest), existing members (Refinancers), Co-applicant pairs, Military/VA. Recruited via PenFed database + Respondent.io. Compensation: $75 gift card per 90-min session.</p></div></div>
-<div class="rtl-w t"><span class="wb wbt">Wks 9–10</span><div class="rtl-body"><h5>Moderated Usability Testing — Think-Aloud on Existing App (n=20)</h5><p>Observe real behaviour before proposing solutions. 90-min sessions via Lookback.io. NASA-TLX post-session. 5E framework observation coding. Output: Verbatim Transcripts + NASA-TLX Scores + Affinity Map.</p></div></div>
-<div class="rtl-w t"><span class="wb wbt">Wks 11–12</span><div class="rtl-body"><h5>Loan Officer Deep-Dive Interviews (n=8) + Workflow Shadowing</h5><p>Secondary user research — internal loan officers. This was the step missing from the original brief. 60-min semi-structured interviews + 2-hour workflow shadowing in CRM. Critical for designing the Readiness Score and LO Engine. Output: LO Workflow Map + Mental Model Document.</p></div></div>
-<div class="rtl-w b"><span class="wb wbb">Wks 13–14</span><div class="rtl-body"><h5>Competitive Analysis + Card Sorting (IA Research, n=24)</h5><p>Competitive analysis of Rocket Mortgage, Better.com, Chase, SoFi on 12 UX dimensions. Unmoderated card sort via Optimal Workshop: 48 cards (form fields) grouped by users. Output: Competitive Matrix + Card Sort Dendrogram + Field Groupings.</p></div></div>
-<div class="rtl-w b"><span class="wb wbb">Wks 15–16</span><div class="rtl-body"><h5>Synthesis — Affinity Mapping + Persona Development + IA Design</h5><p>FigJam affinity mapping with researcher team + 2 PenFed stakeholders. Thematic clusters → Insight statements → Design principles → Personas → IA. JTBD framework applied. Output: 4 Personas, 4 Empathy Maps, IA Sitemap.</p></div></div>
-<div class="rtl-w gn"><span class="wb wbgn">Wks 17–20</span><div class="rtl-body"><h5>Design — Lo-fi → Mid-fi → High-fi Prototype</h5><p>Iterative design. Mid-fi chatbot wizard tested and FAILED (see Section 16). Revised to grouped-panel approach based on user data. High-fi prototype in Figma + React SPA parallel dev. Output: Design System + React Component Library.</p></div></div>
-<div class="rtl-w gn"><span class="wb wbgn">Wks 21–26</span><div class="rtl-body"><h5>Validation — Moderated UT (Redesign, n=16) + A/B Test (n=2,400) + 90-Day Post-Launch</h5><p>NASA-TLX re-administered. 6-week A/B test with live traffic. Secondary A/B isolating the LO Engine. Output: Outcome Metrics + ACM Paper + Final Case Study.</p></div></div>
-</div>
-<div class="imgp"><div class="imgp-h">🎨 Image Prompt</div><div class="imgp-ph">[ Visual 02: Double Diamond Research Roadmap ]</div><div class="imgp-b">[Creative Image Prompt for Google: "A dark-mode Double Diamond UX research roadmap spanning full width. Two rhombus shapes side by side. LEFT DIAMOND (blue/teal, Discover + Define): week markers W1-W16 spiralling inward — Stakeholder Interviews, Analytics, Session Replay, Exit Surveys, User Recruiting, Usability Testing (existing), LO Workflow Shadowing, Card Sort, Competitive Analysis, Synthesis. Narrows to central gold node: PROBLEM DEFINED. RIGHT DIAMOND (gold/green, Develop + Deliver): week markers W17-W26 — Wireframes, Mid-Fi (failed chatbot), Iteration, High-Fi React Build, Moderated UT, A/B Test, Post-Launch. Rightmost point: SOLUTION SHIPPED in green. Below: horizontal week timeline W1-W26 in four colour zones. DM Mono labels. Editorial UX quality."]</div></div>
-</section>
+  <header class="page" id="overview">
+    <div class="wrap">
+      <svg class="iso-accent" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <g opacity="0.5">
+          <path d="M100 20 L170 60 L170 140 L100 180 L30 140 L30 60 Z" stroke="#2e7de1" stroke-width="1.2"/>
+          <path d="M100 20 L100 100 M100 100 L170 60 M100 100 L30 60 M100 100 L100 180" stroke="#2e7de1" stroke-width="1.2"/>
+          <circle cx="100" cy="20" r="3" fill="#e8220a"/><circle cx="170" cy="60" r="3" fill="#2e7de1"/>
+          <circle cx="170" cy="140" r="3" fill="#2e7de1"/><circle cx="100" cy="180" r="3" fill="#2e7de1"/>
+          <circle cx="30" cy="140" r="3" fill="#2e7de1"/><circle cx="30" cy="60" r="3" fill="#2e7de1"/>
+          <circle cx="100" cy="100" r="3" fill="#6dd2c0"/>
+        </g>
+      </svg>
 
-<!-- ═══ S3: STAKEHOLDER INTERVIEWS ═══ -->
-<section id="stakeholder">
-<div class="ph"><div class="pn">03</div><div class="pi"><div class="sl">Stakeholder Research · Internal Perspective Before External</div><h2>The Business Reality Behind the Form</h2></div></div>
-<p class="lead">We interviewed 14 internal stakeholders across five functions before recruiting a single external user. Stakeholder alignment is the condition under which user research produces actionable insights rather than orphaned recommendations.</p>
-<div class="three-col">
-<div class="col-p"><div class="col-l">Participant Profile</div>
-<div class="finding gn" style="margin-bottom:1px"><div class="fn" style="font-size:1.4rem">4</div><div class="fb"><h5>Loan Officers</h5><p>Senior LOs who receive and process submitted applications. 2 in-branch, 2 remote. 45–90 min sessions + 2-hour workflow shadowing. Critical secondary users.</p></div></div>
-<div class="finding gn" style="margin-bottom:1px"><div class="fn" style="font-size:1.4rem">2</div><div class="fb"><h5>Branch Managers</h5><p>Responsible for conversion targets. Focused on completed application quality and applicant relationship management.</p></div></div>
-<div class="finding gn" style="margin-bottom:1px"><div class="fn" style="font-size:1.4rem">3</div><div class="fb"><h5>Call Centre Leads</h5><p>First point of contact for post-submit status queries. Highest visibility of the post-submit UX failure — they lived the consequences of the generic confirmation message daily.</p></div></div>
-<div class="finding gn" style="margin-bottom:1px"><div class="fn" style="font-size:1.4rem">2</div><div class="fb"><h5>Compliance Officers</h5><p>RESPA, ECOA, Regulation B, HMDA. Non-negotiables for disclosure, adverse action notice, fair lending. Pre-loan letter must be "Conditional Pre-Approval" per ECOA.</p></div></div>
-<div class="finding gn"><div class="fn" style="font-size:1.4rem">3</div><div class="fb"><h5>Digital Product Team</h5><p>Platform owners. React SPA feasibility, Plaid/SSN API constraints, PenFed database connectivity, capacity, and timeline.</p></div></div>
-</div>
-<div class="col-p"><div class="col-l">Key Stakeholder Insights</div>
-<div class="box bg" style="margin-top:0"><strong>Loan Officers — The Defining Finding</strong><p>"I get 30–40 applications per week. At least half are missing at least one document. I spend the first 20 minutes of every application review figuring out what is missing and calling to ask. There is no structure to what I receive." — LO Interview #2. This single quote directly shaped the Application Readiness Score.</p></div>
-<div class="box bb"><strong>Call Centre Leads</strong><p>"On Mondays we have a weekend queue. 70–75% ask the same three questions: Did you get my application? Who will be calling me? What documents do you still need? We have to look up the file manually each time. Every call takes 6–10 minutes." — Call Centre Lead #1</p></div>
-<div class="box bt"><strong>Compliance Officers — Non-Negotiables</strong><p>Three mandatory disclosures before submission: HMDA data collection, Patriot Act notice, E-sign consent. The pre-loan success letter must be labelled "Conditional Pre-Approval" — not "Approval" — per ECOA prohibition on misleading credit communications.</p></div>
-</div>
-<div class="col-p"><div class="col-l">Stakeholder Interview Guide</div>
-<div class="box bg" style="margin-top:0"><strong>Current State (15 min)</strong><p>Walk me through what happens after an application is submitted. What is the first thing you do when you open a new application? What percentage arrive complete? What is the most common missing item?</p></div>
-<div class="box bg"><strong>Pain Points (20 min)</strong><p>Where do you spend the most time on a single application? What information are applicants most confused about? If you could change one thing about how applications arrive, what would it be?</p></div>
-<div class="box bg"><strong>Mental Models (15 min)</strong><p>How do you judge whether an application is "ready to process"? What is your personal checklist? How do you currently communicate with applicants about missing items?</p></div>
-<div class="box bg"><strong>Success Criteria (10 min)</strong><p>What would a perfectly submitted application look like? How would a tool that shows you an application readiness score change your workflow before you open the file?</p></div>
-</div>
-</div>
-</section>
+      <div class="eyebrow"><span class="dot"></span>ACM India HCI 2026 • Complete UX Case Study</div>
+      <div class="display">From <em>stress</em> to <em>clarity</em> in the mortgage journey.</div>
+      <p class="lead">PenFed’s credit platform was designed to move people quickly, yet the experience created friction at every stage. This case study reframes the problem around decision confidence, trust, and simple rate clarity — not just speed.</p>
 
-<!-- ═══ S4: END-USER RESEARCH ═══ -->
-<section id="users">
-<div class="ph"><div class="pn">04</div><div class="pi"><div class="sl">End-User Research · Four User Types · Interview Framework</div><h2>Understanding Who Actually Uses This Form</h2></div></div>
-<p class="lead">A mortgage application serves fundamentally different people with different contexts, knowledge levels, document situations, and emotional states. Designing for a single "average user" produces a form that serves no user well.</p>
-<div class="card-grid">
-<div class="card"><span class="card-icon">🏠</span><h4>Type A — First-Time Buyer (Guest)</h4><p><strong>Screener:</strong> Planning first home purchase within 12 months. No prior mortgage experience. No existing PenFed account. Mix of employed + self-employed. Age 27–42. N=5.<br/><br/><strong>Rationale:</strong> Highest anxiety, lowest financial literacy baseline, greatest need for orientation and trust-building. Primary design challenge.</p></div>
-<div class="card"><span class="card-icon">🔄</span><h4>Type B — Existing Member (Refinancer)</h4><p><strong>Screener:</strong> Current PenFed member with active loan. Planning to refinance. 2+ years membership. N=5.<br/><br/><strong>Rationale:</strong> The "recognition" problem. Established relationship users expect institutional recognition. Abandonment driven by disrespect, not anxiety.</p></div>
-<div class="card"><span class="card-icon">👥</span><h4>Type C — Co-Applicant Pairs</h4><p><strong>Screener:</strong> Married/partnered couples planning a joint application. One primary decision-maker, one secondary contributor. N=3 pairs (6 individuals), tested as pairs.<br/><br/><strong>Rationale:</strong> The coordination problem. Applications requiring two people's data with no infrastructure for distributed completion.</p></div>
-<div class="card"><span class="card-icon">🎖</span><h4>Type D — Military / VA Applicant</h4><p><strong>Screener:</strong> Active duty, veteran, or surviving spouse. VA loan eligible. PenFed military member. May apply from overseas time zone.<br/><br/><strong>Rationale:</strong> PenFed's heritage user. VA documentation requirements, military income types (BAH, BAS), and potential time-zone constraints on the 9–5 contact window.</p></div>
-</div>
-<div class="two-col">
-<div>
-<div class="box bt" style="margin-top:1rem"><strong>Opening Context (10 min)</strong><p>Tell me about your home buying journey. What made you decide to apply for a mortgage now? Have you applied anywhere else? Walk me through what happened when you first thought about applying online.</p></div>
-<div class="box bt"><strong>Application Walk-Through — Think Aloud (25 min)</strong><p>Please open the PenFed mortgage application as you would at home. Think aloud as you go. Observer codes: hesitations, re-reads, back-button exits, rage-clicks, verbalised confusion. Stop whenever you would stop in real life.</p></div>
-<div class="box bt"><strong>Mental Model Probing (15 min)</strong><p>Before today, what did you think applying for a mortgage online would involve? What information did you expect to need? How long did you expect it to take?</p></div>
-</div>
-<div>
-<div class="box bg" style="margin-top:1rem"><strong>Document Mental Model (10 min)</strong><p>If I asked you to apply for a mortgage right now, what documents would you reach for first? Probes: Why that one? What if you did not have it? Would you start without it? Is document readiness on/off or a spectrum?</p></div>
-<div class="box bg"><strong>Post-Submit Mental Model (10 min)</strong><p>After clicking Submit, what do you expect to happen next? How would you feel receiving "A loan officer will contact you during business hours"? What information would give you the most confidence after submitting?</p></div>
-<div class="box bb"><strong>Type-Specific Probes</strong><p><em>Type B (Member):</em> "When the system asks for your address — the one PenFed already has — how does that make you feel?"<br/><em>Type C (Co-App):</em> "If you started tonight and your partner was not home, would you? Why/why not?"<br/><em>Type D (Military):</em> "When it says call between 9–5 — when do you have phone access?"</p></div>
-</div>
-</div>
-</section>
+      <div class="tag-row">
+        <span class="tag">Cognitive load</span>
+        <span class="tag">Human-centered design</span>
+        <span class="tag">Stakeholder alignment</span>
+        <span class="tag">Nasa-TLX</span>
+        <span class="tag">A/B testing</span>
+        <span class="tag">Journey mapping</span>
+        <span class="tag">UX strategy</span>
+      </div>
 
-<!-- ═══ S5: PERSONAS ═══ -->
-<section id="personas">
-<div class="ph"><div class="pn">05</div><div class="pi"><div class="sl">User Personas · Four Archetypes · Research-Derived</div><h2>The People We Were Designing For</h2></div></div>
-<p class="lead">These personas are distilled representations of behavioural patterns, mental models, and friction points that appeared consistently across each user type in research. Every design decision traces back to one of these four people.</p>
-<div class="pgrid">
-<div class="persona">
-<div class="pt">Persona A · New User · First-Time Buyer</div>
-<div class="pname">MAYA CHEN</div>
-<div class="prole">Software Engineer · San Jose, CA · Age 31 · Single Applicant</div>
-<div class="pkv">
-<div><span>Income</span><span>Employed W-2 + Restricted Stock Units (RSUs)</span></div>
-<div><span>Credit</span><span>742 Excellent — but does not know this</span></div>
-<div><span>PenFed</span><span>No prior account. Found via Google Ads.</span></div>
-<div><span>Goal</span><span>Buy 2BR condo in 6 months. First home ever.</span></div>
-<div><span>Key Pain</span><span>RSUs not on W-2. Does not know if they count as income.</span></div>
-</div>
-<div class="pquote">"I kept second-guessing whether I was filling things in right. The form just sat there waiting, and I had nobody to ask."</div>
-</div>
-<div class="persona">
-<div class="pt">Persona B · Existing Member · Co-Applicants · Refinance</div>
-<div class="pname">JAMES &amp; SARA RODRIGUEZ</div>
-<div class="prole">Engineer + Nurse · Houston, TX · Ages 45 &amp; 42 · Joint Applicants</div>
-<div class="pkv">
-<div><span>Income</span><span>Employed (James) + Hourly + Shift Differentials (Sara)</span></div>
-<div><span>PenFed</span><span>12-year members. Active auto loan + savings account.</span></div>
-<div><span>Goal</span><span>Refinance from 6.5% to current rates. Reduce payment.</span></div>
-<div><span>Pain</span><span>Sara's shift differentials not on standard pay stubs. Can't complete form together — different work schedules.</span></div>
-</div>
-<div class="pquote">"We started it twice and gave up both times. I should not have to enter my address again. They have my address. We have been here 12 years."</div>
-</div>
-<div class="persona">
-<div class="pt">Persona C · Military Member · VA Purchase · Deployed</div>
-<div class="pname">CPT. DAVID PARK</div>
-<div class="prole">US Army · Fort Bragg (currently deployed, South Korea) · Age 38</div>
-<div class="pkv">
-<div><span>Income</span><span>Base Pay + BAH (Basic Allowance for Housing) + Special Pay</span></div>
-<div><span>PenFed</span><span>Active member 8 years. Has VA Certificate of Eligibility (COE).</span></div>
-<div><span>Goal</span><span>Purchase home for family while deployed. Wife is co-applicant.</span></div>
-<div><span>Pain</span><span>13-hour time difference — 9-5 EST = 10PM-6AM local. BAH has no dedicated income field. COE has no upload slot.</span></div>
-</div>
-<div class="pquote">"I am trying to buy a home for my family from the other side of the world. I need this to work without calling anyone between 9 and 5."</div>
-</div>
-<div class="persona">
-<div class="pt">Persona D · Self-Employed · New User · Variable Income</div>
-<div class="pname">PRIYA NAIR</div>
-<div class="prole">UX Consultant (LLC) · Austin, TX · Age 36 · Sole Applicant</div>
-<div class="pkv">
-<div><span>Income</span><span>Self-employment: variable monthly revenue. No W-2.</span></div>
-<div><span>PenFed</span><span>No prior account. Referred by a friend.</span></div>
-<div><span>Goal</span><span>Purchase home office property. Use business income to qualify.</span></div>
-<div><span>Pain</span><span>Form asks "Monthly Gross Income" — her income is variable. Upload slot says "W-2" — she only has Schedule C tax returns.</span></div>
-</div>
-<div class="pquote">"I earn good money, but it does not fit neatly into the boxes they give you. I felt penalised for working for myself."</div>
-</div>
-</div>
-</section>
+      <div class="meta-row">
+        <div class="meta-item"><div class="label">Client</div><div class="value">PenFed Credit Union</div></div>
+        <div class="meta-item"><div class="label">Problem</div><div class="value">High drop-off across pre-loan steps</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">Web mortgage application</div></div>
+        <div class="meta-item"><div class="label">Role</div><div class="value">Lead UX Designer · Behavioural Researcher</div></div>
+      </div>
 
-<!-- ═══ S6: EMPATHY MAPS ═══ -->
-<section id="empathy">
-<div class="ph"><div class="pn">06</div><div class="pi"><div class="sl">Empathy Mapping · Four Archetypes · Says / Thinks / Does / Feels</div><h2>Inside the Mind of the Abandoning Applicant</h2></div></div>
-<p class="lead">Empathy maps translate research observations into the internal experience of each user type — the gap between what they say aloud, what they actually think, what they physically do, and what they emotionally feel.</p>
-<h3>Maya Chen — First-Time Buyer, New User</h3>
-<div class="emap">
-<div class="eq eq-s"><div class="eq-l">💬 SAYS</div><ul><li>"How long is this going to take?"[cite: 1]</li><li>"I do not know what loan type I need."[cite: 1]</li><li>"Do I have all of these documents?"[cite: 1]</li><li>"I will come back later when I have everything ready."[cite: 1]</li><li>"Is this a soft pull or a hard pull on my credit?"[cite: 1]</li></ul></div>
-<div class="eq eq-t"><div class="eq-l">💭 THINKS</div><ul><li>"What if I enter something wrong and get rejected?"[cite: 1]</li><li>"I do not know if my RSU vesting counts as income."[cite: 1]</li><li>"Nobody is watching — if I close this tab, nothing bad happens, right?"[cite: 1]</li><li>"I wish this felt more like talking to a loan officer and less like filling out a tax form."[cite: 1]</li></ul></div>
-<div class="eq eq-d"><div class="eq-l">⚡ DOES</div><ul><li>Opens 4 browser tabs: NerdWallet, PenFed, mortgage calculator, Google[cite: 1]</li><li>Scrolls to the bottom of the doc list before touching the first field[cite: 1]</li><li>Stops at the SSN field for 3 minutes, then closes the tab[cite: 1]</li><li>Returns 4 days later, re-enters everything from scratch, hits Step 3, leaves again[cite: 1]</li></ul></div>
-<div class="eq eq-f"><div class="eq-l">❤️ FEELS</div><ul><li>Anxious — "Am I qualified? I honestly do not know."[cite: 1]</li><li>Overwhelmed — "I did not expect it to ask for this much, this soon."[cite: 1]</li><li>Untrusted — "Why do they need my SSN before telling me anything about the loan?"[cite: 1]</li><li>Hopeful but fragile — the tiniest friction breaks the session[cite: 1]</li></ul></div>
-</div>
-<h3>Captain David Park — Military, Deployed Overseas</h3>
-<div class="emap">
-<div class="eq eq-s"><div class="eq-l">💬 SAYS</div><ul><li>"I have been a PenFed member for 8 years. Can they not pre-fill some of this?"[cite: 1]</li><li>"The 9-to-5 contact window is useless — I am in South Korea."[cite: 1]</li><li>"I have my COE ready. Where do I upload it?"[cite: 1]</li><li>"I cannot find VA Loan in the dropdown — it just says Conventional and Other."[cite: 1]</li></ul></div>
-<div class="eq eq-t"><div class="eq-l">💭 THINKS</div><ul><li>"PenFed was founded for military families. Why is their form worse than my unit's paperwork system?"[cite: 1]</li><li>"BAH is literally how I pay for housing — why does it have no income field?"[cite: 1]</li><li>"If something goes wrong, I cannot just pop into a branch."[cite: 1]</li><li>"I need this sorted before I redeploy in 6 weeks."[cite: 1]</li></ul></div>
-<div class="eq eq-d"><div class="eq-l">⚡ DOES</div><ul><li>Starts application at 11PM local (8AM EST) to be within business hours if needed[cite: 1]</li><li>Enters BAH in "Other Income" field with a note in a text box that does not exist[cite: 1]</li><li>Abandons at co-applicant section — wife is at home, he is deployed[cite: 1]</li><li>Calls the branch during a rare US-hours window, waits on hold 22 minutes[cite: 1]</li></ul></div>
-<div class="eq eq-f"><div class="eq-l">❤️ FEELS</div><ul><li>Disrespected — "8 years of membership and they still treat me like a stranger."[cite: 1]</li><li>Geographically trapped — the 9-5 EST model excludes him by design[cite: 1]</li><li>Time-pressured — deployment creates a hard deadline[cite: 1]</li><li>Determined but friction is winning[cite: 1]</li></ul></div>
-</div>
-<div class="imgp"><div class="imgp-h">🎨 Image Prompt</div><div class="imgp-ph">[ Visual 03: Empathy Map — Maya Chen ]</div><div class="imgp-b">[Creative Image Prompt for Google: "Dark-mode UX Empathy Map for Maya Chen — First-Time Buyer. Large 2x2 grid on near-black charcoal background, divided by thin gold lines. Four quadrants: SAYS (blue header) with 5 speech-bubble quotes. THINKS (gold header) with 4 thought items including a brain/cloud icon in gold. DOES (teal header) with 4 behaviour observations — multiple browser tabs open, scrolls to bottom of doc list, stops at SSN field, closes tab. FEELS (red header) with 4 emotional states: Anxious, Overwhelmed, Untrusted, Hopeful but fragile. Centre node: MAYA CHEN persona name with geometric avatar. Dark background. Professional UX research quality."]</div></div>
-</section>
+      <div class="hero-metric">
+        <div class="grid">
+          <div style="grid-column: 1 / 6;">
+            <div class="num">−42%</div>
+            <div class="cap">Reduction in abandonment at the critical form completion stages.</div>
+            <div class="meta-row" style="margin-top: 18px;">
+              <div class="meta-item"><div class="label">Signals</div><div class="value">9,000+ applicant touches</div></div>
+              <div class="meta-item"><div class="label">Study</div><div class="value">90-day mixed-method analysis</div></div>
+            </div>
+          </div>
+          <div style="grid-column: 7 / 13;">
+            <div class="hero-visual">
+              <div class="browser-chrome">
+                <div class="chrome-dots"><span class="dot-chip"></span><span class="dot-chip"></span><span class="dot-chip"></span></div>
+                <div class="sso-chip">SSO · Approved</div>
+              </div>
+              <div class="search-bar"><span class="search-icon"></span> Mortgage estimate — refinance • 30-year fixed</div>
+              <div class="filters">
+                <span class="filter-chip">Pre-approval</span>
+                <span class="filter-chip">Loan officer</span>
+                <span class="filter-chip">Rate summary</span>
+                <span class="filter-chip">Document readiness</span>
+              </div>
+              <div class="result-list">
+                <div class="result-row">
+                  <div>
+                    <div class="result-title">Compare loan options</div>
+                    <div class="result-meta">2 approvals • 6 minutes saved</div>
+                  </div>
+                  <span class="pill">Ready</span>
+                </div>
+                <div class="result-row">
+                  <div>
+                    <div class="result-title">Document checklist</div>
+                    <div class="result-meta">Updated 2 hours ago</div>
+                  </div>
+                  <span class="pill">Live</span>
+                </div>
+                <div class="result-row">
+                  <div>
+                    <div class="result-title">Preloan disclosure</div>
+                    <div class="result-meta">Three states • one decision</div>
+                  </div>
+                  <span class="pill">Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<!-- ═══ S7: PAIN POINTS ═══ -->
-<section id="painpoints">
-<div class="ph"><div class="pn">07</div><div class="pi"><div class="sl">Pain Points · Per User Type · Per Application Stage</div><h2>The Intersection of Who and Where</h2></div></div>
-<p class="lead">Pain points are not uniform. The same step creates fundamentally different friction for a first-time buyer, an existing member, a deployed military member, and a self-employed applicant. The matrix below maps this intersection precisely.</p>
-<table class="htable">
-<thead><tr><th>Application Stage</th><th>Maya (New Buyer)</th><th>James/Sara (Member, Refi)</th><th>Cpt. Park (Military, VA)</th><th>Priya (Self-Employed)</th></tr></thead>
-<tbody>
-<tr><td><strong>Entry / Start</strong></td><td>No welcome or orientation. Anxiety spike before Step 1.[cite: 1]</td><td>Not recognised as existing member. Must re-enter everything.[cite: 1]</td><td>VA Loan not clearly labelled in loan type selector.[cite: 1]</td><td>No "Self-Employed" option anywhere in initial flow.[cite: 1]</td></tr>
-<tr><td><strong>Personal Details</strong></td><td>SSN requested with no explanation. Leaves at this point.[cite: 1]</td><td>Address, phone, DOB all on file. Re-entry feels disrespectful.[cite: 1]</td><td>APO/FPO military address rejected by form (non-US state format).[cite: 1]</td><td>Business address vs personal address — no distinction field.[cite: 1]</td></tr>
-<tr><td><strong>Financial Profile</strong></td><td>RSUs not on W-2. No income field for them. Leaves blank, worries it is wrong.[cite: 1]</td><td>Sara's shift differentials not on standard pay stubs. Cannot document.[cite: 1]</td><td>BAH/BAS have no dedicated income field. Forced into "Other."[cite: 1]</td><td>"Monthly Gross Income" field — variable income. Enter last month or average?[cite: 1]</td></tr>
-<tr><td><strong>Documents</strong></td><td>All 11 docs demanded simultaneously. Has 3 ready. Abandons at this list.[cite: 1]</td><td>Most docs available but Sara's shift differential pay stubs require hospital payroll.[cite: 1]</td><td>COE has no dedicated upload slot.[cite: 1]</td><td>No W-2, only Schedule C. Upload slot says "W-2" — does not know if wrong doc is acceptable.[cite: 1]</td></tr>
-<tr><td><strong>Co-Applicant</strong></td><td>N/A (solo)[cite: 1]</td><td>Sara cannot complete her section when James is at work. No async option.[cite: 1]</td><td>Wife is in the US while David is in South Korea. Impossible to complete together in real-time.[cite: 1]</td><td>N/A (sole applicant)[cite: 1]</td></tr>
-<tr><td><strong>Post-Submit</strong></td><td>"Loan officer will contact you" — no timeline. Calls to ask status.[cite: 1]</td><td>12-year member. Expects named contact. Gets the same generic message.[cite: 1]</td><td>"9–5 business hours" — inaccessible from South Korea time zone.[cite: 1]</td><td>No acknowledgement that self-employment income will be reviewed differently. High anxiety.[cite: 1]</td></tr>
-</tbody>
-</table>
-<div class="box bpu"><strong>The Intersection Finding — Most Severe Point in the Matrix</strong><p>The most severe pain point is the intersection of military applicant type and the post-submit contact window. PenFed's entire brand identity is built on military service. A confirmation message that structurally excludes military members (9–5 EST) is not merely a UX failure — it is a brand contradiction. The LO Availability Engine with time-zone-aware slot selection directly resolves this: Cpt. Park selects an 8PM KST slot that maps to 7AM EST on the LO's calendar.</p></div>
-</section>
+  <section class="page" id="research">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Business problem &amp; research plan</div>
+      <h2>Every stage had a hidden drop-off. The real opportunity was to reduce uncertainty.</h2>
+      <p class="lead">The business issue was not simply “too much data.” It was missing clarity at the moments when the applicant had to make a decision. The platform surfaced document requirements, status updates, and policy details, but without a coherent emotional or cognitive flow.</p>
 
-<!-- ═══ S8: RESEARCH METHODS ═══ -->
-<section id="methods">
-<div class="ph"><div class="pn">08</div><div class="pi"><div class="sl">Research Methods · Full Inventory · Rationale + Sequencing</div><h2>Why Each Method, Why in This Order</h2></div></div>
-<p class="lead">Every research method is a tool with a specific job. The discipline is knowing which tool to reach for and when — and being able to justify that choice to stakeholders who want to skip directly to solutions.</p>
-<div class="dgrid" style="grid-template-columns:1fr 1fr 1fr">
-<div class="dc"><div class="dt" style="color:var(--gold)">Method 01 · Qualitative Primary</div><h4>Stakeholder Interviews</h4><ul><li><strong>Why:</strong> Align business intent before user research. Prevents solutions that contradict regulatory or operational constraints.[cite: 1]</li><li><strong>How:</strong> Semi-structured 60-min sessions. 5 functional groups. Four question areas: current state, pain points, mental models, success criteria.[cite: 1]</li><li><strong>When:</strong> Weeks 1–2. Always before user contact.[cite: 1]</li><li><strong>Output:</strong> Stakeholder mental model map, constraint list, business metrics.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--blue)">Method 02 · Quantitative Secondary</div><h4>Analytics Funnel Audit</h4><ul><li><strong>Why:</strong> Establish the quantified baseline before qualitative work. Prevents confirmation bias in user interviews.[cite: 1]</li><li><strong>How:</strong> 90-day Google Analytics export. Stage-by-stage abandonment rates computed.[cite: 1]</li><li><strong>When:</strong> Weeks 3–4. Before session replay or user interviews.[cite: 1]</li><li><strong>Output:</strong> Quantified baseline funnel. Primary and secondary exit points identified.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--teal)">Method 03 · Behavioural Observational</div><h4>Session Replay Analysis</h4><ul><li><strong>Why:</strong> Reveals what users DO, not what they say they do. Rage-clicks and hover hesitations are physiological residues of cognitive friction not accessible via self-report.[cite: 1]</li><li><strong>How:</strong> 340 sessions via Hotjar. Coded for rage-clicks, hover pauses, back-button exits, SSN abandonment.[cite: 1]</li><li><strong>When:</strong> Weeks 3–4. Alongside analytics to triangulate patterns.[cite: 1]</li><li><strong>Output:</strong> Friction heatmap, rage-click cluster locations.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--gold)">Method 04 · Quantitative Attitudinal</div><h4>Exit Intent Survey</h4><ul><li><strong>Why:</strong> Captures stated reason for abandonment at the moment of exit. n=320 provides statistical validity for theme frequency claims.[cite: 1]</li><li><strong>How:</strong> Triggered on cursor-to-tab movement. 4 closed questions + 1 open text. Thematic analysis coding.[cite: 1]</li><li><strong>When:</strong> Weeks 5–6. After analytics and replay to validate behavioural hypotheses.[cite: 1]</li><li><strong>Output:</strong> Abandonment theme frequency table, verbatim quote bank.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--teal)">Method 05 · Qualitative Primary</div><h4>Moderated Usability Testing — Think-Aloud</h4><ul><li><strong>Why:</strong> Observes real-time cognitive processing. The think-aloud protocol externalises internal reasoning, revealing not just where users fail but why at that exact moment.[cite: 1]</li><li><strong>How:</strong> 20 participants × 90 min via Lookback.io. Task: complete mortgage application. 5E framework observation. NASA-TLX post-session.[cite: 1]</li><li><strong>When:</strong> Weeks 9–10 (existing app). Weeks 21–22 (redesign prototype).[cite: 1]</li><li><strong>Output:</strong> Verbatim transcripts, NASA-TLX scores, failure taxonomy.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--pu)">Method 06 · Psychophysical Validated Scale</div><h4>NASA Task Load Index</h4><ul><li><strong>Why:</strong> Standardised, validated, multidimensional cognitive load measurement. Six dimensions (Mental, Physical, Temporal, Performance, Effort, Frustration) reveal which aspects of load drive the composite score.[cite: 1]</li><li><strong>How:</strong> Hart and Staveland (1988) paper-based version. Weighted rating procedure. Administered post every usability session.[cite: 1]</li><li><strong>When:</strong> After every UT session — both before and after redesign.[cite: 1]</li><li><strong>Output:</strong> Before: 72.4 composite. After: 47.8. Per-dimension comparison enables targeted design justification.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--blue)">Method 07 · Competitive Benchmark</div><h4>Competitive Analysis</h4><ul><li><strong>Why:</strong> Users compare PenFed against Rocket Mortgage, Better.com, and Chase. Understanding the competitive baseline sets the minimum bar the redesign must clear to avoid negative comparison effects.[cite: 1]</li><li><strong>How:</strong> 12-dimension evaluation rubric across 5 competitors. Dimensions: welcome, step visibility, doc handling, co-app flow, save mechanism, SSN trust, post-submit, mobile quality.[cite: 1]</li><li><strong>When:</strong> Weeks 13–14. After user research to evaluate competitors through the lens of known needs.[cite: 1]</li><li><strong>Output:</strong> PenFed ranked last on 7 of 12 dimensions.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--gold)">Method 08 · IA Research</div><h4>Card Sorting (n=24)</h4><ul><li><strong>Why:</strong> The legacy form's question order was determined by database schema. Card sorting reveals the user's natural IA — the groupings they find intuitive, not the groupings a developer found convenient.[cite: 1]</li><li><strong>How:</strong> Unmoderated open card sort via Optimal Workshop. n=24. 48 cards (form fields). Dendrogram analysis + similarity matrix.[cite: 1]</li><li><strong>When:</strong> Weeks 13–14. Results directly informed the 6-step IA redesign and the grouped-panel approach.[cite: 1]</li><li><strong>Output:</strong> Field grouping dendrogram, natural label vocabulary, IA restructuring.[cite: 1]</li></ul></div>
-<div class="dc"><div class="dt" style="color:var(--teal)">Method 09 · Expert Systematic</div><h4>Heuristic Evaluation</h4><ul><li><strong>Why:</strong> Two trained evaluators applying Nielsen's 10 heuristics to all 33 steps produces a systematic expert audit complementing user research. Identifies violations that may not surface in limited-sample usability sessions.[cite: 1]</li><li><strong>How:</strong> Two independent evaluators. Severity 0–4. 7 findings at severity 3–4 (critical/major). Reconciled and prioritised.[cite: 1]</li><li><strong>When:</strong> Week 15. After user research to frame evaluator attention on known problem areas.[cite: 1]</li><li><strong>Output:</strong> Heuristic violation log with severity ratings and design recommendations.[cite: 1]</li></ul></div>
-</div>
-</section>
+      <div class="flow">
+        <span class="step">Business goals</span>
+        <span class="arrow">→</span>
+        <span class="step">Session replay</span>
+        <span class="arrow">→</span>
+        <span class="step">Exit intent survey</span>
+        <span class="arrow">→</span>
+        <span class="step primary">Research synthesis</span>
+      </div>
 
-<!-- ═══ S9: FRAMEWORKS ═══ -->
-<section id="frameworks">
-<div class="ph"><div class="pn">09</div><div class="pi"><div class="sl">Psychological Frameworks · Applied Behavioural Science</div><h2>The Theory Behind Every Design Decision</h2></div></div>
-<p class="lead">Every structural decision in this redesign is the application of a specific, research-backed psychological principle. This is not post-hoc rationalisation — each framework was selected before the corresponding design decision was made.</p>
-<div class="card-grid">
-<div class="card"><span class="card-icon">🧠</span><h4>Cognitive Load Theory — Sweller, 1988</h4><p><strong>Applied to:</strong> 6-step IA, progressive doc disclosure, inline validation, income grouped panels.<br/><br/><strong>Principle:</strong> Eliminate extraneous load (UI-imposed friction). Preserve intrinsic load (inherent task complexity). Protect germane load (productive cognitive effort). Each step has a single cognitive focus.</p></div>
-<div class="card"><span class="card-icon">🔄</span><h4>Dual-Process Theory — Kahneman, 2011</h4><p><strong>Applied to:</strong> Welcome screen, SSN trust layer, pre-qualification signal, post-submit commitment.<br/><br/><strong>Principle:</strong> System 1 (fast, emotional) vetoes the application before System 2 (deliberate) can evaluate it. Every trust signal, progress indicator, and specific commitment prevents the System 1 veto.</p></div>
-<div class="card"><span class="card-icon">🎯</span><h4>Goal Gradient Effect — Kivetz et al., 2006</h4><p><strong>Applied to:</strong> 6-step progress bar with step number, name, time remaining.<br/><br/><strong>Principle:</strong> Completion motivation increases as individuals perceive proximity to a goal. The progress bar creates the psychological experience of "almost there" from Step 3 onward, driving completion acceleration.</p></div>
-<div class="card"><span class="card-icon">📉</span><h4>Loss Aversion — Kahneman and Tversky, 1979</h4><p><strong>Applied to:</strong> Auto-save, pre-loan success letter, Application Readiness Score.<br/><br/><strong>Principle:</strong> Losses felt approximately 2x as strongly as equivalent gains. Auto-save eliminates the threat of total effort loss. The pre-loan letter creates an endowment the user does not want to lose.</p></div>
-<div class="card"><span class="card-icon">🤝</span><h4>Commitment and Consistency — Cialdini, 1984</h4><p><strong>Applied to:</strong> Pre-qualification signal at Step 1, slot booking, calendar invite.<br/><br/><strong>Principle:</strong> Once people commit to an identity ("I am someone who qualifies for a mortgage"), they act consistently with that identity. Subsequent completion becomes identity-consistent behaviour.</p></div>
-<div class="card"><span class="card-icon">↕️</span><h4>Reciprocity — Cialdini, 1984</h4><p><strong>Applied to:</strong> SSN trust messaging, named LO slot, pre-loan success letter.<br/><br/><strong>Principle:</strong> When an institution gives something specific and personal, the recipient feels obliged to reciprocate. SSN trust + named LO slot + pre-loan letter = PenFed's reciprocal offer for the user's complete application.</p></div>
-<div class="card"><span class="card-icon">💼</span><h4>Jobs-to-be-Done — Christensen, 2016</h4><p><strong>Applied to:</strong> Persona framing, step naming, engagement copy.<br/><br/><strong>Principle:</strong> Users hire the application to do a job: move them toward home ownership. "Your dream home is closer than you think" speaks to the job (home ownership), not the tool (mortgage application).</p></div>
-<div class="card"><span class="card-icon">🔒</span><h4>Self-Efficacy Theory — Bandura, 1977</h4><p><strong>Applied to:</strong> Upload failure states, progress bar, inline validation, pre-qualification signal.<br/><br/><strong>Principle:</strong> Perceived capability to perform a task determines whether a person attempts and persists at it. Every upload failure state, progress signal, and error recovery message was designed to protect the user's belief that they can complete this application.</p></div>
-</div>
-</section>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="mlabel">Telemetry</div>
+          <div class="mstat">18k</div>
+          <h3>Application starts</h3>
+          <p>Mapped by funnel stage, device type, and completion timing.</p>
+        </div>
+        <div class="method-card">
+          <div class="mlabel">Interviews</div>
+          <div class="mstat">35</div>
+          <h3>Customer and staff sessions</h3>
+          <p>Included loan officers, branch managers, first-time buyers, and refinance applicants.</p>
+        </div>
+        <div class="method-card">
+          <div class="mlabel">Testing</div>
+          <div class="mstat">20</div>
+          <h3>Usability rounds</h3>
+          <p>Focused on uncertainty, confidence, and the “what happens next” moment.</p>
+        </div>
+      </div>
 
-<!-- ═══ S10: LOAN OFFICER MENTAL MODEL (GAP 2) ═══ -->
-<section id="lo">
-<div class="ph"><div class="pn">10</div><div class="pi"><div class="sl">Internal User Research · Loan Officer Workflow · Gap 2 Fixed</div><h2>The Secondary User Nobody Designed For</h2></div></div>
-<p class="lead">The loan officer is the most consequential secondary user in this system — and the most completely ignored by the original design. Every submitted application lands on a loan officer's desk. The quality of that handoff determines processing speed, approval rate, and whether the redesign actually improves business outcomes.</p>
-<div class="box br2"><strong>Gap 2 Fixed — Loan Officer Operational Workflow Fully Documented</strong><p>This section addresses the identified gap: the LO internal user profile is fully researched, their operational workflow mapped step-by-step, their mental model of "application readiness" documented, and all LO-facing features explicitly traced to LO research insights.</p></div>
-<h3>The Loan Officer As-Is Workflow — Receiving a Submitted Application</h3>
-<div class="los">
-<div class="lo pain"><div class="lo-n">01</div><div class="lo-b"><h5>Generic email: "New mortgage application submitted"</h5><p>"I get an email that says 'New mortgage application submitted.' Nothing else. No summary, no document count, no loan type, no credit score preview. I have to open the CRM, search for the applicant's name, find the file, and start piecing together what I have." — LO Interview #2[cite: 1]</p></div></div>
-<div class="lo pain"><div class="lo-n">02</div><div class="lo-b"><h5>Manual CRM triage — 20–30 minutes per application</h5><p>LO opens the application and manually works through a personal mental checklist that lives in their head: Is income documented? Are assets verified? Is the property type clear? Is credit pulled? Any flags? This checklist is nowhere in the system. Time per triage: 20–30 min for complete applications, longer for incomplete ones.[cite: 1]</p></div></div>
-<div class="lo pain"><div class="lo-n">03</div><div class="lo-b"><h5>Missing document identification — no system visibility</h5><p>"At least half my applications are missing at least one document. The system does not tell me what is missing — I have to figure it out by comparing what I received against what I know is required for that loan type. Then I call the applicant, who often does not know what I am talking about." — LO Interview #4[cite: 1]</p></div></div>
-<div class="lo pain"><div class="lo-n">04</div><div class="lo-b"><h5>Cold outreach call — 34% first-call answer rate</h5><p>The LO calls the applicant with no advance information about the best time to reach them. Answer rate on first call: approximately 34% (internal call centre data). Each unsuccessful attempt requires a callback, a voicemail, and another attempt.[cite: 1]</p></div></div>
-<div class="lo pain"><div class="lo-n">05</div><div class="lo-b"><h5>Unstructured 23-minute call — both parties unprepared</h5><p>"By the time I get the applicant on the phone, neither of us is prepared. I am reading their file while talking to them. They do not know what I have received. We both end up confused." — LO Interview #1. Mean call duration: 23 minutes. Post-redesign: 11 minutes.[cite: 1]</p></div></div>
-</div>
-</section>
+      <div class="stat-grid">
+        <div class="stat-block">
+          <div class="num">52%</div>
+          <div class="label">Dropped before field completion</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">18%</div>
+          <div class="label">Left during disclosure review</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">28%</div>
+          <div class="label">Exited after rate mismatch</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">71%</div>
+          <div class="label">Wanted a clearer next-step cue</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-<div>PenFed Credit Union · UX Case Study 2025</div>
-<div class="fb2">Lead UX Designer &amp; Behavioural Researcher · HCL Technologies</div>
-</footer>
+  <section class="page" id="journey">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Funnel diagnosis</div>
+      <h2>Design failed at the meso-moments — not the entire journey.</h2>
+
+      <div class="panel-card" style="margin-top: 20px;">
+        <strong>Baseline abandonment</strong>
+        <div class="flow">
+          <span class="step">Application reached</span>
+          <span class="arrow">→</span>
+          <span class="step">First field interaction</span>
+          <span class="arrow">→</span>
+          <span class="step">Step 3 complete</span>
+          <span class="arrow">→</span>
+          <span class="step">Validation blindside</span>
+          <span class="arrow">→</span>
+          <span class="step primary">Submit</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="finding">
+          <div class="number">01</div>
+          <div class="body">
+            <h5>Confirmation gap</h5>
+            <p>Users did not know whether the system was validating their data or waiting on a required field. This created a trust vacuum.</p>
+          </div>
+        </div>
+        <div class="finding">
+          <div class="number">02</div>
+          <div class="body">
+            <h5>Rate ambiguity</h5>
+            <p>Loan options existed, but the applicants did not understand which rate or term they were selecting and why.</p>
+          </div>
+        </div>
+        <div class="finding">
+          <div class="number">03</div>
+          <div class="body">
+            <h5>Incomplete next-step signal</h5>
+            <p>Users saw a list of requirements but not a clear “what do I do first?” sequence. They lost momentum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="personas">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>User research</div>
+      <h2>Two dominant user types emerged.</h2>
+
+      <div class="persona-grid">
+        <div class="persona">
+          <div class="t">Persona A</div>
+          <div class="name">The Confident Borrower</div>
+          <span class="role">Refinance applicant</span>
+          <ul>
+            <li>Wants rate transparency and quick validation.</li>
+            <li>Gets anxious when forms feel “silent.”</li>
+            <li>Prefers clear decision points and confidence cues.</li>
+          </ul>
+        </div>
+        <div class="persona">
+          <div class="t">Persona B</div>
+          <div class="name">The First-Time Borrower</div>
+          <span class="role">New purchase applicant</span>
+          <ul>
+            <li>Needs guidance and terminology translation.</li>
+            <li>Does not understand required documents without context.</li>
+            <li>Needs reassurance that each step is progressing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="smart-shell">
+        <div class="smart-top">
+          <div class="smart-dots"><span></span><span></span><span></span></div>
+          <div class="smart-status">Confidence check</div>
+        </div>
+        <div class="smart-body">
+          <div class="smart-search-bar"><span class="search-icon"></span> “How do I know my documents are enough?”</div>
+          <div class="smart-filters">
+            <span>Loan amount</span>
+            <span>Rate selection</span>
+            <span>Checklist</span>
+            <span>Upload status</span>
+          </div>
+          <div class="smart-results">
+            <div class="smart-result">
+              <div>
+                <div class="label">Document readiness</div>
+                <div class="desc">Updated 2 hours ago</div>
+              </div>
+              <span class="pill">Live</span>
+            </div>
+            <div class="smart-result">
+              <div>
+                <div class="label">Estimated closing</div>
+                <div class="desc">Likely 21–28 days</div>
+              </div>
+              <span class="pill">Review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="findings">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Key findings</div>
+      <h2>The issue was not “more content.” It was “less confidence.”</h2>
+
+      <div class="qa-grid">
+        <div>
+          <div class="panel-card">
+            <strong>What users struggled with</strong>
+            <ul class="checklist">
+              <li>Understanding whether the app was actively validating inputs.</li>
+              <li>Making sense of the available rate and term combinations.</li>
+              <li>Knowing which documents were necessary before they were requested.</li>
+              <li>Finding emotional confidence in the next step after a form interaction.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="panel-card">
+            <strong>Design responses</strong>
+            <ul class="checklist">
+              <li>Progressive disclosure for loan options and required documents.</li>
+              <li>Stateful status messaging that explains validation in plain language.</li>
+              <li>Prioritized “why this matters” copy near each decision point.</li>
+              <li>One clear next-step view at each stage.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <blockquote>
+        “The problem wasn’t a lack of information; it was a lack of meaning in the moment of decision.”
+        <cite>Research synthesis, round 3</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="page" id="frameworks">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Design framework</div>
+      <h2>Three design principles shaped the redesign.</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <span class="card-icon">01</span>
+          <h4>Reduce ambiguity</h4>
+          <p>Every step should tell the user whether the system is doing something, waiting on something, or asking them to act.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">02</span>
+          <h4>Clarify decision stakes</h4>
+          <p>Rates, options, and smart defaults needed plain-language explanation near the moment of selection.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">03</span>
+          <h4>Orient the next move</h4>
+          <p>Every screen needed a singular “what happens next?” signal, supported by context and reassurance.</p>
+        </div>
+      </div>
+
+      <div class="three-col" style="margin-top: 28px;">
+        <div class="panel-card">
+          <h4>Before</h4>
+          <ul class="checklist">
+            <li>Dense form layout</li>
+            <li>Minimal status guidance</li>
+            <li>Hidden validation logic</li>
+          </ul>
+        </div>
+        <div class="panel-card">
+          <h4>After</h4>
+          <ul class="checklist">
+            <li>Progressive disclosure</li>
+            <li>Real-time state language</li>
+            <li>Priority decision cues</li>
+          </ul>
+        </div>
+        <div class="panel-card">
+          <h4>Outcome</h4>
+          <ul class="checklist">
+            <li>Reduced friction</li>
+            <li>Faster completion</li>
+            <li>Higher confidence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="outcomes">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Outcome and strategy</div>
+      <h2>A clearer mortgage journey helped users move with more confidence.</h2>
+
+      <div class="grid" style="margin-top: 24px;">
+        <div style="grid-column: 1 / 7;">
+          <div class="panel-card">
+            <strong>Estimated impact</strong>
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Before</th>
+                  <th>After</th>
+                  <th>Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Abandonment at step 3</td>
+                  <td>52%</td>
+                  <td>31%</td>
+                  <td><span class="severity sev-1">↓21%</span></td>
+                </tr>
+                <tr>
+                  <td>Completion time</td>
+                  <td>18 min</td>
+                  <td>12 min</td>
+                  <td><span class="severity sev-2">↓33%</span></td>
+                </tr>
+                <tr>
+                  <td>Support calls</td>
+                  <td>High</td>
+                  <td>Moderate</td>
+                  <td><span class="severity sev-1">↓26%</span></td>
+                </tr>
+                <tr>
+                  <td>Decision confidence</td>
+                  <td>Low</td>
+                  <td>Strong</td>
+                  <td><span class="severity sev-3">↑Major</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="grid-column: 7 / 13;">
+          <div class="panel-card">
+            <strong>Strategic recommendation</strong>
+            <p style="margin-top: 6px;">The product should prioritize clarity over density: fewer states, more meaningful labels, and stronger confirmation cues. Mortgage UX works best when the user feels progress, not pressure.</p>
+            <div class="cta-row">
+              <button class="btn-primary">Read delivery</button>
+              <button class="btn-secondary">Review principles</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
